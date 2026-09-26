@@ -116,6 +116,33 @@ export function routeLead(h: HygieneResult, org: OrgIndex, policy: RoutingPolicy
   const strategicFilter = policy.filters.includes("strategic_only_reps");
 
   let pool: Rep[] = org.data.reps.filter((r) => verdicts.get(r.id)!.eligible);
+  let setAside: Rep[] = []; // non-specialists held back by the specialization preference
+  const passed: string[] = []; // labels of steps passed so far, for notes on revived reps
+  const pass = (label: string) => {
+    for (const r of pool) verdicts.get(r.id)!.notes.push(label);
+    passed.push(label);
+  };
+  /** Apply a hard filter. If it would leave no one after a specialization preference, fall back. */
+  const narrow = (by: string, keep: (r: Rep) => boolean, note: (r: Rep) => string): boolean => {
+    for (const r of pool) if (!keep(r)) eliminate(r, by, note(r));
+    const next = pool.filter(keep);
+    const revived = setAside.filter(keep);
+    if (next.length === 0 && revived.length > 0) {
+      for (const r of revived) {
+        const v = verdicts.get(r.id)!;
+        v.eligible = true;
+        v.eliminated_by = undefined;
+        v.notes = [...passed.filter((p) => p !== industry)];
+      }
+      for (const r of setAside) if (!keep(r)) verdicts.get(r.id)!.notes = [note(r)];
+      pool = revived;
+      setAside = [];
+      return true;
+    }
+    pool = next;
+    setAside = revived;
+    return false;
+  };
 
   for (const step of policy.precedence) {
     const label = STEP_LABEL[step];
@@ -169,17 +196,18 @@ export function routeLead(h: HygieneResult, org: OrgIndex, policy: RoutingPolicy
     if (strategicFilter) {
       for (const r of pool) if (r.strategic_only) eliminate(r, "strategic_only_reps", "Strategic accounts only");
       pool = pool.filter((r) => !r.strategic_only);
+      setAside = setAside.filter((r) => !r.strategic_only);
     }
+    let fellBack = false;
     if (step === "geography") {
       if (!region) {
         trace.push({ step, label, outcome: "Unknown", status: "fail" });
         return finish(null, step, { review: "Lead region could not be determined" });
       }
       const rl = REGION_LABEL[region];
-      for (const r of pool) if (!r.regions.includes(region)) eliminate(r, step, `Not ${rl}`);
-      pool = pool.filter((r) => r.regions.includes(region));
-      for (const r of pool) verdicts.get(r.id)!.notes.push(rl);
-      trace.push({ step, label, outcome: rl, status: "pass" });
+      fellBack = narrow(step, (r) => r.regions.includes(region), () => `Not ${rl}`);
+      pass(rl);
+      trace.push({ step, label, outcome: fellBack ? `${rl} — no specialist here, using all ${rl} reps` : rl, status: "pass" });
       reason.push(`${rl} territory`);
       rules.push(`geo.${region}`);
     } else if (step === "segment") {
@@ -188,10 +216,10 @@ export function routeLead(h: HygieneResult, org: OrgIndex, policy: RoutingPolicy
         return finish(null, step, { review: "Segment could not be determined" });
       }
       const sl = SEGMENT_LABEL[segment];
-      for (const r of pool) if (!r.segments.includes(segment)) eliminate(r, step, `Not ${sl}`);
-      pool = pool.filter((r) => r.segments.includes(segment));
-      for (const r of pool) verdicts.get(r.id)!.notes.push(sl);
-      trace.push({ step, label, outcome: `${sl} (${rec.employee_count?.toLocaleString("en-US")} employees)`, status: "pass" });
+      fellBack = narrow(step, (r) => r.segments.includes(segment), () => `Not ${sl}`);
+      pass(sl);
+      const emp = `${sl} (${rec.employee_count?.toLocaleString("en-US")} employees)`;
+      trace.push({ step, label, outcome: fellBack ? `${emp} — no specialist covers it, using all ${sl} reps` : emp, status: "pass" });
       reason.push(`${sl} account`);
       rules.push(`segment.${segment}`);
     } else if (step === "specialization") {
@@ -201,11 +229,13 @@ export function routeLead(h: HygieneResult, org: OrgIndex, policy: RoutingPolicy
       }
       const specialists = pool.filter((r) => r.industries.includes(industry));
       if (specialists.length > 0 && specialists.length < pool.length) {
-        for (const r of pool) if (!r.industries.includes(industry)) eliminate(r, step, `No ${industry} specialization`);
+        // A preference, not a filter: set the others aside so a later step can fall back to them.
+        setAside = pool.filter((r) => !r.industries.includes(industry));
+        for (const r of setAside) eliminate(r, step, `No ${industry} specialization`);
         pool = specialists;
       }
       if (specialists.length > 0) {
-        for (const r of pool) verdicts.get(r.id)!.notes.push(industry);
+        pass(industry);
         trace.push({ step, label, outcome: `${industry} — ${specialists.length} specialist${specialists.length > 1 ? "s" : ""}`, status: "pass" });
         reason.push(`${industry} specialization`);
         rules.push(`specialization.${slug(industry)}`);
@@ -213,16 +243,25 @@ export function routeLead(h: HygieneResult, org: OrgIndex, policy: RoutingPolicy
         trace.push({ step, label, outcome: `${industry} — no specialist, kept all`, status: "skip" });
       }
     } else if (step === "capacity") {
-      for (const r of pool) if (used(r) >= r.capacity) eliminate(r, step, `At capacity (${used(r)}/${r.capacity})`);
       const before = pool.length;
-      pool = pool.filter((r) => used(r) < r.capacity);
+      fellBack = narrow(step, (r) => used(r) < r.capacity, (r) => `At capacity (${used(r)}/${r.capacity})`);
       trace.push({
         step,
         label,
-        outcome: before === pool.length ? "All candidates have room" : `${before - pool.length} at capacity`,
+        outcome: fellBack ? "Specialists at capacity — using other eligible reps" : before === pool.length ? "All candidates have room" : `${before - pool.length} at capacity`,
         status: pool.length ? "pass" : "fail",
       });
       rules.push("capacity.check");
+    }
+    if (fellBack && industry) {
+      // The specialization preference couldn't be met, so it no longer explains the decision.
+      const i = reason.indexOf(`${industry} specialization`);
+      if (i >= 0) reason.splice(i, 1);
+      const j = rules.indexOf(`specialization.${slug(industry)}`);
+      if (j >= 0) rules.splice(j, 1);
+      rules.push("specialization.fallback");
+      const st = trace.find((t) => t.step === "specialization");
+      if (st) st.status = "skip";
     }
     if (pool.length === 0) {
       return finish(null, step, {
@@ -233,7 +272,7 @@ export function routeLead(h: HygieneResult, org: OrgIndex, policy: RoutingPolicy
 
   if (pool.length === 0) return finish(null, null, { review: "No rep matches this lead" });
   if (pool.length === 1) {
-    const last = [...rules].reverse().find((r) => !r.startsWith("capacity")) ?? null;
+    const last = [...rules].reverse().find((r) => !r.startsWith("capacity") && r !== "specialization.fallback") ?? null;
     return finish(pool[0], last?.split(".")[0] ?? null);
   }
   // Tie-break: least utilized, then a stable hash so reruns are reproducible.
