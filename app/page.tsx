@@ -3,8 +3,8 @@ import path from "node:path";
 import Lab from "@/components/Lab";
 import type { OrgData } from "@/lib/types";
 
-// The harness reads policy and org data from disk; the browser runs the pipeline.
-export const dynamic = "force-dynamic";
+// Policy and org files are read at build time, so the page ships as static HTML.
+// The whole pipeline then runs in the browser.
 
 const text = (p: string) => fs.readFileSync(p, "utf8");
 

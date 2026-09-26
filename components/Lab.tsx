@@ -144,7 +144,10 @@ export default function Lab(props: { org: OrgData; hygieneMd: string; routingMd:
           <div className="brand-mark">⇢</div>
           <div>
             <h1>Lead Routing Lab</h1>
-            <div className="sub">Prepared for LangChain by Shaun Yap (shaunyap@gmail.com)</div>
+            <div className="sub">
+              Prepared for LangChain by{" "}
+              <a href="https://www.linkedin.com/in/shaunyap" target="_blank" rel="noopener noreferrer">Shaun Yap</a>
+            </div>
           </div>
         </div>
         <div className="top-actions">

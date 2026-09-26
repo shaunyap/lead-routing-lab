@@ -13,6 +13,14 @@ npm run report     # funnel + eval metrics for the shipped policy, in the termin
 npm run generate   # rewrite data/*.json from the default seed (2026)
 ```
 
+## Deploy
+
+The page is prerendered as static HTML at build time (policy and config files are read during
+`next build`), and the whole pipeline runs in the browser, so there is no server to operate.
+
+On Vercel: import the GitHub repo, keep the detected Next.js defaults, and deploy. Every push to
+`main` redeploys. Node 20.9+ is required.
+
 ## How it fits together
 
 ```
