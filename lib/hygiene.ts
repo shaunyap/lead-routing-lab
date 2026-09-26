@@ -142,10 +142,14 @@ export function cleanLead(raw: RawLead, org: OrgIndex, policy: HygienePolicy): O
   const allow = (i: InferenceName) => policy.inference.allowed.includes(i);
 
   // ---- Names
+  // First names: fix any all-lowercase word ("Michael john"). Last names stay cautious,
+  // because lowercase particles are real ("van der Berg", "de la Cruz").
+  const lowerWord = (v: string) => v.split(/[\s-]+/).some((w) => w.length > 1 && w === w.toLowerCase() && /[a-z]/.test(w));
   for (const f of ["first_name", "last_name"] as const) {
     const v = val(raw[f]);
-    rec[f] = v && isOddCase(v) ? properCase(v) : v;
-    if (v) change(ctx, f, raw[f], rec[f], "Fixed capitalization");
+    const fix = !!v && (isOddCase(v) || (f === "first_name" && lowerWord(v)));
+    rec[f] = fix ? properCase(v!) : v;
+    if (v) change(ctx, f, raw[f], rec[f], raw[f].trim() !== raw[f] || /\s{2,}/.test(raw[f]) ? "Trimmed whitespace and fixed capitalization" : "Fixed capitalization");
   }
 
   // ---- Email

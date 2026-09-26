@@ -6,7 +6,7 @@ import { attentionItems } from "../lib/attention";
 import { generateDataset, TITLES } from "../lib/generate";
 import { headerMappings, normalizeHeader } from "../lib/headers";
 import { applyOverrides } from "../lib/overrides";
-import { normalizeTitle } from "../lib/hygiene";
+import { normalizeTitle, runHygiene } from "../lib/hygiene";
 import { parseHygienePolicy, parseRoutingPolicy } from "../lib/policy";
 import { compareRuns, runPipeline, type RunResult } from "../lib/pipeline";
 import { PRESET_EDITS, applyEdit } from "../lib/presets";
@@ -139,4 +139,22 @@ test("manual assignments become executable updates without changing the engine's
   assert.equal(a.executable, true);
   assert.equal(a.body.Routing_Status__c, "Manually assigned");
   assert.equal(JSON.stringify(r.routing), before);
+});
+
+test("first names with spaces are normalized and matched as one person", () => {
+  const hp = parseHygienePolicy(v1.hygieneMd).policy!;
+  const base = {
+    email: "", company: "Halcyon Retail Group", company_domain: "halcyonretail.com", title: "Director, IT", city: "Seattle",
+    state: "Washington", country: "United States", industry: "Retail", employee_count: "14500", product_interest: "", session: "", lead_source: "",
+  };
+  const rows = [
+    ["Michael John", "Smith"], ["michael john", "smith"], ["MICHAEL JOHN", "SMITH"], ["Michael  John ", "Smith"], ["Michael john", "Smith"],
+  ].map(([first_name, last_name], i) => ({ ...base, id: `T-${i}`, first_name, last_name, email: `mj${i}@halcyonretail.com` }));
+  const out = runHygiene(rows, org, hp);
+  for (const h of out) assert.equal(`${h.record.first_name} ${h.record.last_name}`, "Michael John Smith");
+  assert.equal(out[0].status, "CLEAN");
+  for (const h of out.slice(1)) assert.ok(h.unresolved.some((u) => u.field === "duplicate"), "same person, different email → possible duplicate");
+
+  const particles = runHygiene([{ ...base, id: "T-9", first_name: "Anna", last_name: "van der Berg", email: "avdb@halcyonretail.com" }], org, hp);
+  assert.equal(particles[0].record.last_name, "van der Berg");
 });
