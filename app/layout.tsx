@@ -1,9 +1,14 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
+const description =
+  "Messy lead lists in, safe CRM actions out: visible hygiene, declarative policy, explainable routing and evals. Prepared for LangChain by Shaun Yap.";
+
 export const metadata: Metadata = {
   title: "Lead Routing Lab",
-  description: "Messy lead lists → visible hygiene → declarative policy → explainable routing → measurable evals → safe CRM action.",
+  description,
+  openGraph: { title: "Lead Routing Lab", description, type: "website" },
+  twitter: { card: "summary_large_image", title: "Lead Routing Lab", description },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

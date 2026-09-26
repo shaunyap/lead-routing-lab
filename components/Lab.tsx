@@ -15,6 +15,7 @@ import RoutingView from "./RoutingView";
 import SalesforceDrawer from "./SalesforceDrawer";
 import SalesforceView from "./SalesforceView";
 import { pct } from "./ui";
+import Walkthrough, { walkthroughSteps } from "./Walkthrough";
 
 export type Tab = "leads" | "hygiene" | "routing" | "attention" | "salesforce" | "evals" | "policy";
 const FLOW: { id: Tab; label: string }[] = [
@@ -71,6 +72,8 @@ export default function Lab(props: { org: OrgData; hygieneMd: string; routingMd:
   const [versions, setVersions] = useState<PolicyVersion[]>([v1]);
   const [active, setActive] = useState(1);
   const [tab, setTab] = useState<Tab>("leads");
+  const [seenTabs, setSeenTabs] = useState<Set<Tab>>(new Set());
+  const [walkOpen, setWalkOpen] = useState(true);
   const [focus, setFocus] = useState<string | null>(null);
   const [drawer, setDrawer] = useState<string | null>(null);
   const [overrides, setOverrides] = useState<Overrides>({});
@@ -108,6 +111,7 @@ export default function Lab(props: { org: OrgData; hygieneMd: string; routingMd:
     setFocus(null);
     setOverrides({});
     setTab("leads");
+    setSeenTabs(new Set<Tab>(["leads"]));
   };
   const reset = () => {
     setSeed(DEFAULT_SEED);
@@ -119,10 +123,13 @@ export default function Lab(props: { org: OrgData; hygieneMd: string; routingMd:
     setDrawer(null);
     setOverrides({});
     setTab("leads");
+    setSeenTabs(new Set());
+    setWalkOpen(true);
   };
   const go = (t: Tab, lead?: string) => {
     if (lead) setFocus(lead);
     setTab(t);
+    setSeenTabs((s) => new Set(s).add(t));
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
   const savePolicy = (next: Omit<PolicyVersion, "version">) => {
@@ -131,6 +138,20 @@ export default function Lab(props: { org: OrgData; hygieneMd: string; routingMd:
     setActive(version);
     return version;
   };
+
+  // A lead that shows the demo's point: a confident, explained pick that ground truth marks wrong.
+  const exampleLead = useMemo(() => {
+    if (!run) return null;
+    const v1Run = outcomes.get(1);
+    const base = v1Run?.ok ? v1Run.run : run;
+    const hit = base.routing.find((r) => {
+      const g = dataset.truth.routing[r.lead_id];
+      return g?.basis.startsWith("Subsidiary") && r.decision === "auto_route" && !g.acceptable_owner_ids.includes(r.owner_id!);
+    });
+    return hit?.lead_id ?? null;
+  }, [run, outcomes, dataset]);
+  const steps = walkthroughSteps(exampleLead);
+  const visitedSteps = new Set(steps.map((s, i) => (seenTabs.has(s.tab) ? i : -1)).filter((i) => i >= 0));
 
   const animKey = `${genCount}-${seed}-${active}`;
   const f = run?.funnel;
@@ -147,6 +168,8 @@ export default function Lab(props: { org: OrgData; hygieneMd: string; routingMd:
             <div className="sub">
               Prepared for LangChain by{" "}
               <a href="https://www.linkedin.com/in/shaunyap" target="_blank" rel="noopener noreferrer">Shaun Yap</a>
+              {" · "}
+              <a href="https://github.com/shaunyap/lead-routing-lab" target="_blank" rel="noopener noreferrer">View source</a>
             </div>
           </div>
         </div>
@@ -206,6 +229,7 @@ export default function Lab(props: { org: OrgData; hygieneMd: string; routingMd:
             <span>Leads</span><i>→</i><span>Hygiene</span><i>→</i><span>Routing</span><i>→</i>
             <span>Address Exceptions</span><i>→</i><span>Export to Salesforce</span>
           </div>
+          <div className="faint" style={{ marginTop: 14, fontSize: 12.5 }}>A suggested 3-minute walkthrough appears once the leads are loaded.</div>
           {!activeOutcome.ok && <div className="errors" style={{ marginTop: 20 }}>{activeOutcome.errors.join(" · ")}</div>}
         </div>
       ) : (
@@ -221,6 +245,14 @@ export default function Lab(props: { org: OrgData; hygieneMd: string; routingMd:
             <Stage animKey={animKey} n={f.exceptions} label="Exceptions" tone="warn" onClick={() => go("attention")} />
             <Stage animKey={animKey} n={f.eval_accuracy} isPct label="Routing eval" tone="accent" onClick={() => go("evals")} last />
           </nav>
+
+          <Walkthrough
+            steps={steps}
+            visited={visitedSteps}
+            open={walkOpen}
+            setOpen={setWalkOpen}
+            onGo={(i) => go(steps[i].tab, steps[i].lead)}
+          />
 
           <nav className="tabs">
             {FLOW.map((t, i) => (

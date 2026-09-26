@@ -59,6 +59,9 @@ always returns to the v1 files on disk.
 
 ## Three-minute demo script
 
+After loading, a **Suggested walkthrough** panel links each of these steps for anyone exploring
+without a presenter.
+
 The main flow runs left to right: **Leads → Hygiene → Routing → Address Exceptions → Export to
 Salesforce**. **Evals** and **Policy Lab** sit on the right, outside the flow.
 
