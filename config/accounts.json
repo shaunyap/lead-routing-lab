@@ -1,0 +1,16 @@
+[
+  { "account_id": "001Dn00000Hal01", "company_id": "c01", "owner_id": "005Dn000001AcHn", "strategic": false },
+  { "account_id": "001Dn00000Cas05", "company_id": "c05", "owner_id": "005Dn000001MlEe", "strategic": false },
+  { "account_id": "001Dn00000Mes07", "company_id": "c07", "owner_id": "005Dn000001RkIm", "strategic": false },
+  { "account_id": "001Dn00000Iro13", "company_id": "c13", "owner_id": "005Dn000001DaLv", "strategic": false },
+  { "account_id": "001Dn00000Bra17", "company_id": "c17", "owner_id": "005Dn000001DlIn", "strategic": false },
+  { "account_id": "001Dn00000Buc19", "company_id": "c19", "owner_id": "005Dn000001BcAr", "strategic": false },
+  { "account_id": "001Dn00000Nor20", "company_id": "c20", "owner_id": "005Dn000001TbEc", "strategic": false },
+  { "account_id": "001Dn00000Bri22", "company_id": "c22", "owner_id": "005Dn000001HoKa", "strategic": true },
+  { "account_id": "001Dn00000Ced24", "company_id": "c24", "owner_id": "005Dn000001HoKa", "strategic": false },
+  { "account_id": "001Dn00000Key28", "company_id": "c28", "owner_id": "005Dn000001BcAr", "strategic": false },
+  { "account_id": "001Dn00000Map35", "company_id": "c35", "owner_id": "005Dn000001TbEc", "strategic": false },
+  { "account_id": "001Dn00000Tha37", "company_id": "c37", "owner_id": "005Dn000001SrOs", "strategic": false },
+  { "account_id": "001Dn00000Rhe38", "company_id": "c38", "owner_id": "005Dn000001SrOs", "strategic": true },
+  { "account_id": "001Dn00000Sak44", "company_id": "c44", "owner_id": "005Dn000001AtAn", "strategic": false }
+]

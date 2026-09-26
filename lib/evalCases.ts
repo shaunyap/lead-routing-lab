@@ -1,0 +1,270 @@
+// Hand-authored hard cases. Expectations were written from the reference business rules,
+// not by running the engine. They are scored separately from the generated corpus.
+
+import type { EvalCase, RawLead } from "./types";
+
+const REP = {
+  alice: "005Dn000001AcHn",
+  marcus: "005Dn000001MlEe",
+  priya: "005Dn000001PsHa",
+  diego: "005Dn000001DaLv",
+  hannah: "005Dn000001HoKa",
+  tom: "005Dn000001TbEc",
+  rachel: "005Dn000001RkIm",
+  ben: "005Dn000001BcAr",
+  sofia: "005Dn000001SrOs",
+  lukas: "005Dn000001LwEb",
+  aiko: "005Dn000001AtAn",
+  jordan: "005Dn000001JbLa",
+};
+
+let n = 0;
+function raw(fields: Partial<RawLead>): RawLead {
+  n++;
+  return {
+    id: `H-${String(n).padStart(3, "0")}`,
+    first_name: "", last_name: "", email: "", company: "", company_domain: "", title: "Director, IT",
+    city: "", state: "", country: "", industry: "", employee_count: "",
+    product_interest: "Agent Platform", session: "Keynote: Agents in Production", lead_source: "Event - Badge Scan",
+    ...fields,
+  };
+}
+
+type C = Omit<EvalCase, "id" | "must_be_null" | "expected_fields" | "acceptable_owner_ids"> &
+  Partial<Pick<EvalCase, "must_be_null" | "expected_fields" | "acceptable_owner_ids">>;
+const cases: C[] = [
+  {
+    title: "Gmail address, real company name",
+    why_hard: "Personal email gives no identity, but the typed company matches a record exactly — enrichment is allowed.",
+    raw: raw({ first_name: "Owen", last_name: "Fairley", email: "owen.fairley@gmail.com", company: "Lumen Analytics", title: "Director, Data Platform", city: "San Francisco", state: "California", country: "United States", industry: "Technology", employee_count: "2600" }),
+    expected_status: "ENRICHED",
+    expected_fields: { company: "Lumen Analytics", company_domain: "lumenanalytics.io" },
+    expected_decision: "auto_route", acceptable_owner_ids: [REP.alice],
+  },
+  {
+    title: "Gmail address, no company",
+    why_hard: "The tempting move is to guess. Nothing identifies the employer.",
+    raw: raw({ first_name: "Talia", last_name: "Brook", email: "taliab@yahoo.com", city: "Denver", state: "Colorado", country: "United States", industry: "Technology", employee_count: "500" }),
+    expected_status: "INSUFFICIENT_DATA", must_be_null: ["company", "company_domain"],
+    expected_decision: "held",
+  },
+  {
+    title: "Subsidiary of an existing customer",
+    why_hard: "Halcyon Outlet is not a customer, but its parent Halcyon Retail Group is. The parent owner should get it.",
+    raw: raw({ first_name: "Priyanka", last_name: "Rao", email: "priyanka.rao@halcyonoutlet.com", company: "Halcyon Outlet Co.", company_domain: "halcyonoutlet.com", title: "VP, Marketing", city: "Portland", state: "Oregon", country: "United States", industry: "Retail", employee_count: "900" }),
+    expected_status: "CLEAN",
+    expected_decision: "auto_route", acceptable_owner_ids: [REP.alice],
+  },
+  {
+    title: "Company field names the parent; email is the subsidiary",
+    why_hard: "Not a conflict: Brightwater Insurance is a subsidiary of Brightwater Financial. Email domain identifies the actual employer.",
+    raw: raw({ first_name: "Marcus", last_name: "Hale", email: "marcus.hale@brightwaterins.com", company: "Brightwater Financial", company_domain: "brightwaterins.com", title: "Director, Security", city: "Hartford", state: "Connecticut", country: "United States", industry: "Financial Services", employee_count: "1600" }),
+    expected_status: "NORMALIZED", expected_fields: { company: "Brightwater Insurance" },
+    expected_decision: "auto_route", acceptable_owner_ids: [REP.hannah],
+  },
+  {
+    title: "Original record for a possible duplicate",
+    why_hard: "Baseline for the next case.",
+    raw: raw({ first_name: "Kenji", last_name: "Mori", email: "kenji.mori@sakuradigital.jp", company: "Sakura Digital", company_domain: "sakuradigital.jp", title: "Head of Data", city: "Tokyo", country: "Japan", industry: "Technology", employee_count: "5400" }),
+    expected_status: "CLEAN",
+    expected_decision: "auto_route", acceptable_owner_ids: [REP.aiko],
+  },
+  {
+    title: "Same person, personal email",
+    why_hard: "Same name and company as the previous record but a different email. Merging could be wrong; routing twice is wrong.",
+    raw: raw({ first_name: "Kenji", last_name: "Mori", email: "kenjimori@gmail.com", company: "Sakura Digital", title: "Head of Data", city: "Tokyo", country: "Japan", industry: "Technology", employee_count: "5400" }),
+    expected_status: "NEEDS_REVIEW",
+    expected_decision: "held",
+  },
+  {
+    title: "Account owner has left the company",
+    why_hard: "Brazos Health is a customer, but its owner Derek Lin is deactivated. Reassigning a customer relationship is a manager's call, not the router's.",
+    raw: raw({ first_name: "Lucia", last_name: "Serrano", email: "lucia.serrano@brazoshealth.org", company: "Brazos Health", company_domain: "brazoshealth.org", title: "Chief Information Officer", city: "Austin", state: "Texas", country: "United States", industry: "Healthcare", employee_count: "5200" }),
+    expected_status: "CLEAN",
+    expected_decision: "requires_review",
+  },
+  {
+    title: "Customer that is also on a strategic named list",
+    why_hard: "Cascade Grocers is Marcus's customer and also (stale) on Priya's named list. Existing relationship wins.",
+    raw: raw({ first_name: "Hollis", last_name: "Mbatha", email: "hollis.mbatha@cascadegrocers.com", company: "Cascade Grocers", company_domain: "cascadegrocers.com", title: "VP, Engineering", city: "Portland", state: "Oregon", country: "United States", industry: "Retail", employee_count: "6200" }),
+    expected_status: "CLEAN",
+    expected_decision: "auto_route", acceptable_owner_ids: [REP.marcus],
+  },
+  {
+    title: "Strategic prospect",
+    why_hard: "Stratus Cloudworks is not a customer, but it is a named strategic account for Priya.",
+    raw: raw({ first_name: "Ingrid", last_name: "Solberg", email: "ingrid.solberg@stratuscloud.io", company: "Stratus Cloudworks", company_domain: "stratuscloud.io", title: "Chief Technology Officer", city: "Seattle", state: "Washington", country: "United States", industry: "Technology", employee_count: "19000" }),
+    expected_status: "CLEAN",
+    expected_decision: "auto_route", acceptable_owner_ids: [REP.priya],
+  },
+  {
+    title: "Exactly on the enterprise boundary",
+    why_hard: "2,000 employees is Enterprise (>= 2000). Off-by-one errors live here.",
+    raw: raw({ first_name: "Dmitri", last_name: "Lang", email: "dmitri.lang@kestrelsystems.com", company: "Kestrel Systems", company_domain: "kestrelsystems.com", title: "VP, Engineering", city: "Denver", state: "Colorado", country: "United States", industry: "Technology", employee_count: "2000" }),
+    expected_status: "CLEAN",
+    expected_decision: "auto_route", acceptable_owner_ids: [REP.alice],
+  },
+  {
+    title: "One below the boundary, comma-formatted",
+    why_hard: "\"1,999\" must parse to 1999 — Mid-Market, not Enterprise.",
+    raw: raw({ first_name: "Esme", last_name: "Whitlock", email: "esme.whitlock@kestrellabs.com", company: "Kestrel Labs", company_domain: "kestrellabs.com", title: "Head of Engineering", city: "Denver", state: "Colorado", country: "United States", industry: "Technology", employee_count: "1,999" }),
+    expected_status: "NORMALIZED", expected_fields: { employee_count: 1999 },
+    expected_decision: "auto_route", acceptable_owner_ids: [REP.marcus, REP.rachel],
+  },
+  {
+    title: "\"WA\" with no country",
+    why_hard: "WA is Washington or Western Australia. The city looks like Seattle, but location inference from a city is not allowed.",
+    raw: raw({ first_name: "Noor", last_name: "Haidari", email: "noor.haidari@pinecrest.dev", company: "Pinecrest Software", company_domain: "pinecrest.dev", title: "Software Engineer", city: "Seattle", state: "WA", industry: "Technology", employee_count: "420" }),
+    expected_status: "NEEDS_REVIEW", must_be_null: ["country"],
+    expected_decision: "held",
+  },
+  {
+    title: "Unambiguous state code, no country",
+    why_hard: "\"OR\" can only be Oregon, so the policy explicitly allows inferring United States.",
+    raw: raw({ first_name: "Callum", last_name: "Reid", email: "callum.reid@willamettehealth.org", company: "Willamette Health", company_domain: "willamettehealth.org", title: "Director, IT", city: "Portland", state: "OR", industry: "Healthcare", employee_count: "2100" }),
+    expected_status: "ENRICHED", expected_fields: { state: "Oregon", country: "United States" },
+    expected_decision: "auto_route", acceptable_owner_ids: [REP.alice, REP.marcus],
+  },
+  {
+    title: "Company name resembles two different companies",
+    why_hard: "\"Summit Health\" could be Summit Health Partners (Denver) or Summit Healthcare Systems (Pittsburgh). Picking one is a guess.",
+    raw: raw({ first_name: "Jonah", last_name: "Pryce", email: "jonah.pryce@outlook.com", company: "Summit Health", title: "Director, IT", city: "Denver", state: "Colorado", country: "United States", industry: "Healthcare", employee_count: "" }),
+    expected_status: "NEEDS_REVIEW", must_be_null: ["company_domain", "employee_count"],
+    expected_decision: "held",
+  },
+  {
+    title: "Typo in company name, Gmail address",
+    why_hard: "\"Lumen Analytcs\" is one transposition from exactly one company. The policy allows this inference.",
+    raw: raw({ first_name: "Wren", last_name: "Adair", email: "wren.adair@gmail.com", company: "Lumen Analytcs", title: "Data Scientist", city: "San Francisco", state: "California", country: "United States", industry: "Technology", employee_count: "2600" }),
+    expected_status: "ENRICHED", expected_fields: { company: "Lumen Analytics", company_domain: "lumenanalytics.io" },
+    expected_decision: "auto_route", acceptable_owner_ids: [REP.alice],
+  },
+  {
+    title: "Email domain contradicts company field",
+    why_hard: "Email says Redwood Mutual; company says Prairie State Bank. Unrelated companies — someone has to look.",
+    raw: raw({ first_name: "Sasha", last_name: "Linde", email: "sasha.linde@redwoodmutual.com", company: "Prairie State Bank", company_domain: "redwoodmutual.com", title: "VP, Sales", city: "San Francisco", state: "California", country: "United States", industry: "Financial Services", employee_count: "8800" }),
+    expected_status: "NEEDS_REVIEW",
+    expected_decision: "held",
+  },
+  {
+    title: "Everything in caps",
+    why_hard: "Every field needs normalizing, and it's still an existing customer.",
+    raw: raw({ first_name: "MAYA", last_name: "GRANTHAM", email: "MAYA.GRANTHAM@HALCYONRETAIL.COM", company: "HALCYON RETAIL GROUP", company_domain: "HALCYONRETAIL.COM", title: "DIRECTOR IT", city: "SEATTLE", state: "WA", country: "USA", industry: "RETAIL", employee_count: "14500" }),
+    expected_status: "NORMALIZED",
+    expected_fields: { first_name: "Maya", last_name: "Grantham", email: "maya.grantham@halcyonretail.com", company: "Halcyon Retail Group", title: "Director, IT", city: "Seattle", state: "Washington", country: "United States", industry: "Retail" },
+    expected_decision: "auto_route", acceptable_owner_ids: [REP.alice],
+  },
+  {
+    title: "No location at all, known company",
+    why_hard: "Company HQ is known, but copying it would assert where this person works. Location stays empty.",
+    raw: raw({ first_name: "Ravi", last_name: "Menon", email: "ravi.menon@ironpeak.com", company: "Ironpeak Manufacturing", company_domain: "ironpeak.com", title: "Director, Data Platform", industry: "Manufacturing", employee_count: "11000" }),
+    expected_status: "NEEDS_REVIEW", must_be_null: ["city", "state", "country"],
+    expected_decision: "held",
+  },
+  {
+    title: "Unknown startup, no employee count",
+    why_hard: "Not in the company database, so there is nothing to enrich from. Segment can't be known.",
+    raw: raw({ first_name: "Bea", last_name: "Lindgren", email: "bea@quillfield.ai", company: "Quillfield AI", company_domain: "quillfield.ai", title: "Chief Technology Officer", city: "Austin", state: "Texas", country: "United States", industry: "Technology" }),
+    expected_status: "NEEDS_REVIEW", must_be_null: ["employee_count"],
+    expected_decision: "held",
+  },
+  {
+    title: "Coverage gap: EMEA public-sector SMB",
+    why_hard: "Only Lukas covers EMEA SMB, and Lukas excludes Public Sector. No one is eligible — don't force it.",
+    raw: raw({ first_name: "Imogen", last_name: "Price", email: "imogen.price@harrowgate.gov.uk", company: "Harrowgate Borough Council", company_domain: "harrowgate.gov.uk", title: "Head of Data", city: "Harrowgate", country: "United Kingdom", industry: "Public Sector", employee_count: "150" }),
+    expected_status: "CLEAN",
+    expected_decision: "requires_review",
+  },
+  {
+    title: "Canadian province code",
+    why_hard: "\"BC\" must expand to British Columbia, which routes to US West.",
+    raw: raw({ first_name: "Liam", last_name: "Tremblay", email: "liam.tremblay@coastlinegames.ca", company: "Coastline Games", company_domain: "coastlinegames.ca", title: "VP, Engineering", city: "Vancouver", state: "BC", country: "Canada", industry: "Media & Entertainment", employee_count: "300" }),
+    expected_status: "NORMALIZED", expected_fields: { state: "British Columbia" },
+    expected_decision: "auto_route", acceptable_owner_ids: [REP.marcus, REP.rachel],
+  },
+  {
+    title: "Self-reported industry disagrees with company record",
+    why_hard: "Attendee picked \"Technology\" from a dropdown; the company is a retailer. Specialization depends on getting this right.",
+    raw: raw({ first_name: "Gideon", last_name: "Ames", email: "gideon.ames@peachtreeoutfitters.com", company: "Peachtree Outfitters", company_domain: "peachtreeoutfitters.com", title: "Director, IT", city: "Atlanta", state: "Georgia", country: "United States", industry: "Technology", employee_count: "2200" }),
+    expected_status: "NORMALIZED", expected_fields: { industry: "Retail" },
+    expected_decision: "auto_route", acceptable_owner_ids: [REP.ben],
+  },
+  {
+    title: "Remote employee: person and HQ in different regions",
+    why_hard: "Lumen Analytics is in San Francisco, but this attendee works in Boston. Route on the person, not the HQ.",
+    raw: raw({ first_name: "Adaeze", last_name: "Obi", email: "adaeze.obi@lumenanalytics.io", company: "Lumen Analytics", company_domain: "lumenanalytics.io", title: "Solutions Architect", city: "Boston", state: "Massachusetts", country: "United States", industry: "Technology", employee_count: "2600" }),
+    expected_status: "CLEAN",
+    expected_decision: "auto_route", acceptable_owner_ids: [REP.hannah, REP.ben],
+  },
+  {
+    title: "Existing customer, attendee outside owner's territory",
+    why_hard: "Ironpeak is Diego's (US Central) customer; this person sits in Atlanta. The relationship beats geography.",
+    raw: raw({ first_name: "Tessa", last_name: "Wolde", email: "tessa.wolde@ironpeak.com", company: "Ironpeak Manufacturing", company_domain: "ironpeak.com", title: "Senior Data Engineer", city: "Atlanta", state: "Georgia", country: "United States", industry: "Manufacturing", employee_count: "11000" }),
+    expected_status: "CLEAN",
+    expected_decision: "auto_route", acceptable_owner_ids: [REP.diego],
+  },
+  {
+    title: "Strategic customer",
+    why_hard: "Brightwater Financial is strategic and owned by Hannah; the strategic-only rep should not take it.",
+    raw: raw({ first_name: "Rowan", last_name: "Achterberg", email: "rowan.achterberg@brightwaterfin.com", company: "Brightwater Financial", company_domain: "brightwaterfin.com", title: "Chief Information Officer", city: "New York", state: "New York", country: "United States", industry: "Financial Services", employee_count: "24000" }),
+    expected_status: "CLEAN",
+    expected_decision: "auto_route", acceptable_owner_ids: [REP.hannah],
+  },
+  {
+    title: "No company name, messy URL in domain field",
+    why_hard: "Domain needs cleaning before it can be used as an exact key to enrich the company.",
+    raw: raw({ first_name: "Soren", last_name: "Blix", email: "soren.blix@keystonefab.com", company_domain: "https://www.keystonefab.com/about", title: "Director, Security", city: "Pittsburgh", state: "Pennsylvania", country: "United States", industry: "Manufacturing", employee_count: "4100" }),
+    expected_status: "ENRICHED", expected_fields: { company: "Keystone Fabrication", company_domain: "keystonefab.com" },
+    expected_decision: "auto_route", acceptable_owner_ids: [REP.ben],
+  },
+  {
+    title: "Employee count given as a range",
+    why_hard: "\"1000-5000\" spans two segments. Use the company record instead of picking a number.",
+    raw: raw({ first_name: "Anya", last_name: "Kovac", email: "anya.kovac@queencitytrust.com", company: "Queen City Trust", company_domain: "queencitytrust.com", title: "VP, Marketing", city: "Charlotte", state: "North Carolina", country: "United States", industry: "Financial Services", employee_count: "1000-5000" }),
+    expected_status: "ENRICHED", expected_fields: { employee_count: 3800 },
+    expected_decision: "auto_route", acceptable_owner_ids: [REP.hannah],
+  },
+  {
+    title: "Employee count as \"4.6k\"",
+    why_hard: "Needs parsing, then Retail specialization picks between two enterprise reps.",
+    raw: raw({ first_name: "Cyrus", last_name: "Vale", email: "cyrus.vale@apexretail.com", company: "Apex Retail", company_domain: "apexretail.com", title: "Director, Marketing Operations", city: "Dallas", state: "Texas", country: "United States", industry: "Retail", employee_count: "4.6k" }),
+    expected_status: "NORMALIZED", expected_fields: { employee_count: 4600 },
+    expected_decision: "auto_route", acceptable_owner_ids: [REP.ben],
+  },
+  {
+    title: "Apex Retail vs Apex Retail Labs",
+    why_hard: "An exact match to the smaller company must not be \"corrected\" to the bigger similar name.",
+    raw: raw({ first_name: "Juno", last_name: "Park", email: "juno.park@gmail.com", company: "Apex Retail Labs", title: "Software Engineer", city: "Seattle", state: "Washington", country: "United States", industry: "Technology", employee_count: "180" }),
+    expected_status: "ENRICHED", expected_fields: { company: "Apex Retail Labs", company_domain: "apexretaillabs.com" },
+    expected_decision: "auto_route", acceptable_owner_ids: [REP.jordan],
+  },
+  {
+    title: "\"Sr Mgr IT\"",
+    why_hard: "Two stacked abbreviations. Only fixable if the policy knows \"Mgr\".",
+    raw: raw({ first_name: "Pilar", last_name: "Ibarra", email: "pilar.ibarra@buckeyehome.com", company: "Buckeye Home Goods", company_domain: "buckeyehome.com", title: "Sr Mgr IT", city: "Columbus", state: "Ohio", country: "United States", industry: "Retail", employee_count: "3100" }),
+    expected_status: "NORMALIZED", expected_fields: { title: "Senior Manager, IT" },
+    expected_decision: "auto_route", acceptable_owner_ids: [REP.ben],
+  },
+  {
+    title: "Accent dropped from a named prospect",
+    why_hard: "\"Lumiere Retail\" is Lumière Retail, a named EMEA prospect of Sofia's.",
+    raw: raw({ first_name: "Camille", last_name: "Roux", email: "camille.roux@lumiere-retail.fr", company: "Lumiere Retail", company_domain: "lumiere-retail.fr", title: "Chief Marketing Officer", city: "Paris", country: "France", industry: "Retail", employee_count: "2800" }),
+    expected_status: "NORMALIZED", expected_fields: { company: "Lumière Retail" },
+    expected_decision: "auto_route", acceptable_owner_ids: [REP.sofia],
+  },
+  {
+    title: "Right answer, wrong reason",
+    why_hard: "Ironpeak Robotics (subsidiary of Diego's customer) lands on Diego either way — via Manufacturing specialization or via parent rollup. Only the trace shows which.",
+    raw: raw({ first_name: "Ezra", last_name: "Kane", email: "ezra.kane@ironpeakrobotics.com", company: "Ironpeak Robotics", company_domain: "ironpeakrobotics.com", title: "Head of Engineering", city: "Detroit", state: "Michigan", country: "United States", industry: "Manufacturing", employee_count: "650" }),
+    expected_status: "CLEAN",
+    expected_decision: "auto_route", acceptable_owner_ids: [REP.diego],
+  },
+];
+
+export const EVAL_CASES: EvalCase[] = cases.map((c) => ({
+  id: c.raw.id,
+  must_be_null: [],
+  expected_fields: {},
+  acceptable_owner_ids: [],
+  ...c,
+}));

@@ -1,0 +1,746 @@
+[
+  {
+    "id": "c01",
+    "name": "Halcyon Retail Group",
+    "aliases": [
+      "Halcyon Retail",
+      "Halcyon Retail Grp",
+      "Halcyon"
+    ],
+    "domain": "halcyonretail.com",
+    "industry": "Retail",
+    "employees": 14500,
+    "hq": {
+      "city": "Seattle",
+      "state": "Washington",
+      "country": "United States"
+    }
+  },
+  {
+    "id": "c02",
+    "name": "Halcyon Outlet Co.",
+    "aliases": [
+      "Halcyon Outlet"
+    ],
+    "domain": "halcyonoutlet.com",
+    "industry": "Retail",
+    "employees": 900,
+    "hq": {
+      "city": "Portland",
+      "state": "Oregon",
+      "country": "United States"
+    },
+    "parent_id": "c01"
+  },
+  {
+    "id": "c03",
+    "name": "Lumen Analytics",
+    "aliases": [
+      "Lumen"
+    ],
+    "domain": "lumenanalytics.io",
+    "industry": "Technology",
+    "employees": 2600,
+    "hq": {
+      "city": "San Francisco",
+      "state": "California",
+      "country": "United States"
+    }
+  },
+  {
+    "id": "c04",
+    "name": "Pinecrest Software",
+    "aliases": [
+      "Pinecrest"
+    ],
+    "domain": "pinecrest.dev",
+    "industry": "Technology",
+    "employees": 420,
+    "hq": {
+      "city": "Denver",
+      "state": "Colorado",
+      "country": "United States"
+    }
+  },
+  {
+    "id": "c05",
+    "name": "Cascade Grocers",
+    "aliases": [
+      "Cascade Grocery"
+    ],
+    "domain": "cascadegrocers.com",
+    "industry": "Retail",
+    "employees": 6200,
+    "hq": {
+      "city": "Portland",
+      "state": "Oregon",
+      "country": "United States"
+    }
+  },
+  {
+    "id": "c06",
+    "name": "Redwood Mutual",
+    "aliases": [
+      "Redwood Mutual Insurance"
+    ],
+    "domain": "redwoodmutual.com",
+    "industry": "Financial Services",
+    "employees": 8800,
+    "hq": {
+      "city": "San Francisco",
+      "state": "California",
+      "country": "United States"
+    }
+  },
+  {
+    "id": "c07",
+    "name": "Mesa Health Network",
+    "aliases": [
+      "Mesa Health"
+    ],
+    "domain": "mesahealth.org",
+    "industry": "Healthcare",
+    "employees": 3400,
+    "hq": {
+      "city": "Phoenix",
+      "state": "Arizona",
+      "country": "United States"
+    }
+  },
+  {
+    "id": "c08",
+    "name": "Tidewater Media",
+    "aliases": [],
+    "domain": "tidewatermedia.com",
+    "industry": "Media & Entertainment",
+    "employees": 1200,
+    "hq": {
+      "city": "Los Angeles",
+      "state": "California",
+      "country": "United States"
+    }
+  },
+  {
+    "id": "c09",
+    "name": "Juniper Robotics",
+    "aliases": [],
+    "domain": "juniperrobotics.ai",
+    "industry": "Manufacturing",
+    "employees": 150,
+    "hq": {
+      "city": "San Jose",
+      "state": "California",
+      "country": "United States"
+    }
+  },
+  {
+    "id": "c10",
+    "name": "Silverline Apparel",
+    "aliases": [],
+    "domain": "silverline.shop",
+    "industry": "Retail",
+    "employees": 85,
+    "hq": {
+      "city": "Los Angeles",
+      "state": "California",
+      "country": "United States"
+    }
+  },
+  {
+    "id": "c11",
+    "name": "Stratus Cloudworks",
+    "aliases": [
+      "Stratus"
+    ],
+    "domain": "stratuscloud.io",
+    "industry": "Technology",
+    "employees": 19000,
+    "hq": {
+      "city": "Seattle",
+      "state": "Washington",
+      "country": "United States"
+    },
+    "strategic": true
+  },
+  {
+    "id": "c12",
+    "name": "Summit Health Partners",
+    "aliases": [],
+    "domain": "summithp.com",
+    "industry": "Healthcare",
+    "employees": 700,
+    "hq": {
+      "city": "Denver",
+      "state": "Colorado",
+      "country": "United States"
+    }
+  },
+  {
+    "id": "c13",
+    "name": "Ironpeak Manufacturing",
+    "aliases": [
+      "Ironpeak",
+      "Ironpeak Mfg"
+    ],
+    "domain": "ironpeak.com",
+    "industry": "Manufacturing",
+    "employees": 11000,
+    "hq": {
+      "city": "Chicago",
+      "state": "Illinois",
+      "country": "United States"
+    }
+  },
+  {
+    "id": "c14",
+    "name": "Ironpeak Robotics",
+    "aliases": [],
+    "domain": "ironpeakrobotics.com",
+    "industry": "Manufacturing",
+    "employees": 650,
+    "hq": {
+      "city": "Detroit",
+      "state": "Michigan",
+      "country": "United States"
+    },
+    "parent_id": "c13"
+  },
+  {
+    "id": "c15",
+    "name": "Prairie State Bank",
+    "aliases": [],
+    "domain": "prairiestatebank.com",
+    "industry": "Financial Services",
+    "employees": 2300,
+    "hq": {
+      "city": "Minneapolis",
+      "state": "Minnesota",
+      "country": "United States"
+    }
+  },
+  {
+    "id": "c16",
+    "name": "Lonestar Freight",
+    "aliases": [],
+    "domain": "lonestarfreight.com",
+    "industry": "Manufacturing",
+    "employees": 1800,
+    "hq": {
+      "city": "Dallas",
+      "state": "Texas",
+      "country": "United States"
+    }
+  },
+  {
+    "id": "c17",
+    "name": "Brazos Health",
+    "aliases": [
+      "Brazos Health System"
+    ],
+    "domain": "brazoshealth.org",
+    "industry": "Healthcare",
+    "employees": 5200,
+    "hq": {
+      "city": "Austin",
+      "state": "Texas",
+      "country": "United States"
+    }
+  },
+  {
+    "id": "c18",
+    "name": "Quarry Labs",
+    "aliases": [],
+    "domain": "quarrylabs.io",
+    "industry": "Technology",
+    "employees": 60,
+    "hq": {
+      "city": "Austin",
+      "state": "Texas",
+      "country": "United States"
+    }
+  },
+  {
+    "id": "c19",
+    "name": "Buckeye Home Goods",
+    "aliases": [],
+    "domain": "buckeyehome.com",
+    "industry": "Retail",
+    "employees": 3100,
+    "hq": {
+      "city": "Columbus",
+      "state": "Ohio",
+      "country": "United States"
+    }
+  },
+  {
+    "id": "c20",
+    "name": "Northstar Insurance",
+    "aliases": [],
+    "domain": "northstarins.com",
+    "industry": "Financial Services",
+    "employees": 950,
+    "hq": {
+      "city": "Minneapolis",
+      "state": "Minnesota",
+      "country": "United States"
+    }
+  },
+  {
+    "id": "c21",
+    "name": "Heartland Transit Authority",
+    "aliases": [
+      "Heartland Transit"
+    ],
+    "domain": "heartlandtransit.gov",
+    "industry": "Public Sector",
+    "employees": 2700,
+    "hq": {
+      "city": "Kansas City",
+      "state": "Missouri",
+      "country": "United States"
+    }
+  },
+  {
+    "id": "c22",
+    "name": "Brightwater Financial",
+    "aliases": [
+      "Brightwater",
+      "Brightwater Financial Corp"
+    ],
+    "domain": "brightwaterfin.com",
+    "industry": "Financial Services",
+    "employees": 24000,
+    "hq": {
+      "city": "New York",
+      "state": "New York",
+      "country": "United States"
+    },
+    "strategic": true
+  },
+  {
+    "id": "c23",
+    "name": "Brightwater Insurance",
+    "aliases": [],
+    "domain": "brightwaterins.com",
+    "industry": "Financial Services",
+    "employees": 1600,
+    "hq": {
+      "city": "Hartford",
+      "state": "Connecticut",
+      "country": "United States"
+    },
+    "parent_id": "c22"
+  },
+  {
+    "id": "c24",
+    "name": "Cedar Ridge Health",
+    "aliases": [
+      "Cedar Ridge Health System"
+    ],
+    "domain": "cedarridgehealth.org",
+    "industry": "Healthcare",
+    "employees": 9800,
+    "hq": {
+      "city": "Boston",
+      "state": "Massachusetts",
+      "country": "United States"
+    }
+  },
+  {
+    "id": "c25",
+    "name": "Cedar Ridge Labs",
+    "aliases": [],
+    "domain": "cedarridgelabs.com",
+    "industry": "Healthcare",
+    "employees": 380,
+    "hq": {
+      "city": "Cambridge",
+      "state": "Massachusetts",
+      "country": "United States"
+    },
+    "parent_id": "c24"
+  },
+  {
+    "id": "c26",
+    "name": "Harborview Capital",
+    "aliases": [],
+    "domain": "harborviewcap.com",
+    "industry": "Financial Services",
+    "employees": 520,
+    "hq": {
+      "city": "Boston",
+      "state": "Massachusetts",
+      "country": "United States"
+    }
+  },
+  {
+    "id": "c27",
+    "name": "Peachtree Outfitters",
+    "aliases": [],
+    "domain": "peachtreeoutfitters.com",
+    "industry": "Retail",
+    "employees": 2200,
+    "hq": {
+      "city": "Atlanta",
+      "state": "Georgia",
+      "country": "United States"
+    }
+  },
+  {
+    "id": "c28",
+    "name": "Keystone Fabrication",
+    "aliases": [
+      "Keystone Fab"
+    ],
+    "domain": "keystonefab.com",
+    "industry": "Manufacturing",
+    "employees": 4100,
+    "hq": {
+      "city": "Pittsburgh",
+      "state": "Pennsylvania",
+      "country": "United States"
+    }
+  },
+  {
+    "id": "c29",
+    "name": "Meridian Media Group",
+    "aliases": [
+      "Meridian Media"
+    ],
+    "domain": "meridianmedia.com",
+    "industry": "Media & Entertainment",
+    "employees": 7300,
+    "hq": {
+      "city": "New York",
+      "state": "New York",
+      "country": "United States"
+    },
+    "strategic": true
+  },
+  {
+    "id": "c30",
+    "name": "Seaboard Health Alliance",
+    "aliases": [],
+    "domain": "seaboardhealth.org",
+    "industry": "Healthcare",
+    "employees": 1500,
+    "hq": {
+      "city": "Philadelphia",
+      "state": "Pennsylvania",
+      "country": "United States"
+    }
+  },
+  {
+    "id": "c31",
+    "name": "Granite Ledger",
+    "aliases": [],
+    "domain": "graniteledger.io",
+    "industry": "Technology",
+    "employees": 240,
+    "hq": {
+      "city": "New York",
+      "state": "New York",
+      "country": "United States"
+    }
+  },
+  {
+    "id": "c32",
+    "name": "Queen City Trust",
+    "aliases": [],
+    "domain": "queencitytrust.com",
+    "industry": "Financial Services",
+    "employees": 3800,
+    "hq": {
+      "city": "Charlotte",
+      "state": "North Carolina",
+      "country": "United States"
+    }
+  },
+  {
+    "id": "c33",
+    "name": "Summit Healthcare Systems",
+    "aliases": [],
+    "domain": "summithealthcare.com",
+    "industry": "Healthcare",
+    "employees": 12000,
+    "hq": {
+      "city": "Pittsburgh",
+      "state": "Pennsylvania",
+      "country": "United States"
+    }
+  },
+  {
+    "id": "c34",
+    "name": "Fernway Books",
+    "aliases": [],
+    "domain": "fernwaybooks.com",
+    "industry": "Retail",
+    "employees": 45,
+    "hq": {
+      "city": "Brooklyn",
+      "state": "New York",
+      "country": "United States"
+    }
+  },
+  {
+    "id": "c35",
+    "name": "Maplewood Financial",
+    "aliases": [],
+    "domain": "maplewoodfin.ca",
+    "industry": "Financial Services",
+    "employees": 5600,
+    "hq": {
+      "city": "Toronto",
+      "state": "Ontario",
+      "country": "Canada"
+    }
+  },
+  {
+    "id": "c36",
+    "name": "Coastline Games",
+    "aliases": [],
+    "domain": "coastlinegames.ca",
+    "industry": "Media & Entertainment",
+    "employees": 300,
+    "hq": {
+      "city": "Vancouver",
+      "state": "British Columbia",
+      "country": "Canada"
+    }
+  },
+  {
+    "id": "c37",
+    "name": "Thames Analytics",
+    "aliases": [
+      "Thames Analytics Ltd"
+    ],
+    "domain": "thamesanalytics.co.uk",
+    "industry": "Technology",
+    "employees": 1100,
+    "hq": {
+      "city": "London",
+      "state": "",
+      "country": "United Kingdom"
+    }
+  },
+  {
+    "id": "c38",
+    "name": "Rheinwerk Industrie",
+    "aliases": [
+      "Rheinwerk",
+      "Rheinwerk Industrie GmbH"
+    ],
+    "domain": "rheinwerk.de",
+    "industry": "Manufacturing",
+    "employees": 16000,
+    "hq": {
+      "city": "Berlin",
+      "state": "",
+      "country": "Germany"
+    },
+    "strategic": true
+  },
+  {
+    "id": "c39",
+    "name": "Lumière Retail",
+    "aliases": [
+      "Lumiere Retail"
+    ],
+    "domain": "lumiere-retail.fr",
+    "industry": "Retail",
+    "employees": 2800,
+    "hq": {
+      "city": "Paris",
+      "state": "",
+      "country": "France"
+    }
+  },
+  {
+    "id": "c40",
+    "name": "Liffey Payments",
+    "aliases": [],
+    "domain": "liffeypay.ie",
+    "industry": "Financial Services",
+    "employees": 450,
+    "hq": {
+      "city": "Dublin",
+      "state": "",
+      "country": "Ireland"
+    }
+  },
+  {
+    "id": "c41",
+    "name": "Canal Health",
+    "aliases": [
+      "Canal Health BV"
+    ],
+    "domain": "canalhealth.nl",
+    "industry": "Healthcare",
+    "employees": 900,
+    "hq": {
+      "city": "Amsterdam",
+      "state": "",
+      "country": "Netherlands"
+    }
+  },
+  {
+    "id": "c42",
+    "name": "Northgate Public Services",
+    "aliases": [],
+    "domain": "northgate.gov.uk",
+    "industry": "Public Sector",
+    "employees": 3300,
+    "hq": {
+      "city": "London",
+      "state": "",
+      "country": "United Kingdom"
+    }
+  },
+  {
+    "id": "c43",
+    "name": "Lion City Logistics",
+    "aliases": [],
+    "domain": "lioncitylogistics.sg",
+    "industry": "Manufacturing",
+    "employees": 2100,
+    "hq": {
+      "city": "Singapore",
+      "state": "",
+      "country": "Singapore"
+    }
+  },
+  {
+    "id": "c44",
+    "name": "Sakura Digital",
+    "aliases": [
+      "Sakura Digital KK"
+    ],
+    "domain": "sakuradigital.jp",
+    "industry": "Technology",
+    "employees": 5400,
+    "hq": {
+      "city": "Tokyo",
+      "state": "",
+      "country": "Japan"
+    }
+  },
+  {
+    "id": "c45",
+    "name": "Harbour Bridge Bank",
+    "aliases": [],
+    "domain": "harbourbridgebank.com.au",
+    "industry": "Financial Services",
+    "employees": 7700,
+    "hq": {
+      "city": "Sydney",
+      "state": "New South Wales",
+      "country": "Australia"
+    }
+  },
+  {
+    "id": "c46",
+    "name": "Indus Cloud Labs",
+    "aliases": [],
+    "domain": "induscloud.in",
+    "industry": "Technology",
+    "employees": 350,
+    "hq": {
+      "city": "Bangalore",
+      "state": "Karnataka",
+      "country": "India"
+    }
+  },
+  {
+    "id": "c47",
+    "name": "Apex Retail Labs",
+    "aliases": [],
+    "domain": "apexretaillabs.com",
+    "industry": "Technology",
+    "employees": 180,
+    "hq": {
+      "city": "Seattle",
+      "state": "Washington",
+      "country": "United States"
+    }
+  },
+  {
+    "id": "c48",
+    "name": "Apex Retail",
+    "aliases": [],
+    "domain": "apexretail.com",
+    "industry": "Retail",
+    "employees": 4600,
+    "hq": {
+      "city": "Dallas",
+      "state": "Texas",
+      "country": "United States"
+    }
+  },
+  {
+    "id": "c49",
+    "name": "Golden Gate Credit Union",
+    "aliases": [
+      "GGCU"
+    ],
+    "domain": "ggcu.org",
+    "industry": "Financial Services",
+    "employees": 1300,
+    "hq": {
+      "city": "San Francisco",
+      "state": "California",
+      "country": "United States"
+    }
+  },
+  {
+    "id": "c50",
+    "name": "Willamette Health",
+    "aliases": [],
+    "domain": "willamettehealth.org",
+    "industry": "Healthcare",
+    "employees": 2100,
+    "hq": {
+      "city": "Portland",
+      "state": "Oregon",
+      "country": "United States"
+    }
+  },
+  {
+    "id": "c51",
+    "name": "Great Lakes Media",
+    "aliases": [],
+    "domain": "greatlakesmedia.com",
+    "industry": "Media & Entertainment",
+    "employees": 260,
+    "hq": {
+      "city": "Chicago",
+      "state": "Illinois",
+      "country": "United States"
+    }
+  },
+  {
+    "id": "c52",
+    "name": "Hudson Mercantile",
+    "aliases": [],
+    "domain": "hudsonmercantile.com",
+    "industry": "Retail",
+    "employees": 1400,
+    "hq": {
+      "city": "New York",
+      "state": "New York",
+      "country": "United States"
+    }
+  },
+  {
+    "id": "c53",
+    "name": "Cascadia Metro Transit",
+    "aliases": [],
+    "domain": "cascadiametro.gov",
+    "industry": "Public Sector",
+    "employees": 4800,
+    "hq": {
+      "city": "Seattle",
+      "state": "Washington",
+      "country": "United States"
+    }
+  }
+]
