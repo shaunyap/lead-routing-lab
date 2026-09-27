@@ -21,6 +21,12 @@ The page is prerendered as static HTML at build time (policy and config files ar
 On Vercel: import the GitHub repo, keep the detected Next.js defaults, and deploy. Every push to
 `main` redeploys. Node 20.9+ is required.
 
+## Seeing who opened it
+
+Vercel Web Analytics is included (enable it once under the project's **Analytics** tab). It shows
+visits with country, device and referrer. Link-preview bots (Slack, LinkedIn, Gmail) don't run the
+page, so they aren't counted. Ad blockers can hide a visit.
+
 ## How it fits together
 
 ```
