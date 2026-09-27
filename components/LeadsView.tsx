@@ -53,7 +53,11 @@ const ISSUES: Record<Issue, { label: string; detail: string; match: (l: RawLead,
   },
 };
 
-export default function LeadsView({ dataset, run, onOpen }: { dataset: Dataset; run: RunResult; onOpen: (id: string) => void }) {
+export default function LeadsView({
+  dataset, run, onOpen, onShowcase, highlightShowcase,
+}: {
+  dataset: Dataset; run: RunResult; onOpen: (id: string) => void; onShowcase: () => void; highlightShowcase: boolean;
+}) {
   const [filter, setFilter] = useState<Filter>("all");
   const [issue, setIssue] = useState<Issue | null>(null);
   const [q, setQ] = useState("");
@@ -101,7 +105,8 @@ export default function LeadsView({ dataset, run, onOpen }: { dataset: Dataset; 
   });
 
   // Pin the showcase lead at the top so the story has an obvious starting point.
-  const showcase = dataset.leads.find((l) => l.id === dataset.showcase_id);
+  // Only during the guided demo; people exploring on their own get the plain list.
+  const showcase = highlightShowcase ? dataset.leads.find((l) => l.id === dataset.showcase_id) : undefined;
   const pinned = showcase && rows.some((r) => r.id === showcase.id) ? [showcase, ...rows.filter((r) => r.id !== showcase.id)] : rows;
 
   return (
@@ -127,7 +132,7 @@ export default function LeadsView({ dataset, run, onOpen }: { dataset: Dataset; 
             <b>&ldquo;{showcase.title}&rdquo;</b>, <b>&ldquo;{showcase.state}&rdquo;</b>, no employee count, and says their company is in{" "}
             <b>{showcase.industry}</b>. It&rsquo;s pinned at the top of the table.
           </div>
-          <button className="btn small" onClick={() => onOpen(showcase.id)}>See what hygiene does →</button>
+          <button className="btn small" onClick={onShowcase}>See what hygiene does →</button>
         </div>
       )}
       <div className="card">
@@ -170,11 +175,11 @@ export default function LeadsView({ dataset, run, onOpen }: { dataset: Dataset; 
               {pinned.map((l) => {
                 const t = touched(l.id);
                 return (
-                  <tr key={l.id} className={`clickable ${l.id === dataset.showcase_id ? "showcase" : ""}`} onClick={() => onOpen(l.id)}>
+                  <tr key={l.id} className={`clickable ${showcase && l.id === showcase.id ? "showcase" : ""}`} onClick={() => onOpen(l.id)}>
                     {COLS.map((c) => (
                       <td key={c.f} className={(issue ? ISSUES[issue].mark(l, hById.get(l.id)!, c.f) : filter === "dupes" ? c.f === "email" : t.has(c.f)) ? "dirty" : c.f === "id" ? "mono faint" : ""}>
                         {l[c.f] === "" ? <span className="empty-val">empty</span> : l[c.f]}
-                        {c.f === "id" && l.id === dataset.showcase_id && <span className="pin">start here</span>}
+                        {c.f === "id" && showcase && l.id === showcase.id && <span className="pin">start here</span>}
                       </td>
                     ))}
                     <td><StatusChip status={hById.get(l.id)!.status} /></td>

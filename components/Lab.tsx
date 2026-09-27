@@ -125,10 +125,10 @@ export default function Lab(props: { org: OrgData; hygieneMd: string; routingMd:
     setTab("leads");
     setGuide(null);
   };
-  const go = (t: Tab, lead?: string) => {
+  const go = (t: Tab, lead?: string, scrollTop = true) => {
     if (lead) setFocus(lead);
     setTab(t);
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    if (scrollTop) window.scrollTo({ top: 0, behavior: "smooth" });
   };
   const savePolicy = (next: Omit<PolicyVersion, "version">) => {
     const version = Math.max(...versions.map((v) => v.version)) + 1;
@@ -155,7 +155,14 @@ export default function Lab(props: { org: OrgData; hygieneMd: string; routingMd:
   const tryPolicyChange = () => {
     if (rollupVersion) setActive(rollupVersion.version);
     else savePolicy({ label: rollupPreset.label, routingMd: applyEdit(rollupPreset, v1.routingMd), hygieneMd: v1.hygieneMd });
-    go("policy");
+    go("policy", undefined, false);
+    // Land on the "what changed" diff and results, not the top of Policy Lab.
+    const land = (tries: number) => {
+      const el = document.getElementById("policy-compare");
+      if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 12, behavior: "auto" });
+      else if (tries > 0) setTimeout(() => land(tries - 1), 60);
+    };
+    setTimeout(() => land(10), 60);
   };
 
   // ---- Guided demo: five steps, each of which drives the app to the right place.
@@ -169,6 +176,10 @@ export default function Lab(props: { org: OrgData; hygieneMd: string; routingMd:
   const exR = exampleLead ? v1Run?.routing.find((r) => r.lead_id === exampleLead) : undefined;
   const exH = exampleLead ? v1Run?.hygiene.find((h) => h.lead_id === exampleLead) : undefined;
   const pctS = (x: number) => `${(x * 100).toFixed(1)}%`;
+  const exCompany = exampleLead ? org.companyById.get(dataset.truth.hygiene[exampleLead]?.company_id ?? "") : undefined;
+  const exParentCo = exCompany?.parent_id ? org.companyById.get(exCompany.parent_id) : undefined;
+  const exParent = exParentCo?.name;
+  const exParentOwner = exParentCo ? org.repById.get(org.accountByCompany.get(exParentCo.id)?.owner_id ?? "")?.name : undefined;
   const guideSteps: GuideStep[] = [
     {
       title: "Meet one messy lead",
@@ -182,15 +193,15 @@ export default function Lab(props: { org: OrgData; hygieneMd: string; routingMd:
     },
     {
       title: "Routing explains every decision",
-      body: exR && exH
-        ? `Most picks are right: that lead went to ${showR?.owner ?? "a Retail specialist"}. But here the router confidently chose ${exR.owner} for ${exH.record.company}, and ground truth says ✕: it's a subsidiary of another rep's customer.`
+      body: exR && exH && exParent && exParentOwner
+        ? `Felix went to ${showR?.owner ?? "the Retail specialist"}, the Retail specialist, which is correct. But ${exH.record.first_name} ${exH.record.last_name} at ${exH.record.company} went to ${exR.owner}. ${exH.record.company} is a subsidiary of ${exParent}, an existing customer owned by ${exParentOwner}. Our policy doesn't account for subsidiaries yet, so it should have gone to ${exParentOwner}. Ground truth marks it ✕.`
         : "Each step of the decision is shown, along with the reps who were ruled out and why.",
     },
     {
-      title: "Change one rule, measure the effect",
+      title: "We changed one line of the policy",
       body: rollRun && v1Run
-        ? `One line added to the routing policy: subsidiaries follow the parent account. Same leads, rerun: accuracy ${pctS(v1Run.funnel.eval_accuracy)} → ${pctS(rollRun.funnel.eval_accuracy)}, policy violations ${v1Run.routingEval.violations.length} → ${rollRun.routingEval.violations.length}. Every changed assignment is explained below.`
-        : "One line is added to the routing policy and the same leads run again.",
+        ? `We just edited lead-routing/policy.md for you: one new line (in green below), parent_account_owner, so subsidiaries go to the parent account's owner. It's saved as v2, and the same leads were rerun. Accuracy went ${pctS(v1Run.funnel.eval_accuracy)} → ${pctS(rollRun.funnel.eval_accuracy)} and policy violations ${v1Run.routingEval.violations.length} → ${rollRun.routingEval.violations.length}. Every lead that changed owner is listed below, with the reason.`
+        : "We add one line to the routing policy and rerun the same leads.",
     },
     {
       title: "Only safe actions reach Salesforce",
@@ -270,8 +281,8 @@ export default function Lab(props: { org: OrgData; hygieneMd: string; routingMd:
       </header>
 
       {!generated || !f ? (
+        <>
         <div className="hero">
-          <div className="eyebrow">Lead list load</div>
           <h2>Messy lead data in, safe CRM actions out</h2>
           <p className="hero-lede">
             A realistic lead list goes through hygiene, routing, exceptions and evals, and comes out as Salesforce-ready actions.
@@ -285,26 +296,31 @@ export default function Lab(props: { org: OrgData; hygieneMd: string; routingMd:
             <input
               id="hero-seed"
               value={seedInput}
+              title="Same seed, same dataset. Change it for a different set of leads."
               onChange={(e) => setSeedInput(e.target.value.replace(/\D/g, ""))}
               onKeyDown={(e) => e.key === "Enter" && generate()}
             />
-            <span className="faint">Same seed, same dataset. Change it for a different set of leads.</span>
           </div>
           <div className="hero-actions">
             <button className="btn primary big" onClick={startGuided}>▶ Start the guided demo</button>
             <button className="btn big" onClick={generate}>Explore on my own</button>
           </div>
-          <div className="faint" style={{ marginTop: 8, fontSize: 12.5 }}>The guided demo takes about 3 minutes: 5 steps with a Next button.</div>
+          <div className="hero-note">The guided demo takes about 3 minutes.</div>
+          {!activeOutcome.ok && <div className="errors" style={{ marginTop: 20 }}>{activeOutcome.errors.join(" · ")}</div>}
+        </div>
+
+        <section className="hero-more" aria-labelledby="how-it-works">
+          <h3 id="how-it-works">How it works</h3>
           <div className="flow-label">From list to CRM</div>
           <div className="flow">
             <span>Leads</span><i>→</i><span>Hygiene</span><i>→</i><span>Routing</span><i>→</i>
             <span>Address Exceptions</span><i>→</i><span>Export to Salesforce</span>
           </div>
-          <div className="flow-label">How it&rsquo;s built</div>
+          <div className="flow-label">Under the hood</div>
           <ArchStrip />
           <p className="thesis">{THESIS}</p>
-          {!activeOutcome.ok && <div className="errors" style={{ marginTop: 20 }}>{activeOutcome.errors.join(" · ")}</div>}
-        </div>
+        </section>
+        </>
       ) : (
         <>
           <nav className="stagebar" aria-label="Pipeline summary">
@@ -335,7 +351,16 @@ export default function Lab(props: { org: OrgData; hygieneMd: string; routingMd:
             ))}
           </nav>
 
-          {run && tab === "leads" && <LeadsView dataset={dataset} run={run} onOpen={(id) => go("hygiene", id)} />}
+          {run && tab === "leads" && (
+            <LeadsView
+              dataset={dataset}
+              run={run}
+              onOpen={(id) => go("hygiene", id)}
+              // In the guided demo this banner is step 1's call to action, so it advances the tour.
+              onShowcase={() => (guide === 0 ? enterStep(1) : go("hygiene", dataset.showcase_id))}
+              highlightShowcase={guide !== null}
+            />
+          )}
           {run && tab === "hygiene" && <HygieneView dataset={dataset} run={run} focus={focus} setFocus={setFocus} onRoute={(id) => go("routing", id)} />}
           {effRun && tab === "routing" && (
             <RoutingView dataset={dataset} run={effRun} org={org} overrides={overrides} onAssign={assign} focus={focus} setFocus={setFocus} onSalesforce={setDrawer} onHygiene={(id) => go("hygiene", id)} />

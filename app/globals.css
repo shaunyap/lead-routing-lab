@@ -541,3 +541,34 @@ tr.showcase td:first-child { box-shadow: inset 3px 0 0 var(--warn); }
   .arch-box + .arch-box::before { content: "↓"; left: 50%; top: -12px; transform: translateX(-50%); }
   .try-card, .showcase-card { flex-direction: column; align-items: stretch; }
 }
+
+/* ---------- Home: three text styles (headline, body, small) ---------- */
+.hero h2 { font-size: 34px; margin: 0 0 14px; text-wrap: balance; }
+.hero .hero-lede, .hero .hero-detail, .hero .thesis, .thesis {
+  font-size: 16px; line-height: 1.55; font-weight: 400; font-style: normal;
+  max-width: 880px; margin-left: auto; margin-right: auto; text-wrap: balance;
+}
+.hero .hero-lede { color: var(--text); margin-top: 0; margin-bottom: 6px; }
+.hero .hero-detail { color: var(--text-2); margin-bottom: 24px; }
+.thesis, .hero .thesis { color: var(--text); margin-top: 28px; margin-bottom: 0; }
+.hero-seed { flex-direction: row; justify-content: center; gap: 8px; margin-bottom: 16px; }
+.hero-seed label, .flow-label { font-size: 12px; letter-spacing: 0.06em; }
+.hero-seed input { width: 96px; padding: 6px 8px; font-size: 14px; }
+.hero-note, .arch-caption { font-size: 13px; color: var(--text-3); text-wrap: balance; }
+.hero-note { margin-top: 10px; }
+.flow span, .arch-box { font-size: 13px; }
+.arch-policy { font-family: var(--sans); font-size: 12px; font-weight: 600; }
+
+/* ---------- Home: second section (how it works) ---------- */
+/* Deliberately quieter than the hero: no card, muted heading, smaller type. */
+.hero-more { margin-top: 36px; padding: 0 40px 24px; text-align: center; }
+.hero-more h3 { margin: 0 0 18px; font-size: 16px; font-weight: 600; color: var(--text-2); }
+.hero-more .flow-label { margin-top: 28px; }
+.hero-more h3 + .flow-label { margin-top: 0; }
+.hero-more .flow span, .hero-more .arch-box { background: transparent; border: 1px solid var(--border); }
+.hero-more .arch-box.skill { background: var(--accent-soft); }
+.hero-more .thesis { font-size: 15px; color: var(--text-2); }
+@media (max-width: 640px) { .hero-more { padding: 0 8px 20px; } }
+
+.version-diff { border-bottom: 1px solid var(--border); }
+.version-diff .pdiff { max-height: none; }
