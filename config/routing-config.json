@@ -165,5 +165,15 @@
     "Japan": "apac",
     "Australia": "apac",
     "India": "apac"
+  },
+  "list_campaign": {
+    "id": "701Dn000000LstQ",
+    "name": "Lead List Load \u2014 Sep 2026",
+    "status_by_source": {
+      "Event - Badge Scan": "Attended",
+      "Event - Session Check-in": "Attended",
+      "Event - Booth Demo": "Visited Booth"
+    },
+    "default_status": "Responded"
   }
 }

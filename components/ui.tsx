@@ -121,7 +121,11 @@ export function LoadBar({ open, added, capacity, max }: { open: number; added: n
 }
 
 /** Pick an AE by hand. The empty option undoes a manual assignment. */
-export function AssignSelect({ org, value, onChange }: { org: OrgIndex; value: string | undefined; onChange: (repId: string | null) => void }) {
+export function AssignSelect({
+  org, value, onChange, loads,
+}: {
+  org: OrgIndex; value: string | undefined; onChange: (repId: string | null) => void; loads?: Map<string, number>;
+}) {
   return (
     <select
       className={`btn small assign ${value ? "set" : ""}`}
@@ -133,7 +137,7 @@ export function AssignSelect({ org, value, onChange }: { org: OrgIndex; value: s
       <option value="">{value ? "↺ Undo: use the router's decision" : "Assign to an AE…"}</option>
       {org.data.reps.map((r) => (
         <option key={r.id} value={r.id}>
-          {r.name}: {r.title} ({r.open_leads}/{r.capacity})
+          {r.name}: {r.title} ({loads?.get(r.id) ?? r.open_leads}/{r.capacity}{loads ? " after this list" : ""})
         </option>
       ))}
     </select>

@@ -21,6 +21,7 @@ export const SOURCE_HEADERS: Record<SourceField, string> = {
   product_interest: "Interested In",
   session: "Session Attended",
   lead_source: "Lead Source",
+  email_opt_in: "Email Opt-In",
 };
 
 /** Known spellings for each standard field, compared after lowercasing and stripping punctuation. */
@@ -39,6 +40,7 @@ const ALIASES: Record<SourceField, string[]> = {
   product_interest: ["interested in", "product interest", "interest", "products"],
   session: ["session", "session attended", "event session", "track"],
   lead_source: ["lead source", "source", "channel"],
+  email_opt_in: ["email opt in", "opt in", "email consent", "marketing consent", "subscribed"],
 };
 
 const clean = (h: string) => h.toLowerCase().replace(/[#/_\-.]+/g, " ").replace(/[^a-z0-9 ]/g, "").replace(/\s+/g, " ").trim();

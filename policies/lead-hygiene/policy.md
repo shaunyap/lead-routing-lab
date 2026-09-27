@@ -40,6 +40,12 @@ what it may look up, and when it must stop and ask a human.
 - Exact duplicate emails are merged into the first record. Same name and same
   company with different emails is a *possible* duplicate and goes to review.
 
+## Consent
+
+Routing a lead to sales and emailing it are different permissions. An explicit
+"No" always means no email. A blank opt-in means no email in regions that
+require opt-in (EMEA); elsewhere it's allowed. Consent never blocks routing.
+
 ## Outcomes
 
 `CLEAN` · `NORMALIZED` · `ENRICHED` · `NEEDS_REVIEW` · `INSUFFICIENT_DATA` · `DUPLICATE`
@@ -97,6 +103,9 @@ inference:
   company_from_similar_name:
     min_similarity: 0.7
     min_margin: 0.0
+
+consent:
+  opt_in_required_in: [emea]
 
 review:
   required_for_routing: [company_identity, country, employee_count]

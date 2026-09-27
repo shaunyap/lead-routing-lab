@@ -2,7 +2,7 @@
 
 import type { OrgIndex } from "./org";
 import { routingSummary } from "./routing";
-import type { RoutingResult } from "./types";
+import type { HygieneResult, RawLead, RoutingResult } from "./types";
 
 export function salesforceLeadId(leadId: string): string {
   const n = parseInt(leadId.replace(/\D/g, ""), 10) + (leadId.startsWith("H") ? 90000 : 0);
@@ -15,11 +15,11 @@ export interface SalesforceAction {
   executable: boolean;
   method: "PATCH";
   path: string;
-  body: Record<string, string>;
+  body: Record<string, string | boolean>;
   note: string;
 }
 
-export function salesforceAction(r: RoutingResult, org: OrgIndex): SalesforceAction {
+export function salesforceAction(r: RoutingResult, org: OrgIndex, h?: HygieneResult): SalesforceAction {
   const cfg = org.data.config;
   const sf_id = salesforceLeadId(r.lead_id);
   const path = `/services/data/${cfg.salesforce_api_version}/sobjects/Lead/${sf_id}`;
@@ -37,6 +37,7 @@ export function salesforceAction(r: RoutingResult, org: OrgIndex): SalesforceAct
           ? `Manual override${r.manual.previous_reason ? ` (router: ${r.manual.previous_reason})` : r.manual.previous_owner ? ` (router picked ${r.manual.previous_owner})` : ""}`.slice(0, 255)
           : routingSummary(r),
         Routing_Rules__c: r.rules_applied.join(";").slice(0, 255),
+        ...(h ? { HasOptedOutOfEmail: !h.consent.emailable } : {}),
       },
       note: `Assign to ${r.owner}${r.manual ? " (manual)" : ""}`,
     };
@@ -56,9 +57,31 @@ export function salesforceAction(r: RoutingResult, org: OrgIndex): SalesforceAct
   };
 }
 
-export function compositeRequest(actions: SalesforceAction[], org: OrgIndex, batchSize = 25) {
+export interface CampaignMemberRequest {
+  lead_id: string;
+  method: "POST";
+  path: string;
+  body: { CampaignId: string; LeadId: string; Status: string };
+}
+
+/** Attribution: every unique lead joins the list's campaign, whether or not it could be routed yet. */
+export function campaignMember(raw: RawLead, org: OrgIndex): CampaignMemberRequest {
+  const c = org.data.config.list_campaign;
+  return {
+    lead_id: raw.id,
+    method: "POST",
+    path: `/services/data/${org.data.config.salesforce_api_version}/sobjects/CampaignMember`,
+    body: { CampaignId: c.id, LeadId: salesforceLeadId(raw.id), Status: c.status_by_source[raw.lead_source] ?? c.default_status },
+  };
+}
+
+export function compositeRequest(actions: SalesforceAction[], org: OrgIndex, members: CampaignMemberRequest[] = [], batchSize = 25) {
   const v = org.data.config.salesforce_api_version;
-  const executable = actions.filter((a) => a.executable);
+  // Owner updates first, then campaign memberships. Held leads never get an owner update.
+  const executable: { lead_id: string; method: string; path: string; body: object }[] = [
+    ...actions.filter((a) => a.executable),
+    ...members,
+  ];
   const batches: { method: "POST"; path: string; body: object }[] = [];
   for (let i = 0; i < executable.length; i += batchSize) {
     batches.push({
@@ -69,7 +92,7 @@ export function compositeRequest(actions: SalesforceAction[], org: OrgIndex, bat
         compositeRequest: executable.slice(i, i + batchSize).map((a) => ({
           method: a.method,
           url: a.path,
-          referenceId: a.lead_id.replace(/-/g, "_"),
+          referenceId: `${a.method === "POST" ? "cm" : "lead"}_${a.lead_id.replace(/-/g, "_")}`,
           body: a.body,
         })),
       },

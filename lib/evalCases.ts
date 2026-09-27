@@ -25,7 +25,7 @@ function raw(fields: Partial<RawLead>): RawLead {
     id: `H-${String(n).padStart(3, "0")}`,
     first_name: "", last_name: "", email: "", company: "", company_domain: "", title: "Director, IT",
     city: "", state: "", country: "", industry: "", employee_count: "",
-    product_interest: "Agent Platform", session: "Keynote: Agents in Production", lead_source: "Event - Badge Scan",
+    product_interest: "Agent Platform", session: "Keynote: Agents in Production", lead_source: "Event - Badge Scan", email_opt_in: "Yes",
     ...fields,
   };
 }

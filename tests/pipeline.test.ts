@@ -6,11 +6,11 @@ import { attentionItems } from "../lib/attention";
 import { generateDataset, TITLES } from "../lib/generate";
 import { headerMappings, normalizeHeader } from "../lib/headers";
 import { applyOverrides } from "../lib/overrides";
-import { normalizeTitle, runHygiene } from "../lib/hygiene";
+import { consentFor, normalizeTitle, runHygiene } from "../lib/hygiene";
 import { parseHygienePolicy, parseRoutingPolicy } from "../lib/policy";
 import { compareRuns, runPipeline, type RunResult } from "../lib/pipeline";
 import { PRESET_EDITS, applyEdit } from "../lib/presets";
-import { salesforceAction } from "../lib/salesforce";
+import { campaignMember, compositeRequest, salesforceAction } from "../lib/salesforce";
 import { companyKey } from "../lib/util";
 import { DEFAULT_SEED, ROOT, loadOrg, loadPolicy } from "../scripts/load";
 
@@ -145,7 +145,7 @@ test("first names with spaces are normalized and matched as one person", () => {
   const hp = parseHygienePolicy(v1.hygieneMd).policy!;
   const base = {
     email: "", company: "Halcyon Retail Group", company_domain: "halcyonretail.com", title: "Director, IT", city: "Seattle",
-    state: "Washington", country: "United States", industry: "Retail", employee_count: "14500", product_interest: "", session: "", lead_source: "",
+    state: "Washington", country: "United States", industry: "Retail", employee_count: "14500", product_interest: "", session: "", lead_source: "", email_opt_in: "",
   };
   const rows = [
     ["Michael John", "Smith"], ["michael john", "smith"], ["MICHAEL JOHN", "SMITH"], ["Michael  John ", "Smith"], ["Michael john", "Smith"],
@@ -157,4 +157,26 @@ test("first names with spaces are normalized and matched as one person", () => {
 
   const particles = runHygiene([{ ...base, id: "T-9", first_name: "Anna", last_name: "van der Berg", email: "avdb@halcyonretail.com" }], org, hp);
   assert.equal(particles[0].record.last_name, "van der Berg");
+});
+
+test("consent: explicit no always blocks email, blank blocks it only where opt-in is required", () => {
+  const hp = parseHygienePolicy(v1.hygieneMd).policy!;
+  assert.equal(consentFor("No", "us-west", hp).emailable, false);
+  assert.equal(consentFor("", "emea", hp).emailable, false);
+  assert.equal(consentFor("", "us-east", hp).emailable, true);
+  assert.equal(consentFor("y", "emea", hp).emailable, true);
+});
+
+test("consent never changes routing, and every unique lead gets a campaign membership", () => {
+  const r = run();
+  const noConsent = { ...ds, leads: ds.leads.map((l) => ({ ...l, email_opt_in: "No" })) };
+  const r2 = runPipeline(noConsent, org, v1);
+  assert.ok(r2.ok);
+  if (r2.ok) assert.deepEqual(r2.run.routing.map((x) => x.owner_id), r.routing.map((x) => x.owner_id));
+  const unique = ds.leads.filter((l) => r.hygiene.find((h) => h.lead_id === l.id)!.status !== "DUPLICATE");
+  const members = unique.map((l) => campaignMember(l, org));
+  const batches = compositeRequest(r.routing.map((x) => salesforceAction(x, org)), org, members);
+  const sent = batches.flatMap((b) => (b.body as { compositeRequest: { url: string }[] }).compositeRequest);
+  assert.equal(sent.filter((x) => x.url.endsWith("/CampaignMember")).length, unique.length);
+  assert.equal(r.funnel.unique, unique.length);
 });

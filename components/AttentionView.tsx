@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { ATTENTION_META, ATTENTION_ORDER, attentionItems, type AttentionKind } from "@/lib/attention";
+import { ATTENTION_META, ATTENTION_ORDER, attentionItems, type AttentionItem, type AttentionKind } from "@/lib/attention";
 import type { OrgIndex } from "@/lib/org";
 import type { Overrides } from "@/lib/overrides";
 import type { RunResult } from "@/lib/pipeline";
@@ -10,11 +10,21 @@ import type { Tab } from "./Lab";
 import { AssignSelect, Empty, Tile } from "./ui";
 
 export default function AttentionView({
-  dataset, run, org, onOpen, overrides, onAssign,
+  dataset, run, org, onOpen, overrides, onAssign, loads,
 }: {
   dataset: Dataset; run: RunResult; org: OrgIndex; onOpen: (t: Tab, id?: string) => void;
-  overrides: Overrides; onAssign: (leadId: string, repId: string | null) => void;
+  overrides: Overrides; onAssign: (leadId: string, repId: string | null) => void; loads: Map<string, number>;
 }) {
+  // Leads that share one decision (a departed account owner) are handled once per account.
+  const rowsFor = (k: AttentionKind, group: AttentionItem[]) => {
+    if (k !== "owner_inactive") return group.map((it) => ({ key: it.lead_id, items: [it] }));
+    const byAccount = new Map<string, AttentionItem[]>();
+    for (const it of group) {
+      const key = hById.get(it.lead_id)?.company_id ?? it.lead_id;
+      byAccount.set(key, [...(byAccount.get(key) ?? []), it]);
+    }
+    return [...byAccount].map(([key, items]) => ({ key, items }));
+  };
   const items = useMemo(() => attentionItems(run.hygiene, run.routing, org), [run, org]);
   const [kind, setKind] = useState<AttentionKind | "all">("all");
   const hById = useMemo(() => new Map(run.hygiene.map((h) => [h.lead_id, h])), [run]);
@@ -66,38 +76,57 @@ export default function AttentionView({
               <div><div className="attn-k">Why the policy stops</div>{meta.why}</div>
               <div><div className="attn-k">Decision needed</div><b>{meta.decide}</b></div>
             </div>
-            {group.map((it) => {
-              const h = hById.get(it.lead_id)!;
-              const raw = rawById.get(it.lead_id)!;
-              const name = `${h.record.first_name ?? raw.first_name} ${h.record.last_name ?? raw.last_name}`.trim();
+            {rowsFor(k, group).map(({ key, items }) => {
+              const ids = items.map((it) => it.lead_id);
+              const first = items[0];
+              const h = hById.get(first.lead_id)!;
+              const raw = rawById.get(first.lead_id)!;
+              const nameOf = (id: string) => {
+                const hh = hById.get(id)!;
+                const rr = rawById.get(id)!;
+                return `${hh.record.first_name ?? rr.first_name} ${hh.record.last_name ?? rr.last_name}`.trim() || "Unknown";
+              };
+              const assigned = ids.every((id) => overrides[id]);
+              const common = ids.every((id) => overrides[id] === overrides[ids[0]]) ? overrides[ids[0]] : undefined;
+              const assignAll = (repId: string | null) => ids.forEach((id) => onAssign(id, repId));
+              const many = items.length > 1;
               return (
-                <div key={it.lead_id} className={`attn-item ${overrides[it.lead_id] ? "resolved" : ""}`}>
+                <div key={key} className={`attn-item ${assigned ? "resolved" : ""}`}>
                   <div>
-                    <div style={{ fontWeight: 600 }}>{name || "Unknown"}</div>
+                    <div style={{ fontWeight: 600 }}>{many ? `${h.record.company} · ${items.length} leads` : nameOf(first.lead_id)}</div>
                     <div className="faint" style={{ fontSize: 12.5 }}>
-                      {h.record.company ?? raw.company ?? "no company"}{raw.email ? ` · ${raw.email.trim()}` : ""} · <span className="mono">{it.lead_id}</span>
+                      {many
+                        ? `${ids.slice(0, 3).map(nameOf).join(", ")}${ids.length > 3 ? ` +${ids.length - 3} more` : ""}`
+                        : <>{h.record.company ?? raw.company ?? "no company"}{raw.email ? ` · ${raw.email.trim()}` : ""} · <span className="mono">{first.lead_id}</span></>}
                     </div>
                   </div>
                   <div>
-                    {overrides[it.lead_id] ? (
-                      <div className="attn-done">✓ Assigned to {org.repById.get(overrides[it.lead_id])?.name} by hand</div>
+                    {assigned ? (
+                      <div className="attn-done">
+                        ✓ {many ? `All ${items.length} leads assigned` : "Assigned"} to {org.repById.get(common ?? overrides[ids[0]])?.name} by hand
+                      </div>
                     ) : (
-                      it.blocking.map((b, i) => <div key={i} className="attn-block">{b}</div>)
+                      first.blocking.map((b, i) => <div key={i} className="attn-block">{b}</div>)
                     )}
-                    {!overrides[it.lead_id] && it.options.length > 0 && (
+                    {!assigned && first.options.length > 0 && (
                       <div className="attn-options">
-                        <span className="faint">{k === "coverage_gap" ? "Closest reps:" : "Could go to:"}</span>
-                        {it.options.slice(0, 4).map((o) => (
-                          <button key={o.rep.id} className="chip outline pick" title={`Assign to ${o.rep.name}`} onClick={() => onAssign(it.lead_id, o.rep.id)}>
-                            {o.rep.name} <span className="faint" style={{ fontWeight: 400 }}>· {o.note}</span>
-                          </button>
-                        ))}
+                        <span className="faint">{k === "coverage_gap" ? "Closest reps:" : many ? "New owner for all:" : "Could go to:"}</span>
+                        {first.options.slice(0, 4).map((o) => {
+                          const note = k === "coverage_gap"
+                            ? o.note
+                            : [o.note, `${(loads.get(o.rep.id) ?? o.rep.open_leads) + (many ? items.length : 1)}/${o.rep.capacity} if assigned`].filter(Boolean).join(" · ");
+                          return (
+                            <button key={o.rep.id} className="chip outline pick" title={`Assign to ${o.rep.name}`} onClick={() => assignAll(o.rep.id)}>
+                              {o.rep.name} <span className="faint" style={{ fontWeight: 400 }}>· {note}</span>
+                            </button>
+                          );
+                        })}
                       </div>
                     )}
                   </div>
                   <div className="row" style={{ justifyContent: "flex-end" }}>
-                    <AssignSelect org={org} value={overrides[it.lead_id]} onChange={(id) => onAssign(it.lead_id, id)} />
-                    <button className="btn small" onClick={() => onOpen(meta.stage === "Routing" ? "routing" : "hygiene", it.lead_id)}>
+                    <AssignSelect org={org} value={common} onChange={assignAll} loads={loads} />
+                    <button className="btn small" onClick={() => onOpen(meta.stage === "Routing" ? "routing" : "hygiene", first.lead_id)}>
                       Open in {meta.stage} →
                     </button>
                   </div>

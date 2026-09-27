@@ -57,6 +57,7 @@ export interface RoutingConfig {
   country_aliases: Record<string, string>; // alias -> canonical
   region_by_state: Record<string, Region>; // full state/province name -> region
   region_by_country: Record<string, Region>;
+  list_campaign: { id: string; name: string; status_by_source: Record<string, string>; default_status: string };
 }
 
 export interface OrgData {
@@ -100,6 +101,7 @@ export interface RawLead {
   product_interest: string;
   session: string;
   lead_source: string;
+  email_opt_in: string; // as exported: "Yes", "y", "No", blank…
 }
 
 /** A cleaned record. null means "unknown" — never a guess. */
@@ -157,7 +159,14 @@ export interface HygieneResult {
   duplicate_of: string | null;
   company_id: string | null;
   personal_email: boolean;
+  consent: Consent;
   record: CleanLead;
+}
+
+export interface Consent {
+  status: "opted_in" | "opted_out" | "unknown";
+  emailable: boolean; // may this lead go into email programs?
+  reason: string;
 }
 
 // ---------- Routing ----------

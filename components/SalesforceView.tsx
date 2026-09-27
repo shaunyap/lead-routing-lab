@@ -5,8 +5,8 @@ import { ASSIGNMENT_LABEL, assignmentType, type AssignmentType } from "@/lib/att
 import type { OrgIndex } from "@/lib/org";
 import type { RunResult } from "@/lib/pipeline";
 import { routingSummary } from "@/lib/routing";
-import { compositeRequest, salesforceAction } from "@/lib/salesforce";
-import type { Rep, RoutingResult } from "@/lib/types";
+import { campaignMember, compositeRequest, salesforceAction } from "@/lib/salesforce";
+import type { Dataset, Rep, RoutingResult } from "@/lib/types";
 import type { Tab } from "./Lab";
 import { Json, LoadBar, Tile } from "./ui";
 
@@ -20,14 +20,25 @@ interface Row {
   total: number;
 }
 
-export default function SalesforceView({ run, org, onOpen, onNav }: { run: RunResult; org: OrgIndex; onOpen: (id: string) => void; onNav: (t: Tab) => void }) {
+export default function SalesforceView({
+  run, org, dataset, onOpen, onNav,
+}: {
+  run: RunResult; org: OrgIndex; dataset: Dataset; onOpen: (id: string) => void; onNav: (t: Tab) => void;
+}) {
   const [openRep, setOpenRep] = useState<string | null>(null);
   const [showApi, setShowApi] = useState(false);
   const hById = useMemo(() => new Map(run.hygiene.map((h) => [h.lead_id, h])), [run]);
   const routed = run.routing.filter((r) => r.decision === "auto_route" && r.owner_id);
   const blocked = run.routing.filter((r) => r.decision !== "auto_route" && hById.get(r.lead_id)!.status !== "DUPLICATE").length;
-  const actions = useMemo(() => run.routing.map((r) => salesforceAction(r, org)), [run, org]);
-  const batches = useMemo(() => compositeRequest(actions, org), [actions, org]);
+  const actions = useMemo(() => run.routing.map((r) => salesforceAction(r, org, hById.get(r.lead_id))), [run, org, hById]);
+  // Attribution: every unique lead joins the list's campaign, routed or not.
+  const members = useMemo(
+    () => dataset.leads.filter((l) => hById.get(l.id)?.status !== "DUPLICATE").map((l) => campaignMember(l, org)),
+    [dataset, hById, org],
+  );
+  const batches = useMemo(() => compositeRequest(actions, org, members), [actions, org, members]);
+  const noEmail = run.hygiene.filter((h) => h.status !== "DUPLICATE" && !h.consent.emailable);
+  const campaign = org.data.config.list_campaign;
 
   const rows: Row[] = useMemo(
     () =>
@@ -53,15 +64,18 @@ export default function SalesforceView({ run, org, onOpen, onNav }: { run: RunRe
             {blocked} more are waiting in <button className="linkish" onClick={() => onNav("attention")}>Address Exceptions</button> and won&rsquo;t be sent.
           </>
         )}{" "}
-        Nothing is sent in this demo; there are no Salesforce credentials. The demo also treats every lead as new to
-        Salesforce: it doesn&rsquo;t check whether a lead or contact with the same email already exists. A production version
-        would upsert by email, and the routing policy would decide whether an existing owner keeps the lead.
+        Nothing is sent in this demo; there are no Salesforce credentials.
       </p>
       <div className="tiles">
         <Tile label="Leads to assign" value={routed.length} detail={`across ${rows.filter((r) => r.leads.length).length} AEs`} tone="good" />
         <Tile label="Held back" value={blocked} detail="need a person first" tone={blocked ? "warn" : undefined} />
-        <Tile label="Over capacity after export" value={overCap.length} detail={overCap.length ? overCap.map((r) => r.rep.name.split(" ")[0]).join(", ") : "no one"} tone={overCap.length ? "critical" : "good"} />
-        <Tile label="At 90%+ of capacity" value={nearCap.length} detail={nearCap.length ? nearCap.map((r) => r.rep.name.split(" ")[0]).join(", ") : "no one"} />
+        <Tile
+          label="Over capacity after export"
+          value={overCap.length}
+          detail={`${overCap.length ? overCap.map((r) => r.rep.name.split(" ")[0]).join(", ") : "no one"}${nearCap.length ? ` · ${nearCap.length} more at 90%+` : ""}`}
+          tone={overCap.length ? "critical" : "good"}
+        />
+        <Tile label="Excluded from email" value={noEmail.length} detail="opted out, or no opt-in where it's required" />
       </div>
 
       <div className="card">
@@ -157,11 +171,28 @@ export default function SalesforceView({ run, org, onOpen, onNav }: { run: RunRe
         <div className="card-h">
           <h3>Salesforce API</h3>
           <span className="faint">
-            {routed.length} <code>PATCH Lead.OwnerId</code> updates in {batches.length} composite batches · API {org.data.config.salesforce_api_version}
+            {routed.length} owner updates · {members.length} campaign members · {batches.length} composite batches · API {org.data.config.salesforce_api_version}
           </span>
           <span className="spacer" />
           <button className="btn small" onClick={() => setShowApi(!showApi)}>{showApi ? "Hide" : "Show"} payload</button>
           <button className="btn small primary" disabled title="No Salesforce credentials are configured in this demo">Send to Salesforce</button>
+        </div>
+        <div className="card-b sf-notes">
+          <div>
+            <div className="attn-k">Attribution</div>
+            Every lead joins the campaign <b>{campaign.name}</b> with a member status from its lead source (e.g. &ldquo;Attended&rdquo;),
+            even leads that are still waiting on a person. Credit for pipeline shouldn&rsquo;t depend on routing.
+          </div>
+          <div>
+            <div className="attn-k">Consent</div>
+            <code>HasOptedOutOfEmail</code> is set from the hygiene policy&rsquo;s consent rule. {noEmail.length} leads can still go to
+            sales but are kept out of email programs.
+          </div>
+          <div>
+            <div className="attn-k">In production</div>
+            Leads would first be matched to existing leads, contacts and accounts in Salesforce, then upserted instead of
+            duplicated. The routing policy would decide whether an existing owner keeps the record.
+          </div>
         </div>
         {showApi && batches[0] && (
           <div className="card-b">

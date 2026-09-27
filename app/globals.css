@@ -572,3 +572,8 @@ tr.showcase td:first-child { box-shadow: inset 3px 0 0 var(--warn); }
 
 .version-diff { border-bottom: 1px solid var(--border); }
 .version-diff .pdiff { max-height: none; }
+
+.sf-notes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; font-size: 13px; color: var(--text-2); border-bottom: 1px solid var(--border); }
+.sf-notes b { color: var(--text); }
+@media (max-width: 900px) { .sf-notes { grid-template-columns: minmax(0, 1fr); } }
+.consent-line { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-top: 12px; font-size: 13px; }

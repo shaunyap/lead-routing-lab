@@ -110,6 +110,7 @@ function Detail({ h, dataset, onRoute, onOpen }: { h: HygieneResult; dataset: Da
     changes: h.changes.map(({ field, from, to, reason }) => ({ field, from, to, reason })),
     enrichments: h.enrichments.map(({ field, value, source }) => ({ field, value, source })),
     unresolved: h.unresolved,
+    consent: { status: h.consent.status, emailable: h.consent.emailable },
     requires_review: h.requires_review,
     ...(h.duplicate_of ? { duplicate_of: h.duplicate_of } : {}),
   };
@@ -173,6 +174,17 @@ function Detail({ h, dataset, onRoute, onOpen }: { h: HygieneResult; dataset: Da
             })}
           </tbody>
         </table>
+
+        <div className="consent-line">
+          <span className={`chip ${h.consent.emailable ? "good" : "warn"}`}>
+            <span className="ic">{h.consent.emailable ? "✓" : "✕"}</span>
+            {h.consent.emailable ? "Can receive email" : "No email"}
+          </span>
+          <span className="muted">
+            Email opt-in: {raw.email_opt_in.trim() ? `“${raw.email_opt_in.trim()}”` : <span className="empty-val">empty</span>} · {h.consent.reason}.
+            Consent never affects routing.
+          </span>
+        </div>
 
         {h.unresolved.length > 0 && (
           <>

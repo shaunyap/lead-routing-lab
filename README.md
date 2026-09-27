@@ -77,12 +77,13 @@ Salesforce**. **Evals** and **Policy Lab** sit on the right, outside the flow.
    trace ends at Rachel Kim by tie-break, and ground truth says ✕, because Halcyon Outlet is a
    subsidiary of Alice Chen's customer.
 5. **Address Exceptions.** 18 leads, grouped by *why* the policy stopped. For example, Brazos Health
-   is a customer whose owner has left the company, and some leads have no employer or an ambiguous
+   is a customer whose owner has left the company (one decision reassigns all 5 of its leads), and some leads have no employer or an ambiguous
    location. Click a suggested rep, or use the dropdown, to assign one by hand. It goes to Salesforce
    as a manual assignment, and the evals keep scoring the router's own decision.
 6. **Export to Salesforce.** Each AE's current open load, what this load adds (existing customers,
-   subsidiaries, named accounts, new logos), and the new total against capacity. Tom ends up over
-   capacity because existing customers bypass the cap.
+   subsidiaries, named accounts, new logos, manual), and the new total against capacity. Every
+   unique lead also joins the list's campaign for attribution, and the hygiene policy's consent rule
+   sets `HasOptedOutOfEmail` (explicit "No" anywhere; blank opt-in in EMEA). Consent never affects routing.
 7. **Policy Lab.** Choose **Subsidiaries follow the parent account**. It adds one line to
    `precedence`. Save & rerun: accuracy goes from 93.4% to 100%, violations from 13 to 0, and
    24 assignments change (15 direct, 9 cascade), each with before/after traces. Go back to

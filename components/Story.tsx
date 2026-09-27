@@ -54,6 +54,7 @@ export function DemoBoundaries({ label = "Demo boundaries" }: { label?: string }
             <span>• <b>Synthetic data.</b> Leads, companies and reps are fictional, generated from a seed.</span>
             <span>• <b>Deterministic evals.</b> Ground truth and 32 hard cases are fixed, so every rerun is comparable.</span>
             <span>• <b>Mocked Salesforce.</b> API requests are built and shown, never sent.</span>
+            <span>• <b>No CRM matching.</b> Every lead is treated as new. In practice, leads are matched to existing leads, contacts and accounts first, then upserted.</span>
             <span>• <b>No LLM calls.</b> Policies are executed by deterministic code.</span>
             <span>• <b>Session only.</b> Policy versions and manual assignments reset on refresh.</span>
           </span>

@@ -19,6 +19,7 @@ const COLS: { f: keyof RawLead; l: string; w?: number }[] = [
   { f: "country", l: "Country" },
   { f: "industry", l: "Industry" },
   { f: "employee_count", l: "Employees" },
+  { f: "email_opt_in", l: "Opt-in" },
   { f: "session", l: "Session" },
 ];
 
