@@ -59,14 +59,16 @@ always returns to the v1 files on disk.
 
 ## Three-minute demo script
 
-After loading, a **Suggested walkthrough** panel links each of these steps for anyone exploring
-without a presenter.
+**Start the guided demo** on the home page for a 5-step tour with a Next button: a pinned messy lead
+(`L-0001`), how hygiene cleans it, one routing decision ground truth marks wrong, a one-line policy
+change with its measured effect, and the Salesforce-ready result. **Try a policy change** in the Policy
+Lab applies the same change directly. The header's **Demo boundaries** note spells out what is mocked.
 
 The main flow runs left to right: **Leads → Hygiene → Routing → Address Exceptions → Export to
 Salesforce**. **Evals** and **Policy Lab** sit on the right, outside the flow.
 
-1. **Load leads.** The stage bar reads 250 imported → 12 duplicates → 77 dirty →
-   66 repaired → 11 review → 227 routable → 220 auto-routed → 7 exceptions → 93.4% eval.
+1. **Load leads.** The stage bar reads 250 imported → 12 duplicates → 78 dirty →
+   67 repaired → 11 review → 227 routable → 220 auto-routed → 7 exceptions → 93.4% eval.
 2. **Leads.** Point at the column headers, which were normalized from the file's own names ("Email Address" → `email`, "# of Employees" → `employee_count`). Then point at the highlighted cells: Gmail addresses, `VP Mktg`, `WA`, empty
    employee counts. This is the file exactly as it arrived.
 3. **Hygiene.** Open an *Enriched* record: the domain was filled by exact lookup. Then open an
@@ -82,8 +84,8 @@ Salesforce**. **Evals** and **Policy Lab** sit on the right, outside the flow.
    subsidiaries, named accounts, new logos), and the new total against capacity. Tom ends up over
    capacity because existing customers bypass the cap.
 7. **Policy Lab.** Choose **Subsidiaries follow the parent account**. It adds one line to
-   `precedence`. Save & rerun: accuracy goes from 93.4% to 99.6%, violations from 13 to 0, and
-   22 assignments change (16 direct, 6 cascade), each with before/after traces. Go back to
+   `precedence`. Save & rerun: accuracy goes from 93.4% to 100%, violations from 13 to 0, and
+   24 assignments change (15 direct, 9 cascade), each with before/after traces. Go back to
    **Export**: the Subsidiaries column now has leads going to Alice and Hannah.
 8. **Second act (optional).** Apply **Named lists beat existing owners**, which sounds
    reasonable. Violations rise because existing customers get taken from their owners. **Evals**

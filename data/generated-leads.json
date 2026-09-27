@@ -5,15 +5,15 @@
       "id": "L-0001",
       "first_name": "Felix",
       "last_name": "Delgado",
-      "email": "felix.delgado@cedarridgehealth.org",
-      "company": "Cedar Ridge Health",
-      "company_domain": "cedarridgehealth.org",
-      "title": "Senior Data Engineer",
-      "city": "San Jose",
-      "state": "California",
+      "email": "felix.delgado@yahoo.com",
+      "company": "Apex Retail",
+      "company_domain": "",
+      "title": "VP Mktg",
+      "city": "Dallas",
+      "state": "TX",
       "country": "United States",
-      "industry": "Healthcare",
-      "employee_count": "9800",
+      "industry": "Technology",
+      "employee_count": "",
       "product_interest": "Evaluation",
       "session": "Observability for Agents",
       "lead_source": "Event - Badge Scan"
@@ -377,8 +377,8 @@
     },
     {
       "id": "L-0023",
-      "first_name": "Paloma",
-      "last_name": "Garcia",
+      "first_name": "paloma",
+      "last_name": "garcia",
       "email": "paloma.garcia@apexretaillabs.com",
       "company": "Apex Retail Labs",
       "company_domain": "apexretaillabs.com",
@@ -636,7 +636,7 @@
       "last_name": "Ramos",
       "email": "maya.ramos@sakuradigital.jp",
       "company": "SAKURA DIGITAL",
-      "company_domain": "www.sakuradigital.jp",
+      "company_domain": "sakuradigital.jp",
       "title": "Senior Data Engineer",
       "city": "Tokyo",
       "state": "",
@@ -1108,23 +1108,6 @@
     },
     {
       "id": "L-0066",
-      "first_name": "Malik",
-      "last_name": "Jensen",
-      "email": "Malik.jensen@tidewatermedia.com",
-      "company": "Tidewater Media",
-      "company_domain": "tidewatermedia.com",
-      "title": "VP, Engineering",
-      "city": "Los Angeles",
-      "state": "CA",
-      "country": "United States",
-      "industry": "Media & Entertainment",
-      "employee_count": "1200",
-      "product_interest": "Agent Platform",
-      "session": "Data Platform Deep Dive",
-      "lead_source": "Event - Session Check-in"
-    },
-    {
-      "id": "L-0067",
       "first_name": "Isaac",
       "last_name": "Kaur",
       "email": "isaac.kaur@summithealthcare.com",
@@ -1141,7 +1124,7 @@
       "lead_source": "Event - Booth Demo"
     },
     {
-      "id": "L-0068",
+      "id": "L-0067",
       "first_name": "Aaliyah",
       "last_name": "Zhang",
       "email": "aaliyah.zhang@thamesanalytics.co.uk",
@@ -1158,7 +1141,7 @@
       "lead_source": "Event - Session Check-in"
     },
     {
-      "id": "L-0069",
+      "id": "L-0068",
       "first_name": "Alejandro",
       "last_name": "Reyes",
       "email": "alejandro.reyes@maplewoodfin.ca",
@@ -1175,7 +1158,7 @@
       "lead_source": "Event - Booth Demo"
     },
     {
-      "id": "L-0070",
+      "id": "L-0069",
       "first_name": "Oskar",
       "last_name": "Sato",
       "email": "oskar.sato@graniteledger.io",
@@ -1192,7 +1175,7 @@
       "lead_source": "Event - Session Check-in"
     },
     {
-      "id": "L-0071",
+      "id": "L-0070",
       "first_name": "Rafael",
       "last_name": "Reyes",
       "email": "rafael.reyes@willamettehealth.org",
@@ -1209,7 +1192,7 @@
       "lead_source": "Event - Booth Demo"
     },
     {
-      "id": "L-0072",
+      "id": "L-0071",
       "first_name": "Tariq",
       "last_name": "Iyer",
       "email": "tariq.iyer@apexretail.com",
@@ -1226,9 +1209,9 @@
       "lead_source": "Event - Badge Scan"
     },
     {
-      "id": "L-0073",
-      "first_name": "Emeka",
-      "last_name": "Voss",
+      "id": "L-0072",
+      "first_name": "EMEKA",
+      "last_name": "VOSS",
       "email": "emeka.voss@outlook.com",
       "company": "Brazos Health",
       "company_domain": "",
@@ -1243,7 +1226,7 @@
       "lead_source": "Event - Badge Scan"
     },
     {
-      "id": "L-0074",
+      "id": "L-0073",
       "first_name": "Mateo",
       "last_name": "Novak",
       "email": "mateo.novak@cascadegrocers.com",
@@ -1260,7 +1243,7 @@
       "lead_source": "Event - Booth Demo"
     },
     {
-      "id": "L-0075",
+      "id": "L-0074",
       "first_name": "Beatriz",
       "last_name": "Nguyen",
       "email": "beatriznguyen32@yahoo.com",
@@ -1277,7 +1260,7 @@
       "lead_source": "Event - Badge Scan"
     },
     {
-      "id": "L-0076",
+      "id": "L-0075",
       "first_name": "Anika",
       "last_name": "Ito",
       "email": "anika.ito@brightwaterfin.com",
@@ -1294,7 +1277,7 @@
       "lead_source": "Event - Booth Demo"
     },
     {
-      "id": "L-0077",
+      "id": "L-0076",
       "first_name": "Imani",
       "last_name": "Hollis",
       "email": " Imani.hollis@Maplewoodfin.ca ",
@@ -1311,7 +1294,7 @@
       "lead_source": "Event - Badge Scan"
     },
     {
-      "id": "L-0078",
+      "id": "L-0077",
       "first_name": "Nadia",
       "last_name": "Haddad",
       "email": "nadia.haddad@ggcu.org",
@@ -1328,7 +1311,7 @@
       "lead_source": "Event - Booth Demo"
     },
     {
-      "id": "L-0079",
+      "id": "L-0078",
       "first_name": "Farah",
       "last_name": "Novak",
       "email": "farah.novak@velopay.io",
@@ -1345,24 +1328,7 @@
       "lead_source": "Event - Badge Scan"
     },
     {
-      "id": "L-0080",
-      "first_name": "Kenji",
-      "last_name": "Haddad",
-      "email": "Kenji.haddad@heartlandtransit.gov",
-      "company": "Heartland Transit Authority",
-      "company_domain": "heartlandtransit.gov",
-      "title": "Senior Data Engineer",
-      "city": "Kansas City",
-      "state": "Missouri",
-      "country": "United States",
-      "industry": "Public Sector",
-      "employee_count": "2700",
-      "product_interest": "Agent Platform",
-      "session": "Data Platform Deep Dive",
-      "lead_source": "Event - Session Check-in"
-    },
-    {
-      "id": "L-0081",
+      "id": "L-0079",
       "first_name": "Hana",
       "last_name": "Delgado",
       "email": "hana.delgado@summithp.com",
@@ -1379,7 +1345,7 @@
       "lead_source": "Event - Badge Scan"
     },
     {
-      "id": "L-0082",
+      "id": "L-0080",
       "first_name": "Alejandro",
       "last_name": "Boateng",
       "email": "alejandro.boateng@maplewoodfin.ca",
@@ -1396,7 +1362,7 @@
       "lead_source": "Event - Booth Demo"
     },
     {
-      "id": "L-0083",
+      "id": "L-0081",
       "first_name": "Nora",
       "last_name": "Petrov",
       "email": "nora.petrov@greatlakesmedia.com",
@@ -1413,7 +1379,7 @@
       "lead_source": "Event - Booth Demo"
     },
     {
-      "id": "L-0084",
+      "id": "L-0082",
       "first_name": "Freya",
       "last_name": "Adeyemi",
       "email": "freya.adeyemi@summithealthcare.com",
@@ -1430,13 +1396,13 @@
       "lead_source": "Event - Booth Demo"
     },
     {
-      "id": "L-0085",
-      "first_name": "YUSUF",
-      "last_name": "ZHANG",
+      "id": "L-0083",
+      "first_name": "Yusuf",
+      "last_name": "Zhang",
       "email": "yusuf.zhang@keystonefab.com",
       "company": "Queen City Trust",
       "company_domain": "keystonefab.com",
-      "title": "Mgr RevOps",
+      "title": "Manager, Revenue Operations",
       "city": "Pittsburgh",
       "state": "Pennsylvania",
       "country": "United States",
@@ -1447,7 +1413,7 @@
       "lead_source": "Event - Badge Scan"
     },
     {
-      "id": "L-0086",
+      "id": "L-0084",
       "first_name": "Wen",
       "last_name": "Jensen",
       "email": "wen.jensen@brightwaterins.com",
@@ -1464,7 +1430,7 @@
       "lead_source": "Event - Session Check-in"
     },
     {
-      "id": "L-0087",
+      "id": "L-0085",
       "first_name": "Felix",
       "last_name": "Walsh",
       "email": "felix.walsh@buckeyehome.com",
@@ -1481,7 +1447,24 @@
       "lead_source": "Event - Badge Scan"
     },
     {
-      "id": "L-0088",
+      "id": "L-0086",
+      "first_name": "Anne-Marie",
+      "last_name": "Yilmaz",
+      "email": "Anne-marie.yilmaz@brazoshealth.org",
+      "company": "Brazos Health",
+      "company_domain": "brazoshealth.org",
+      "title": "Manager, Marketing Operations",
+      "city": "Austin",
+      "state": "Texas",
+      "country": "United States",
+      "industry": "Healthcare",
+      "employee_count": "5200",
+      "product_interest": "Data Integration",
+      "session": "Workshop: Evaluating LLM Apps",
+      "lead_source": "Event - Session Check-in"
+    },
+    {
+      "id": "L-0087",
       "first_name": "Andre",
       "last_name": "Ramos",
       "email": "andre.ramos@rheinwerk.de",
@@ -1498,7 +1481,7 @@
       "lead_source": "Event - Badge Scan"
     },
     {
-      "id": "L-0089",
+      "id": "L-0088",
       "first_name": "Theo",
       "last_name": "Garcia",
       "email": "theo.garcia@northstarins.com",
@@ -1515,7 +1498,7 @@
       "lead_source": "Event - Session Check-in"
     },
     {
-      "id": "L-0090",
+      "id": "L-0089",
       "first_name": "Aisha",
       "last_name": "Ramos",
       "email": "aisha.ramos@peachtreeoutfitters.com",
@@ -1532,7 +1515,7 @@
       "lead_source": "Event - Session Check-in"
     },
     {
-      "id": "L-0091",
+      "id": "L-0090",
       "first_name": "Naveen",
       "last_name": "Nguyen",
       "email": "naveen.nguyen@juniperrobotics.ai",
@@ -1549,14 +1532,14 @@
       "lead_source": "Event - Booth Demo"
     },
     {
-      "id": "L-0092",
-      "first_name": "Hugo",
-      "last_name": "Lindqvist",
+      "id": "L-0091",
+      "first_name": "hugo",
+      "last_name": "lindqvist",
       "email": "hugo.lindqvist@pinecrest.dev",
       "company": "Pinecrest Software",
       "company_domain": "pinecrest.dev",
       "title": "Dir Security",
-      "city": "Denver",
+      "city": "denver",
       "state": "Colorado",
       "country": "United States",
       "industry": "Technology",
@@ -1566,7 +1549,7 @@
       "lead_source": "Event - Booth Demo"
     },
     {
-      "id": "L-0093",
+      "id": "L-0092",
       "first_name": "Hana",
       "last_name": "Ortega",
       "email": "hana.ortega@ironpeak.com",
@@ -1583,7 +1566,7 @@
       "lead_source": "Event - Badge Scan"
     },
     {
-      "id": "L-0094",
+      "id": "L-0093",
       "first_name": "Freya",
       "last_name": "Haddad",
       "email": "freya.haddad@lumenanalytics.io",
@@ -1591,7 +1574,7 @@
       "company_domain": "lumenanalytics.io",
       "title": "Senior Manager, IT",
       "city": "San Francisco",
-      "state": "CA",
+      "state": "California",
       "country": "USA",
       "industry": "Technology",
       "employee_count": "2600",
@@ -1600,7 +1583,7 @@
       "lead_source": "Event - Booth Demo"
     },
     {
-      "id": "L-0095",
+      "id": "L-0094",
       "first_name": "Aarav",
       "last_name": "Kowalski",
       "email": "aarav.kowalski@lioncitylogistics.sg",
@@ -1617,7 +1600,7 @@
       "lead_source": "Event - Booth Demo"
     },
     {
-      "id": "L-0096",
+      "id": "L-0095",
       "first_name": "Kai",
       "last_name": "Nakamura",
       "email": "kai.nakamura@halcyonretail.com",
@@ -1634,7 +1617,7 @@
       "lead_source": "Event - Session Check-in"
     },
     {
-      "id": "L-0097",
+      "id": "L-0096",
       "first_name": "Laila",
       "last_name": "Okonkwo",
       "email": "laila.okonkwo@apexretail.com",
@@ -1651,7 +1634,7 @@
       "lead_source": "Event - Badge Scan"
     },
     {
-      "id": "L-0098",
+      "id": "L-0097",
       "first_name": "Hugo",
       "last_name": "Iyer",
       "email": "hugo.iyer@stratuscloud.io",
@@ -1668,7 +1651,7 @@
       "lead_source": "Event - Session Check-in"
     },
     {
-      "id": "L-0099",
+      "id": "L-0098",
       "first_name": "Aarav",
       "last_name": "Grant",
       "email": "aarav.grant@queencitytrust.com",
@@ -1685,7 +1668,7 @@
       "lead_source": "Event - Booth Demo"
     },
     {
-      "id": "L-0100",
+      "id": "L-0099",
       "first_name": "Quentin",
       "last_name": "Iyer",
       "email": "quentin.iyer@maplewoodfin.ca",
@@ -1702,14 +1685,14 @@
       "lead_source": "Event - Session Check-in"
     },
     {
-      "id": "L-0101",
-      "first_name": "andre",
-      "last_name": "jensen",
+      "id": "L-0100",
+      "first_name": "Andre",
+      "last_name": "Jensen",
       "email": "andre.jensen@lumiere-retail.fr",
       "company": "Lumière Retail",
       "company_domain": "lumiere-retail.fr",
       "title": "Software Eng",
-      "city": "paris",
+      "city": "Paris",
       "state": "",
       "country": "France",
       "industry": "Retail",
@@ -1719,7 +1702,7 @@
       "lead_source": "Event - Badge Scan"
     },
     {
-      "id": "L-0102",
+      "id": "L-0101",
       "first_name": "Zoe",
       "last_name": "Jensen",
       "email": "zoe.jensen@sakuradigital.jp",
@@ -1736,7 +1719,7 @@
       "lead_source": "Event - Session Check-in"
     },
     {
-      "id": "L-0103",
+      "id": "L-0102",
       "first_name": "Kenji",
       "last_name": "O'Neil",
       "email": "kenji.oneil@apexretail.com",
@@ -1753,7 +1736,7 @@
       "lead_source": "Event - Session Check-in"
     },
     {
-      "id": "L-0104",
+      "id": "L-0103",
       "first_name": "Laila",
       "last_name": "Abara",
       "email": "laila.abara@nimbusforge.dev",
@@ -1770,7 +1753,7 @@
       "lead_source": "Event - Session Check-in"
     },
     {
-      "id": "L-0105",
+      "id": "L-0104",
       "first_name": "Naveen",
       "last_name": "Zhang",
       "email": "naveen.zhang@northgate.gov.uk",
@@ -1787,7 +1770,7 @@
       "lead_source": "Event - Booth Demo"
     },
     {
-      "id": "L-0106",
+      "id": "L-0105",
       "first_name": "Daniel",
       "last_name": "Rahman",
       "email": "daniel.rahman@halcyonretail.com",
@@ -1804,7 +1787,7 @@
       "lead_source": "Event - Badge Scan"
     },
     {
-      "id": "L-0107",
+      "id": "L-0106",
       "first_name": "Camila",
       "last_name": "Tran",
       "email": "camila.tran@meridianmedia.com",
@@ -1821,7 +1804,7 @@
       "lead_source": "Event - Session Check-in"
     },
     {
-      "id": "L-0108",
+      "id": "L-0107",
       "first_name": "Jana",
       "last_name": "Park",
       "email": "jana.park@keystonefab.com",
@@ -1838,7 +1821,7 @@
       "lead_source": "Event - Booth Demo"
     },
     {
-      "id": "L-0109",
+      "id": "L-0108",
       "first_name": "Aaliyah",
       "last_name": "Pham",
       "email": "aaliyah.pham@ironpeak.com",
@@ -1855,7 +1838,7 @@
       "lead_source": "Event - Badge Scan"
     },
     {
-      "id": "L-0110",
+      "id": "L-0109",
       "first_name": "Nora",
       "last_name": "Lindqvist",
       "email": "nora.lindqvist@greatlakesmedia.com",
@@ -1872,7 +1855,7 @@
       "lead_source": "Event - Booth Demo"
     },
     {
-      "id": "L-0111",
+      "id": "L-0110",
       "first_name": "Quentin",
       "last_name": "Weiss",
       "email": "quentin.weiss@peachtreeoutfitters.com",
@@ -1889,12 +1872,12 @@
       "lead_source": "Event - Badge Scan"
     },
     {
-      "id": "L-0112",
+      "id": "L-0111",
       "first_name": "Nadia",
       "last_name": "Costa",
       "email": "nadia.costa@halcyonretail.com",
       "company": "Halcyon Retail Group",
-      "company_domain": "http://www.halcyonretail.com/contact",
+      "company_domain": "halcyonretail.com",
       "title": "Head of Engineering",
       "city": "Seattle",
       "state": "Washington",
@@ -1906,7 +1889,7 @@
       "lead_source": "Event - Session Check-in"
     },
     {
-      "id": "L-0113",
+      "id": "L-0112",
       "first_name": "Camila",
       "last_name": "Ito",
       "email": "camila.ito@ggcu.org",
@@ -1923,7 +1906,7 @@
       "lead_source": "Event - Session Check-in"
     },
     {
-      "id": "L-0114",
+      "id": "L-0113",
       "first_name": "Yusuf",
       "last_name": "Bauer",
       "email": "yusuf.bauer@brightwaterins.com",
@@ -1940,7 +1923,7 @@
       "lead_source": "Event - Booth Demo"
     },
     {
-      "id": "L-0115",
+      "id": "L-0114",
       "first_name": "Gabriel",
       "last_name": "Petrov",
       "email": "gabrielp@gmail.com",
@@ -1957,7 +1940,7 @@
       "lead_source": "Event - Session Check-in"
     },
     {
-      "id": "L-0116",
+      "id": "L-0115",
       "first_name": "Mira",
       "last_name": "Young",
       "email": "mira.young@lumiere-retail.fr",
@@ -1972,6 +1955,23 @@
       "product_interest": "Data Integration",
       "session": "Keynote: Agents in Production",
       "lead_source": "Event - Badge Scan"
+    },
+    {
+      "id": "L-0116",
+      "first_name": "Farah",
+      "last_name": "Xu",
+      "email": "farah.xu@graniteledger.io",
+      "company": "Granite Ledger",
+      "company_domain": "graniteledger.io",
+      "title": "Data Scientist",
+      "city": "Raleigh",
+      "state": "North Carolina",
+      "country": "United States",
+      "industry": "Software",
+      "employee_count": "240",
+      "product_interest": "Evaluation",
+      "session": "Keynote: Agents in Production",
+      "lead_source": "Event - Session Check-in"
     },
     {
       "id": "L-0117",
@@ -2094,23 +2094,6 @@
     },
     {
       "id": "L-0124",
-      "first_name": "Nadia",
-      "last_name": "Costa",
-      "email": "nadia.costa@halcyonretail.com",
-      "company": "Halcyon Retail Group",
-      "company_domain": "http://www.halcyonretail.com/contact",
-      "title": "Head of Engineering",
-      "city": "Seattle",
-      "state": "Washington",
-      "country": "United States",
-      "industry": "Public Sector",
-      "employee_count": "14500",
-      "product_interest": "Observability",
-      "session": "Observability for Agents",
-      "lead_source": "Event - Session Check-in"
-    },
-    {
-      "id": "L-0125",
       "first_name": "Caleb",
       "last_name": "O'Neil",
       "email": "caleb.oneil@brightwaterfin.com",
@@ -2127,7 +2110,7 @@
       "lead_source": "Event - Booth Demo"
     },
     {
-      "id": "L-0126",
+      "id": "L-0125",
       "first_name": "Mei",
       "last_name": "Bergstrom",
       "email": "mei.bergstrom@heartlandtransit.gov",
@@ -2144,13 +2127,13 @@
       "lead_source": "Event - Booth Demo"
     },
     {
-      "id": "L-0127",
+      "id": "L-0126",
       "first_name": "Camila",
       "last_name": "Sokolov",
       "email": "camila.sokolov@brightwaterins.com",
       "company": "BRIGHTWATER INSURANCE",
       "company_domain": "brightwaterins.com",
-      "title": "HEAD OF DATA",
+      "title": "Head of Data",
       "city": "Hartford",
       "state": "Connecticut",
       "country": "United States",
@@ -2161,7 +2144,7 @@
       "lead_source": "Event - Badge Scan"
     },
     {
-      "id": "L-0128",
+      "id": "L-0127",
       "first_name": "Amara",
       "last_name": "Young",
       "email": "amara.young@halcyonretail.com",
@@ -2178,7 +2161,7 @@
       "lead_source": "Event - Session Check-in"
     },
     {
-      "id": "L-0129",
+      "id": "L-0128",
       "first_name": "Malik",
       "last_name": "Novak",
       "email": "malik.novak@fjordfreight.eu",
@@ -2195,24 +2178,7 @@
       "lead_source": "Event - Booth Demo"
     },
     {
-      "id": "L-0130",
-      "first_name": "Camila",
-      "last_name": "Sokolov",
-      "email": "camila.sokolov@brightwaterins.com",
-      "company": "BRIGHTWATER INSURANCE",
-      "company_domain": "brightwaterins.com",
-      "title": "HEAD OF DATA",
-      "city": "Hartford",
-      "state": "Connecticut",
-      "country": "United States",
-      "industry": "Financial Services",
-      "employee_count": "1600",
-      "product_interest": "Data Integration",
-      "session": "Data Platform Deep Dive",
-      "lead_source": "Event - Session Check-in"
-    },
-    {
-      "id": "L-0131",
+      "id": "L-0129",
       "first_name": "Imani",
       "last_name": "Kowalski",
       "email": "imani.kowalski@ironpeakrobotics.com",
@@ -2229,24 +2195,7 @@
       "lead_source": "Event - Booth Demo"
     },
     {
-      "id": "L-0132",
-      "first_name": "Grace",
-      "last_name": "Ferreira",
-      "email": "grace.ferreira@mesahealth.org",
-      "company": "mesa health network",
-      "company_domain": "mesahealth.org",
-      "title": "Manager, Revenue Operations",
-      "city": "Phoenix",
-      "state": "Arizona",
-      "country": "United States",
-      "industry": "Healthcare",
-      "employee_count": "3400",
-      "product_interest": "Observability",
-      "session": "Keynote: Agents in Production",
-      "lead_source": "Event - Session Check-in"
-    },
-    {
-      "id": "L-0133",
+      "id": "L-0130",
       "first_name": "Caleb",
       "last_name": "Fontaine",
       "email": "caleb.fontaine@apexretaillabs.com",
@@ -2263,7 +2212,24 @@
       "lead_source": "Event - Badge Scan"
     },
     {
-      "id": "L-0134",
+      "id": "L-0131",
+      "first_name": "Aisha",
+      "last_name": "Torres",
+      "email": "aisha.torres@brightwaterins.com",
+      "company": "Brightwater Insurance",
+      "company_domain": "brightwaterins.com",
+      "title": "Senior Manager, IT",
+      "city": "Hartford",
+      "state": "Connecticut",
+      "country": "United States",
+      "industry": "Financial Services",
+      "employee_count": "1600",
+      "product_interest": "Observability",
+      "session": "Data Platform Deep Dive",
+      "lead_source": "Event - Session Check-in"
+    },
+    {
+      "id": "L-0132",
       "first_name": "Zoe",
       "last_name": "O'Neil",
       "email": "zoe.oneil@maplewoodfin.ca",
@@ -2280,12 +2246,12 @@
       "lead_source": "Event - Session Check-in"
     },
     {
-      "id": "L-0135",
+      "id": "L-0133",
       "first_name": "Rosa",
       "last_name": "Hollis",
       "email": "rosa.hollis@ironpeak.com",
       "company": "Brightwater Insurance",
-      "company_domain": "ironpeak.com",
+      "company_domain": "http://www.ironpeak.com/contact",
       "title": "Director, Security",
       "city": "Chicago",
       "state": "Illinois",
@@ -2297,7 +2263,7 @@
       "lead_source": "Event - Session Check-in"
     },
     {
-      "id": "L-0136",
+      "id": "L-0134",
       "first_name": "Sana",
       "last_name": "Bergstrom",
       "email": "sana.bergstrom@apexretail.com",
@@ -2314,7 +2280,7 @@
       "lead_source": "Event - Booth Demo"
     },
     {
-      "id": "L-0137",
+      "id": "L-0135",
       "first_name": "Gabriel",
       "last_name": "Ortega",
       "email": "gabriel.ortega@lioncitylogistics.sg",
@@ -2331,7 +2297,7 @@
       "lead_source": "Event - Badge Scan"
     },
     {
-      "id": "L-0138",
+      "id": "L-0136",
       "first_name": "Chen",
       "last_name": "Voss",
       "email": "chen.voss@northgate.gov.uk",
@@ -2348,7 +2314,7 @@
       "lead_source": "Event - Badge Scan"
     },
     {
-      "id": "L-0139",
+      "id": "L-0137",
       "first_name": "Anne-Marie",
       "last_name": "Novak",
       "email": "anne-marie.novak@stratuscloud.io",
@@ -2365,7 +2331,7 @@
       "lead_source": "Event - Badge Scan"
     },
     {
-      "id": "L-0140",
+      "id": "L-0138",
       "first_name": "Uma",
       "last_name": "Singh",
       "email": "uma.singh@graniteledger.io",
@@ -2382,7 +2348,7 @@
       "lead_source": "Event - Session Check-in"
     },
     {
-      "id": "L-0141",
+      "id": "L-0139",
       "first_name": "Kai",
       "last_name": "Dubois",
       "email": "kai.dubois@brazoshealth.org",
@@ -2399,7 +2365,7 @@
       "lead_source": "Event - Badge Scan"
     },
     {
-      "id": "L-0142",
+      "id": "L-0140",
       "first_name": "Chen",
       "last_name": "Weiss",
       "email": "chen.weiss@maplewoodfin.ca",
@@ -2416,7 +2382,7 @@
       "lead_source": "Event - Booth Demo"
     },
     {
-      "id": "L-0143",
+      "id": "L-0141",
       "first_name": "Wen",
       "last_name": "Schmidt",
       "email": "wen.schmidt@rheinwerk.de",
@@ -2433,7 +2399,7 @@
       "lead_source": "Event - Booth Demo"
     },
     {
-      "id": "L-0144",
+      "id": "L-0142",
       "first_name": "Anne-Marie",
       "last_name": "Voss",
       "email": "anne-marie.voss@gmail.com",
@@ -2450,7 +2416,7 @@
       "lead_source": "Event - Badge Scan"
     },
     {
-      "id": "L-0145",
+      "id": "L-0143",
       "first_name": "Farah",
       "last_name": "Nguyen",
       "email": "farah.nguyen@keystonefab.com",
@@ -2467,7 +2433,7 @@
       "lead_source": "Event - Session Check-in"
     },
     {
-      "id": "L-0146",
+      "id": "L-0144",
       "first_name": "Amara",
       "last_name": "Bhatt",
       "email": "amara.bhatt@summithealthcare.com",
@@ -2484,7 +2450,7 @@
       "lead_source": "Event - Session Check-in"
     },
     {
-      "id": "L-0147",
+      "id": "L-0145",
       "first_name": "Anika",
       "last_name": "Chowdhury",
       "email": "anika.chowdhury@hudsonmercantile.com",
@@ -2501,7 +2467,7 @@
       "lead_source": "Event - Booth Demo"
     },
     {
-      "id": "L-0148",
+      "id": "L-0146",
       "first_name": "FREYA",
       "last_name": "BRENNAN",
       "email": "freya.brennan@ggcu.org",
@@ -2518,7 +2484,7 @@
       "lead_source": "Event - Booth Demo"
     },
     {
-      "id": "L-0149",
+      "id": "L-0147",
       "first_name": "Dara",
       "last_name": "Garcia",
       "email": "dara.garcia@harbourbridgebank.com.au",
@@ -2535,12 +2501,12 @@
       "lead_source": "Event - Badge Scan"
     },
     {
-      "id": "L-0150",
+      "id": "L-0148",
       "first_name": "Adrian",
       "last_name": "Kowalski",
       "email": "adrian.kowalski@brazoshealth.org",
       "company": "BRAZOS HEALTH",
-      "company_domain": "brazoshealth.org",
+      "company_domain": "http://www.brazoshealth.org/contact",
       "title": "Senior Data Engineer",
       "city": "Austin",
       "state": "Texas",
@@ -2552,7 +2518,7 @@
       "lead_source": "Event - Booth Demo"
     },
     {
-      "id": "L-0151",
+      "id": "L-0149",
       "first_name": "Beatriz",
       "last_name": "Zamora",
       "email": "beatriz.zamora@ironpeak.com",
@@ -2569,7 +2535,7 @@
       "lead_source": "Event - Session Check-in"
     },
     {
-      "id": "L-0152",
+      "id": "L-0150",
       "first_name": "Emeka",
       "last_name": "Hollis",
       "email": "emekah@outlook.com",
@@ -2586,7 +2552,7 @@
       "lead_source": "Event - Booth Demo"
     },
     {
-      "id": "L-0153",
+      "id": "L-0151",
       "first_name": "Javier",
       "last_name": "Lindqvist",
       "email": "javier.lindqvist@tidewatermedia.com",
@@ -2603,7 +2569,7 @@
       "lead_source": "Event - Session Check-in"
     },
     {
-      "id": "L-0154",
+      "id": "L-0152",
       "first_name": "Andre",
       "last_name": "Grant",
       "email": "andre.grant@rheinwerk.de",
@@ -2620,7 +2586,7 @@
       "lead_source": "Event - Badge Scan"
     },
     {
-      "id": "L-0155",
+      "id": "L-0153",
       "first_name": "Tariq",
       "last_name": "Ferreira",
       "email": "tariq.ferreira@tanukigames.jp",
@@ -2637,7 +2603,7 @@
       "lead_source": "Event - Badge Scan"
     },
     {
-      "id": "L-0156",
+      "id": "L-0154",
       "first_name": "Leo",
       "last_name": "Lindqvist",
       "email": "leo.lindqvist@northgate.gov.uk",
@@ -2654,7 +2620,7 @@
       "lead_source": "Event - Badge Scan"
     },
     {
-      "id": "L-0157",
+      "id": "L-0155",
       "first_name": "Isaac",
       "last_name": "Rahman",
       "email": "isaac.rahman@sakuradigital.jp",
@@ -2671,7 +2637,7 @@
       "lead_source": "Event - Session Check-in"
     },
     {
-      "id": "L-0158",
+      "id": "L-0156",
       "first_name": "Laila",
       "last_name": "Novak",
       "email": "laila.novak@brightwaterfin.com",
@@ -2688,24 +2654,7 @@
       "lead_source": "Event - Booth Demo"
     },
     {
-      "id": "L-0159",
-      "first_name": "Aaliyah",
-      "last_name": "Pham",
-      "email": "aaliyah.pham@ironpeak.com",
-      "company": "Ironpeak Manufacturing",
-      "company_domain": "ironpeak.com",
-      "title": "Machine Learning Engineer",
-      "city": "",
-      "state": "",
-      "country": "",
-      "industry": "Manufacturing",
-      "employee_count": "11000",
-      "product_interest": "Agent Platform",
-      "session": "Security for AI Systems",
-      "lead_source": "Event - Session Check-in"
-    },
-    {
-      "id": "L-0160",
+      "id": "L-0157",
       "first_name": "Camila",
       "last_name": "Bergstrom",
       "email": "camila.bergstrom@maplewoodfin.ca",
@@ -2722,7 +2671,7 @@
       "lead_source": "Event - Session Check-in"
     },
     {
-      "id": "L-0161",
+      "id": "L-0158",
       "first_name": "Yusuf",
       "last_name": "Castillo",
       "email": "yusuf.castillo@peachtreeoutfitters.com",
@@ -2739,7 +2688,7 @@
       "lead_source": "Event - Session Check-in"
     },
     {
-      "id": "L-0162",
+      "id": "L-0159",
       "first_name": "Yusuf",
       "last_name": "Singh",
       "email": "yusuf.singh@willamettehealth.org",
@@ -2756,7 +2705,7 @@
       "lead_source": "Event - Badge Scan"
     },
     {
-      "id": "L-0163",
+      "id": "L-0160",
       "first_name": "Quentin",
       "last_name": "Ito",
       "email": "quentin.ito@prairiestatebank.com",
@@ -2773,7 +2722,7 @@
       "lead_source": "Event - Session Check-in"
     },
     {
-      "id": "L-0164",
+      "id": "L-0161",
       "first_name": "Dara",
       "last_name": "Ferreira",
       "email": "dara.ferreira@induscloud.in",
@@ -2790,7 +2739,24 @@
       "lead_source": "Event - Booth Demo"
     },
     {
-      "id": "L-0165",
+      "id": "L-0162",
+      "first_name": "Yusuf",
+      "last_name": "Bauer",
+      "email": "yusuf.bauer@brightwaterins.com",
+      "company": "Brightwater Insurance",
+      "company_domain": "http://www.brightwaterins.com/contact",
+      "title": "Sol. Architect",
+      "city": "Hartford",
+      "state": "Connecticut",
+      "country": "United States",
+      "industry": "Financial Services",
+      "employee_count": "1600",
+      "product_interest": "Evaluation",
+      "session": "Data Platform Deep Dive",
+      "lead_source": "Event - Session Check-in"
+    },
+    {
+      "id": "L-0163",
       "first_name": "Farah",
       "last_name": "Adeyemi",
       "email": "farah.adeyemi@queencitytrust.com",
@@ -2807,7 +2773,7 @@
       "lead_source": "Event - Session Check-in"
     },
     {
-      "id": "L-0166",
+      "id": "L-0164",
       "first_name": "Omar",
       "last_name": "Nakamura",
       "email": "omar.nakamura@cedarridgelabs.com",
@@ -2824,7 +2790,7 @@
       "lead_source": "Event - Booth Demo"
     },
     {
-      "id": "L-0167",
+      "id": "L-0165",
       "first_name": "Lina",
       "last_name": "Petrov",
       "email": "lina.petrov@ironpeak.com",
@@ -2832,7 +2798,7 @@
       "company_domain": "ironpeak.com",
       "title": "VP, Marketing",
       "city": "Chicago",
-      "state": "Illinois",
+      "state": "IL",
       "country": "United States",
       "industry": "Manufacturing",
       "employee_count": "11000",
@@ -2841,7 +2807,7 @@
       "lead_source": "Event - Badge Scan"
     },
     {
-      "id": "L-0168",
+      "id": "L-0166",
       "first_name": "Hugo",
       "last_name": "Young",
       "email": "hugo.young@halcyonretail.com",
@@ -2858,7 +2824,7 @@
       "lead_source": "Event - Badge Scan"
     },
     {
-      "id": "L-0169",
+      "id": "L-0167",
       "first_name": "Mei",
       "last_name": "Garcia",
       "email": "mei.garcia@brightwaterfin.com",
@@ -2875,7 +2841,7 @@
       "lead_source": "Event - Badge Scan"
     },
     {
-      "id": "L-0170",
+      "id": "L-0168",
       "first_name": "Ines",
       "last_name": "Varga",
       "email": "ines.varga@buckeyehome.com",
@@ -2892,7 +2858,7 @@
       "lead_source": "Event - Booth Demo"
     },
     {
-      "id": "L-0171",
+      "id": "L-0169",
       "first_name": "Yara",
       "last_name": "Sokolov",
       "email": "yara.sokolov@lumiere-retail.fr",
@@ -2909,7 +2875,7 @@
       "lead_source": "Event - Booth Demo"
     },
     {
-      "id": "L-0172",
+      "id": "L-0170",
       "first_name": "Elena",
       "last_name": "Singh",
       "email": "elena.singh@mesahealth.org",
@@ -2926,7 +2892,7 @@
       "lead_source": "Event - Session Check-in"
     },
     {
-      "id": "L-0173",
+      "id": "L-0171",
       "first_name": "Theo",
       "last_name": "Singh",
       "email": "theo.singh@juniperrobotics.ai",
@@ -2943,7 +2909,7 @@
       "lead_source": "Event - Session Check-in"
     },
     {
-      "id": "L-0174",
+      "id": "L-0172",
       "first_name": "Lina",
       "last_name": "Yilmaz",
       "email": "lina.yilmaz@cascadiametro.gov",
@@ -2960,7 +2926,7 @@
       "lead_source": "Event - Booth Demo"
     },
     {
-      "id": "L-0175",
+      "id": "L-0173",
       "first_name": "Lina",
       "last_name": "Reyes",
       "email": "lina.reyes@coastlinegames.ca",
@@ -2977,9 +2943,9 @@
       "lead_source": "Event - Session Check-in"
     },
     {
-      "id": "L-0176",
-      "first_name": "LAILA",
-      "last_name": "LINDQVIST",
+      "id": "L-0174",
+      "first_name": "Laila",
+      "last_name": "Lindqvist",
       "email": "lailal@outlook.com",
       "company": "Northstar Insurance",
       "company_domain": "",
@@ -2994,7 +2960,7 @@
       "lead_source": "Event - Badge Scan"
     },
     {
-      "id": "L-0177",
+      "id": "L-0175",
       "first_name": "Dara",
       "last_name": "Quinn",
       "email": "dara.quinn@hudsonmercantile.com",
@@ -3011,7 +2977,7 @@
       "lead_source": "Event - Badge Scan"
     },
     {
-      "id": "L-0178",
+      "id": "L-0176",
       "first_name": "Anne-Marie",
       "last_name": "Zhang",
       "email": "anne-marie.zhang@apexretail.com",
@@ -3028,7 +2994,7 @@
       "lead_source": "Event - Session Check-in"
     },
     {
-      "id": "L-0179",
+      "id": "L-0177",
       "first_name": "Grace",
       "last_name": "Fontaine",
       "email": "grace.fontaine@brightwaterins.com",
@@ -3045,7 +3011,24 @@
       "lead_source": "Event - Badge Scan"
     },
     {
-      "id": "L-0180",
+      "id": "L-0178",
+      "first_name": "Theo",
+      "last_name": "Singh",
+      "email": "theo.singh@juniperrobotics.ai",
+      "company": "Juniper Robotics",
+      "company_domain": "juniperrobotics.ai",
+      "title": "VP, Marketing",
+      "city": "Los Angeles",
+      "state": "California",
+      "country": "United States",
+      "industry": "Manufacturing",
+      "employee_count": "150",
+      "product_interest": "Agent Platform",
+      "session": "Observability for Agents",
+      "lead_source": "Event - Session Check-in"
+    },
+    {
+      "id": "L-0179",
       "first_name": "Paloma",
       "last_name": "Bergstrom",
       "email": " Paloma.bergstrom@Sableanalytics.com ",
@@ -3062,12 +3045,12 @@
       "lead_source": "Event - Badge Scan"
     },
     {
-      "id": "L-0181",
+      "id": "L-0180",
       "first_name": "Wen",
       "last_name": "Garcia",
       "email": "wen.garcia@halcyonoutlet.com",
       "company": "Halcyno Outlet Co.",
-      "company_domain": "halcyonoutlet.com",
+      "company_domain": "www.halcyonoutlet.com",
       "title": "VP, Sales",
       "city": "Portland",
       "state": "Oregon",
@@ -3079,7 +3062,7 @@
       "lead_source": "Event - Booth Demo"
     },
     {
-      "id": "L-0182",
+      "id": "L-0181",
       "first_name": "Mateo",
       "last_name": "Ferreira",
       "email": "mateo.ferreira@brazoshealth.org",
@@ -3096,7 +3079,7 @@
       "lead_source": "Event - Session Check-in"
     },
     {
-      "id": "L-0183",
+      "id": "L-0182",
       "first_name": "Aarav",
       "last_name": "Weiss",
       "email": "aarav.weiss@fernwaybooks.com",
@@ -3113,7 +3096,7 @@
       "lead_source": "Event - Booth Demo"
     },
     {
-      "id": "L-0184",
+      "id": "L-0183",
       "first_name": "Jana",
       "last_name": "Schmidt",
       "email": "jana.schmidt@summithealthcare.com",
@@ -3130,7 +3113,7 @@
       "lead_source": "Event - Badge Scan"
     },
     {
-      "id": "L-0185",
+      "id": "L-0184",
       "first_name": "Javier",
       "last_name": "Bhatt",
       "email": "javier.bhatt@tidewatermedia.com",
@@ -3147,7 +3130,7 @@
       "lead_source": "Event - Badge Scan"
     },
     {
-      "id": "L-0186",
+      "id": "L-0185",
       "first_name": "Oskar",
       "last_name": "Brennan",
       "email": "oskar.brennan@peachtreeoutfitters.com",
@@ -3164,7 +3147,7 @@
       "lead_source": "Event - Badge Scan"
     },
     {
-      "id": "L-0187",
+      "id": "L-0186",
       "first_name": "Wen",
       "last_name": "Chowdhury",
       "email": "wen.chowdhury@harbourbridgebank.com.au",
@@ -3181,7 +3164,7 @@
       "lead_source": "Event - Session Check-in"
     },
     {
-      "id": "L-0188",
+      "id": "L-0187",
       "first_name": "Alejandro",
       "last_name": "Eriksen",
       "email": "alejandro.eriksen@cascadiametro.gov",
@@ -3198,7 +3181,7 @@
       "lead_source": "Event - Badge Scan"
     },
     {
-      "id": "L-0189",
+      "id": "L-0188",
       "first_name": "Andre",
       "last_name": "Quinn",
       "email": "andre.quinn@brightwaterfin.com",
@@ -3213,6 +3196,23 @@
       "product_interest": "Observability",
       "session": "Observability for Agents",
       "lead_source": "Event - Booth Demo"
+    },
+    {
+      "id": "L-0189",
+      "first_name": "Aaliyah",
+      "last_name": "Zhang",
+      "email": "aaliyah.zhang@thamesanalytics.co.uk",
+      "company": "Thames Analytics",
+      "company_domain": "thamesanalytics.co.uk",
+      "title": "Director, IT",
+      "city": "London",
+      "state": "",
+      "country": "United Kingdom",
+      "industry": "Technology",
+      "employee_count": "1100",
+      "product_interest": "Evaluation",
+      "session": "Workshop: Evaluating LLM Apps",
+      "lead_source": "Event - Session Check-in"
     },
     {
       "id": "L-0190",
@@ -3233,12 +3233,12 @@
     },
     {
       "id": "L-0191",
-      "first_name": "Anne-Marie",
-      "last_name": "Kaur",
+      "first_name": "ANNE-MARIE",
+      "last_name": "KAUR",
       "email": "anne-marie.kaur@lonestarfreight.com",
       "company": "Stratus Cloudworks",
       "company_domain": "lonestarfreight.com",
-      "title": "Manager, Revenue Operations",
+      "title": "Mgr RevOps",
       "city": "Denver",
       "state": "Colorado",
       "country": "United States",
@@ -3284,6 +3284,23 @@
     },
     {
       "id": "L-0194",
+      "first_name": "Oskar",
+      "last_name": "Brennan",
+      "email": "Oskar.brennan@peachtreeoutfitters.com",
+      "company": "Peachtree Outfitters",
+      "company_domain": "peachtreeoutfitters.com",
+      "title": "Manager, Marketing Operations",
+      "city": "Atlanta",
+      "state": "Georgia",
+      "country": "United States",
+      "industry": "Retail",
+      "employee_count": "2200",
+      "product_interest": "Evaluation",
+      "session": "Data Platform Deep Dive",
+      "lead_source": "Event - Session Check-in"
+    },
+    {
+      "id": "L-0195",
       "first_name": "MATEO",
       "last_name": "MOREAU",
       "email": "mateo.moreau@buckeyehome.com",
@@ -3300,7 +3317,7 @@
       "lead_source": "Event - Session Check-in"
     },
     {
-      "id": "L-0195",
+      "id": "L-0196",
       "first_name": "Anika",
       "last_name": "Brennan",
       "email": "anika.brennan@northgate.gov.uk",
@@ -3317,7 +3334,7 @@
       "lead_source": "Event - Badge Scan"
     },
     {
-      "id": "L-0196",
+      "id": "L-0197",
       "first_name": "Nadia",
       "last_name": "Nakamura",
       "email": "nadia.nakamura@juniperrobotics.ai",
@@ -3334,41 +3351,7 @@
       "lead_source": "Event - Booth Demo"
     },
     {
-      "id": "L-0197",
-      "first_name": "Isaac",
-      "last_name": "Costa",
-      "email": "Isaac.costa@keystonefab.com",
-      "company": "Keystone Fabrication",
-      "company_domain": "keystonefab.com",
-      "title": "Director, IT",
-      "city": "Pittsburgh",
-      "state": "Pennsylvania",
-      "country": "United States",
-      "industry": "Manufacturing",
-      "employee_count": "",
-      "product_interest": "Data Integration",
-      "session": "Keynote: Agents in Production",
-      "lead_source": "Event - Session Check-in"
-    },
-    {
       "id": "L-0198",
-      "first_name": "FREYA",
-      "last_name": "BRENNAN",
-      "email": "freya.brennan@ggcu.org",
-      "company": "Golden Gate Credit Union",
-      "company_domain": "ggcu.org",
-      "title": "Manager, Revenue Operations",
-      "city": "SAN FRANCISCO",
-      "state": "California",
-      "country": "United States",
-      "industry": "Financial Services",
-      "employee_count": "",
-      "product_interest": "Evaluation",
-      "session": "Data Platform Deep Dive",
-      "lead_source": "Event - Session Check-in"
-    },
-    {
-      "id": "L-0199",
       "first_name": "Nora",
       "last_name": "Fontaine",
       "email": "nora.fontaine@halcyonoutlet.com",
@@ -3385,7 +3368,7 @@
       "lead_source": "Event - Booth Demo"
     },
     {
-      "id": "L-0200",
+      "id": "L-0199",
       "first_name": "Mira",
       "last_name": "Dubois",
       "email": "mira.dubois@halcyonretail.com",
@@ -3402,7 +3385,7 @@
       "lead_source": "Event - Session Check-in"
     },
     {
-      "id": "L-0201",
+      "id": "L-0200",
       "first_name": "Nora",
       "last_name": "Weiss",
       "email": "nora.weiss@willamettehealth.org",
@@ -3419,7 +3402,7 @@
       "lead_source": "Event - Badge Scan"
     },
     {
-      "id": "L-0202",
+      "id": "L-0201",
       "first_name": "Grace",
       "last_name": "Kowalski",
       "email": "grace.kowalski@lonestarfreight.com",
@@ -3436,24 +3419,7 @@
       "lead_source": "Event - Booth Demo"
     },
     {
-      "id": "L-0203",
-      "first_name": "Lina",
-      "last_name": "Yilmaz",
-      "email": "Lina.yilmaz@cascadiametro.gov",
-      "company": "Cascadia Metro Transit",
-      "company_domain": "cascadiametro.gov",
-      "title": "Solutions Architect",
-      "city": "Seattle",
-      "state": "Washington",
-      "country": "United States",
-      "industry": "Public Sector",
-      "employee_count": "4800",
-      "product_interest": "Observability",
-      "session": "Keynote: Agents in Production",
-      "lead_source": "Event - Session Check-in"
-    },
-    {
-      "id": "L-0204",
+      "id": "L-0202",
       "first_name": "Jana",
       "last_name": "Lindqvist",
       "email": "jana.lindqvist@mesahealth.org",
@@ -3470,7 +3436,7 @@
       "lead_source": "Event - Booth Demo"
     },
     {
-      "id": "L-0205",
+      "id": "L-0203",
       "first_name": "Yara",
       "last_name": "Abara",
       "email": "yara.abara@brightwaterfin.com",
@@ -3487,7 +3453,7 @@
       "lead_source": "Event - Booth Demo"
     },
     {
-      "id": "L-0206",
+      "id": "L-0204",
       "first_name": "Omar",
       "last_name": "Walsh",
       "email": "omar.walsh@keystonefab.com",
@@ -3504,7 +3470,7 @@
       "lead_source": "Event - Booth Demo"
     },
     {
-      "id": "L-0207",
+      "id": "L-0205",
       "first_name": "Mateo",
       "last_name": "Lindqvist",
       "email": "mateo.lindqvist@brightpathrobotics.com",
@@ -3521,7 +3487,7 @@
       "lead_source": "Event - Session Check-in"
     },
     {
-      "id": "L-0208",
+      "id": "L-0206",
       "first_name": "Rafael",
       "last_name": "Kaur",
       "email": "rafael.kaur@rheinwerk.de",
@@ -3538,24 +3504,7 @@
       "lead_source": "Event - Session Check-in"
     },
     {
-      "id": "L-0209",
-      "first_name": "Omar",
-      "last_name": "Walsh",
-      "email": "omar.walsh@keystonefab.com",
-      "company": "Keystone Fabrication",
-      "company_domain": "keystonefab.com",
-      "title": "Director, IT",
-      "city": "Pittsburgh",
-      "state": "Pennsylvania",
-      "country": "United States",
-      "industry": "Manufacturing",
-      "employee_count": "4100",
-      "product_interest": "Data Integration",
-      "session": "Keynote: Agents in Production",
-      "lead_source": "Event - Session Check-in"
-    },
-    {
-      "id": "L-0210",
+      "id": "L-0207",
       "first_name": "Chen",
       "last_name": "Garcia",
       "email": "chen.garcia@lonestarfreight.com",
@@ -3572,7 +3521,7 @@
       "lead_source": "Event - Badge Scan"
     },
     {
-      "id": "L-0211",
+      "id": "L-0208",
       "first_name": "Naveen",
       "last_name": "Novak",
       "email": "naveen.novak@cedarridgehealth.org",
@@ -3589,7 +3538,7 @@
       "lead_source": "Event - Booth Demo"
     },
     {
-      "id": "L-0212",
+      "id": "L-0209",
       "first_name": "Emeka",
       "last_name": "Haddad",
       "email": "emeka.haddad@peachtreeoutfitters.com",
@@ -3606,7 +3555,7 @@
       "lead_source": "Event - Booth Demo"
     },
     {
-      "id": "L-0213",
+      "id": "L-0210",
       "first_name": "Mei",
       "last_name": "Lindqvist",
       "email": "mei.lindqvist@halcyonoutlet.com",
@@ -3623,7 +3572,7 @@
       "lead_source": "Event - Booth Demo"
     },
     {
-      "id": "L-0214",
+      "id": "L-0211",
       "first_name": "Theo",
       "last_name": "Boateng",
       "email": "theo.boateng@cascadegrocers.com",
@@ -3640,7 +3589,7 @@
       "lead_source": "Event - Booth Demo"
     },
     {
-      "id": "L-0215",
+      "id": "L-0212",
       "first_name": "Samir",
       "last_name": "Reyes",
       "email": "samir.reyes@buckeyehome.com",
@@ -3657,7 +3606,7 @@
       "lead_source": "Event - Booth Demo"
     },
     {
-      "id": "L-0216",
+      "id": "L-0213",
       "first_name": "Zoe",
       "last_name": "Fontaine",
       "email": "zoe.fontaine@canalhealth.nl",
@@ -3674,7 +3623,7 @@
       "lead_source": "Event - Booth Demo"
     },
     {
-      "id": "L-0217",
+      "id": "L-0214",
       "first_name": "Samir",
       "last_name": "Tran",
       "email": "samir.tran@cascadiametro.gov",
@@ -3691,7 +3640,41 @@
       "lead_source": "Event - Badge Scan"
     },
     {
-      "id": "L-0218",
+      "id": "L-0215",
+      "first_name": "Anika",
+      "last_name": "Reyes",
+      "email": "Anika.reyes@stratuscloud.io",
+      "company": "Stratus Cloudworks",
+      "company_domain": "stratuscloud.io",
+      "title": "Solutions Architect",
+      "city": "Philadelphia",
+      "state": "Pennsylvania",
+      "country": "United States",
+      "industry": "Technology",
+      "employee_count": "19000",
+      "product_interest": "Data Integration",
+      "session": "Keynote: Agents in Production",
+      "lead_source": "Event - Session Check-in"
+    },
+    {
+      "id": "L-0216",
+      "first_name": "Mateo",
+      "last_name": "Ferreira",
+      "email": "mateo.ferreira@brazoshealth.org",
+      "company": "Brazos Health",
+      "company_domain": "brazoshealth.org",
+      "title": "Manager, Revenue Operations",
+      "city": "Austin",
+      "state": "Texas",
+      "country": "United States",
+      "industry": "Healthcare",
+      "employee_count": "5200",
+      "product_interest": "Data Integration",
+      "session": "Data Platform Deep Dive",
+      "lead_source": "Event - Session Check-in"
+    },
+    {
+      "id": "L-0217",
       "first_name": "Emeka",
       "last_name": "Ueda",
       "email": "emeka.ueda@prairiestatebank.com",
@@ -3706,6 +3689,23 @@
       "product_interest": "Data Integration",
       "session": "Financial Services AI Forum",
       "lead_source": "Event - Badge Scan"
+    },
+    {
+      "id": "L-0218",
+      "first_name": "Emeka",
+      "last_name": "Ueda",
+      "email": "emeka.ueda@prairiestatebank.com",
+      "company": "Prairie State Bank",
+      "company_domain": "prairiestatebank.com",
+      "title": "Chief Information Officer",
+      "city": "Minneapolis",
+      "state": "Minnesota",
+      "country": "United States",
+      "industry": "Financial Services",
+      "employee_count": "2300",
+      "product_interest": "Data Integration",
+      "session": "Workshop: Evaluating LLM Apps",
+      "lead_source": "Event - Session Check-in"
     },
     {
       "id": "L-0219",
@@ -3852,7 +3852,7 @@
       "company_domain": "queencitytrust.com",
       "title": "Director, Marketing Operations",
       "city": "Charlotte",
-      "state": "NC",
+      "state": "North Carolina",
       "country": "United States",
       "industry": "Financial Services",
       "employee_count": "3800",
@@ -3862,6 +3862,23 @@
     },
     {
       "id": "L-0228",
+      "first_name": "Zoe",
+      "last_name": "Fontaine",
+      "email": "Zoe.fontaine@canalhealth.nl",
+      "company": "Canal Health",
+      "company_domain": "canalhealth.nl",
+      "title": "Director, IT",
+      "city": "Amsterdam",
+      "state": "",
+      "country": "Netherlands",
+      "industry": "Healthcare",
+      "employee_count": "900",
+      "product_interest": "Data Integration",
+      "session": "Keynote: Agents in Production",
+      "lead_source": "Event - Session Check-in"
+    },
+    {
+      "id": "L-0229",
       "first_name": "Chen",
       "last_name": "Zhang",
       "email": "chen.zhang@seaboardhealth.org",
@@ -3878,7 +3895,7 @@
       "lead_source": "Event - Session Check-in"
     },
     {
-      "id": "L-0229",
+      "id": "L-0230",
       "first_name": "Dara",
       "last_name": "Pham",
       "email": "dara.pham@lumenanalytics.io",
@@ -3895,9 +3912,9 @@
       "lead_source": "Event - Badge Scan"
     },
     {
-      "id": "L-0230",
-      "first_name": "alejandro",
-      "last_name": "torres",
+      "id": "L-0231",
+      "first_name": "Alejandro",
+      "last_name": "Torres",
       "email": "alejandro.torres@coastlinegames.ca",
       "company": "Coastline Games",
       "company_domain": "coastlinegames.ca",
@@ -3912,7 +3929,7 @@
       "lead_source": "Event - Badge Scan"
     },
     {
-      "id": "L-0231",
+      "id": "L-0232",
       "first_name": "Uma",
       "last_name": "Vance",
       "email": "uma.vance@tidewatermedia.com",
@@ -3929,7 +3946,7 @@
       "lead_source": "Event - Booth Demo"
     },
     {
-      "id": "L-0232",
+      "id": "L-0233",
       "first_name": "Isaac",
       "last_name": "Bauer",
       "email": "isaac.bauer@oaklineclinics.com",
@@ -3946,7 +3963,7 @@
       "lead_source": "Event - Session Check-in"
     },
     {
-      "id": "L-0233",
+      "id": "L-0234",
       "first_name": "Alejandro",
       "last_name": "Adeyemi",
       "email": "alejandro.adeyemi@meridianmedia.com",
@@ -3963,7 +3980,7 @@
       "lead_source": "Event - Booth Demo"
     },
     {
-      "id": "L-0234",
+      "id": "L-0235",
       "first_name": "Zoe",
       "last_name": "Ramos",
       "email": "zoe.ramos@sakuradigital.jp",
@@ -3980,7 +3997,7 @@
       "lead_source": "Event - Badge Scan"
     },
     {
-      "id": "L-0235",
+      "id": "L-0236",
       "first_name": "Javier",
       "last_name": "Sokolov",
       "email": "javier.sokolov@lumiere-retail.fr",
@@ -3994,23 +4011,6 @@
       "employee_count": "2800",
       "product_interest": "Evaluation",
       "session": "Retail AI Roundtable",
-      "lead_source": "Event - Session Check-in"
-    },
-    {
-      "id": "L-0236",
-      "first_name": "Rafael",
-      "last_name": "Kaur",
-      "email": "rafael.kaur@rheinwerk.de",
-      "company": "Rheinwerk Industrie",
-      "company_domain": "rheinwerk.de",
-      "title": "Director, Security",
-      "city": "Berlin",
-      "state": "",
-      "country": "Germany",
-      "industry": "Manufacturing",
-      "employee_count": "16000",
-      "product_interest": "Agent Platform",
-      "session": "Data Platform Deep Dive",
       "lead_source": "Event - Session Check-in"
     },
     {
@@ -4032,23 +4032,6 @@
     },
     {
       "id": "L-0238",
-      "first_name": "Chen",
-      "last_name": "Zhang",
-      "email": "chen.zhang@seaboardhealth.org",
-      "company": "Seaboard Health Alliance",
-      "company_domain": "seaboardhealth.org",
-      "title": "VP, Engineering",
-      "city": "Philadelphia",
-      "state": "Pennsylvania",
-      "country": "United States",
-      "industry": "Healthcare",
-      "employee_count": "1500",
-      "product_interest": "Agent Platform",
-      "session": "Data Platform Deep Dive",
-      "lead_source": "Event - Session Check-in"
-    },
-    {
-      "id": "L-0239",
       "first_name": "Rhea",
       "last_name": "Sokolov",
       "email": "rhea.sokolov@apexretail.com",
@@ -4065,13 +4048,13 @@
       "lead_source": "Event - Badge Scan"
     },
     {
-      "id": "L-0240",
+      "id": "L-0239",
       "first_name": "Javier",
       "last_name": "Rahman",
       "email": "javier.rahman@apexretail.com",
       "company": "Apex Retail, Inc.",
       "company_domain": "apexretail.com",
-      "title": "Manager, Marketing Operations",
+      "title": "Manager Mktg Ops",
       "city": "Dallas",
       "state": "Texas",
       "country": "United States",
@@ -4082,7 +4065,7 @@
       "lead_source": "Event - Badge Scan"
     },
     {
-      "id": "L-0241",
+      "id": "L-0240",
       "first_name": "Farah",
       "last_name": "Fontaine",
       "email": "farah.fontaine@halcyonretail.com",
@@ -4099,7 +4082,7 @@
       "lead_source": "Event - Session Check-in"
     },
     {
-      "id": "L-0242",
+      "id": "L-0241",
       "first_name": "Theo",
       "last_name": "Ramos",
       "email": "theo.ramos@heartlandtransit.gov",
@@ -4116,7 +4099,7 @@
       "lead_source": "Event - Session Check-in"
     },
     {
-      "id": "L-0243",
+      "id": "L-0242",
       "first_name": "Sana",
       "last_name": "Kowalski",
       "email": "sana.kowalski@cascadiametro.gov",
@@ -4131,6 +4114,23 @@
       "product_interest": "Agent Platform",
       "session": "Workshop: Evaluating LLM Apps",
       "lead_source": "Event - Booth Demo"
+    },
+    {
+      "id": "L-0243",
+      "first_name": "Rafael",
+      "last_name": "Kaur",
+      "email": "Rafael.kaur@rheinwerk.de",
+      "company": "Rheinwerk Industrie",
+      "company_domain": "rheinwerk.de",
+      "title": "Director, Security",
+      "city": "Berlin",
+      "state": "",
+      "country": "Germany",
+      "industry": "Manufacturing",
+      "employee_count": "16000",
+      "product_interest": "Agent Platform",
+      "session": "Retail AI Roundtable",
+      "lead_source": "Event - Session Check-in"
     },
     {
       "id": "L-0244",

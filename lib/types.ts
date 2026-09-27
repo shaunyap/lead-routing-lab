@@ -243,6 +243,7 @@ export interface EvalCase {
 
 export interface Dataset {
   seed: number;
+  showcase_id: string; // one deliberately messy lead to open first
   leads: RawLead[];
   truth: GroundTruth;
 }
