@@ -102,6 +102,21 @@ export default function PolicyLab({
   const kinds = comparison
     ? (["direct", "cascade", "hygiene"] as ChangeKind[]).map((k) => [k, comparison.changes.filter((c) => c.kind === k).length] as const)
     : [];
+  // The policy lines that differ between the compared versions, with a little context.
+  const versionDiffs = useMemo(() => {
+    if (!prevVersion) return [];
+    const files: { file: string; a: string; b: string }[] = [
+      { file: "lead-routing", a: prevVersion.routingMd, b: current.routingMd },
+      { file: "lead-hygiene", a: prevVersion.hygieneMd, b: current.hygieneMd },
+    ];
+    return files
+      .map(({ file, a, b }) => {
+        const all = lineDiff(extractPolicyBlock(a) ?? "", extractPolicyBlock(b) ?? "");
+        const lines = all.filter((d, i) => d.t !== "same" || all.slice(Math.max(0, i - 2), i + 3).some((x) => x.t !== "same"));
+        return { file, lines };
+      })
+      .filter((d) => d.lines.some((l) => l.t !== "same"));
+  }, [prevVersion, current]);
   const fixed = comparison?.changes.filter((c) => !c.correct_before && c.correct_after).length ?? 0;
   const broke = comparison?.changes.filter((c) => c.correct_before && !c.correct_after).length ?? 0;
 
@@ -139,7 +154,7 @@ export default function PolicyLab({
       )}
 
       {comparison && prevVersion && run && (
-        <div className="card" style={{ marginBottom: 16 }}>
+        <div className="card" style={{ marginBottom: 16 }} id="policy-compare">
           <div className="card-h">
             <h2>
               v{prevVersion.version} {prevVersion.label} <span className="faint">→</span> v{current.version} {current.label}
@@ -147,6 +162,21 @@ export default function PolicyLab({
             <span className="spacer" />
             <span className="faint" style={{ fontSize: 12 }}>same seed · same corpus</span>
           </div>
+          {versionDiffs.length > 0 && (
+            <div className="card-b version-diff">
+              <div className="attn-k">What changed in the policy</div>
+              {versionDiffs.map((d) => (
+                <div key={d.file}>
+                  <div className="faint mono" style={{ fontSize: 12, margin: "6px 0 4px" }}>policies/{d.file}/policy.md</div>
+                  <div className="pdiff">
+                    {d.lines.map((l, i) => (
+                      <div key={i} className={l.t === "add" ? "add" : l.t === "del" ? "del" : ""}>{l.t === "add" ? "+ " : l.t === "del" ? "- " : "  "}{l.s}</div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
           <div className="grid-2" style={{ gap: 0 }}>
             <div className="card-b" style={{ borderRight: "1px solid var(--border)" }}>
               <table className="metric-table">
