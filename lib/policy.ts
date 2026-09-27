@@ -27,6 +27,7 @@ export interface HygienePolicy {
     allowed: InferenceName[];
     company_from_similar_name: { min_similarity: number; min_margin: number };
   };
+  consent: { opt_in_required_in: string[] };
   review: {
     required_for_routing: string[];
     state_required_for: string[];
@@ -120,6 +121,7 @@ export function parseHygienePolicy(markdown: string): ParsedPolicy<HygienePolicy
         min_margin: Number(sim.min_margin ?? 0.1),
       },
     },
+    consent: { opt_in_required_in: data.consent?.opt_in_required_in ?? [] },
     review: {
       required_for_routing: data.review?.required_for_routing ?? ["company_identity", "country", "employee_count"],
       state_required_for: data.review?.state_required_for ?? [],

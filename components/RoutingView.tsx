@@ -22,10 +22,10 @@ const PRIORITY_LABEL: Record<RoutingStep, string> = {
 };
 
 export default function RoutingView({
-  dataset, run, org, focus, setFocus, onSalesforce, onHygiene, overrides, onAssign,
+  dataset, run, org, focus, setFocus, onSalesforce, onHygiene, overrides, onAssign, loads,
 }: {
   dataset: Dataset; run: RunResult; org: OrgIndex; focus: string | null; setFocus: (id: string) => void;
-  overrides: Overrides; onAssign: (leadId: string, repId: string | null) => void;
+  overrides: Overrides; onAssign: (leadId: string, repId: string | null) => void; loads: Map<string, number>;
   onSalesforce: (id: string) => void; onHygiene: (id: string) => void;
 }) {
   const [filter, setFilter] = useState<Filter>("all");
@@ -104,7 +104,7 @@ export default function RoutingView({
                   </span>
                 )}
                 <span className="spacer" />
-                <AssignSelect org={org} value={overrides[selected.lead_id]} onChange={(id) => onAssign(selected.lead_id, id)} />
+                <AssignSelect org={org} value={overrides[selected.lead_id]} onChange={(id) => onAssign(selected.lead_id, id)} loads={loads} />
                 <button className="btn small ghost" onClick={() => onHygiene(selected.lead_id)}>← Hygiene</button>
                 <button className="btn small" onClick={() => setShowJson(!showJson)}>{showJson ? "Hide" : "Show"} JSON</button>
               </div>

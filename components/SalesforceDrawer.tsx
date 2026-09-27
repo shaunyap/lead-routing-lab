@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import type { OrgIndex } from "@/lib/org";
 import type { RunResult } from "@/lib/pipeline";
-import { salesforceAction } from "@/lib/salesforce";
+import { campaignMember, salesforceAction } from "@/lib/salesforce";
 import type { Dataset } from "@/lib/types";
 import { verdictReason } from "./DecisionTrace";
 import { DecisionChip, Json } from "./ui";
@@ -15,13 +15,14 @@ export default function SalesforceDrawer({
 }) {
   const r = run.routing.find((x) => x.lead_id === leadId)!;
   const h = run.hygiene.find((x) => x.lead_id === leadId)!;
-  const a = salesforceAction(r, org);
+  const a = salesforceAction(r, org, h);
+  const raw = dataset.leads.find((l) => l.id === leadId);
+  const cm = raw ? campaignMember(raw, org) : null;
   useEffect(() => {
     const k = (e: KeyboardEvent) => e.key === "Escape" && onClose();
     window.addEventListener("keydown", k);
     return () => window.removeEventListener("keydown", k);
   }, [onClose]);
-  void dataset;
 
   return (
     <>
@@ -58,6 +59,16 @@ export default function SalesforceDrawer({
             <span className="m">{a.method}</span>{a.path}
           </div>
           <div style={{ opacity: a.executable ? 1 : 0.6 }}><Json value={a.body} /></div>
+          <div className="faint" style={{ fontSize: 12.5, marginTop: 6 }}>Email consent: {h.consent.reason}.</div>
+
+          {cm && (
+            <>
+              <div className="section-title">Campaign membership</div>
+              <div className="faint" style={{ fontSize: 12.5, marginBottom: 6 }}>Sent for every lead, routed or not, so the campaign gets credit.</div>
+              <div className="http" style={{ marginBottom: 8 }}><span className="m">{cm.method}</span>{cm.path}</div>
+              <Json value={cm.body} />
+            </>
+          )}
 
           <div className="section-title">Safety</div>
           <ul className="muted" style={{ margin: 0, paddingLeft: 18, fontSize: 13 }}>

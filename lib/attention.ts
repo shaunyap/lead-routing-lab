@@ -95,12 +95,11 @@ export interface AttentionItem {
 function options(org: OrgIndex, r: RoutingResult, kind: AttentionKind): { rep: Rep; note: string }[] {
   const { region, segment, industry } = r.context;
   if (!region || !segment) return [];
-  const load = (rep: Rep) => `${rep.open_leads} open / ${rep.capacity}`;
   if (kind === "owner_inactive" || kind === "owner_conflict" || kind === "capacity") {
     return org.data.reps
       .filter((rep) => !rep.strategic_only && rep.regions.includes(region) && rep.segments.includes(segment) && !(industry && rep.exclusions.includes(industry)))
       .sort((a, b) => Number(!!industry && b.industries.includes(industry)) - Number(!!industry && a.industries.includes(industry)))
-      .map((rep) => ({ rep, note: `${industry && rep.industries.includes(industry) ? `${industry} specialist · ` : ""}${load(rep)}` }));
+      .map((rep) => ({ rep, note: industry && rep.industries.includes(industry) ? `${industry} specialist` : "" }));
   }
   if (kind === "coverage_gap") {
     return org.data.reps

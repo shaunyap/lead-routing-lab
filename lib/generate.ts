@@ -430,6 +430,7 @@ export function generateDataset(seed: number, org: OrgIndex): Dataset {
       product_interest: pick(rng, PRODUCTS),
       session: pick(rng, SESSIONS),
       lead_source: pick(rng, SOURCES),
+      email_opt_in: "",
     };
     people.push({
       pid: `P${String(i + 1).padStart(3, "0")}`,
@@ -443,6 +444,16 @@ export function generateDataset(seed: number, org: OrgIndex): Dataset {
       effects: new Set(),
       corruptions: [],
     });
+  }
+
+  // --- Email opt-in as exported: mostly yes, some explicit no, some blank. Own stream,
+  // so adding the column doesn't reshuffle anything else.
+  {
+    const crng = mulberry32(seed ^ 0xc0115e17);
+    for (const p of people) {
+      const r = crng();
+      p.raw.email_opt_in = r < 0.62 ? pick(crng, ["Yes", "Yes", "yes", "Y", "TRUE"]) : r < 0.72 ? pick(crng, ["No", "N"]) : "";
+    }
   }
 
   // --- One showcase lead with every kind of mess, so the story has a concrete start.

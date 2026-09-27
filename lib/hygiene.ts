@@ -2,11 +2,12 @@
 // lead-hygiene policy. All policy comes from HygienePolicy; this file is the harness.
 
 import type { OrgIndex } from "./org";
-import { related } from "./org";
+import { REGION_LABEL, regionFor, related } from "./org";
 import type { HygienePolicy, InferenceName } from "./policy";
 import type {
   CleanLead,
   Company,
+  Consent,
   Enrichment,
   FieldChange,
   HygieneResult,
@@ -368,6 +369,7 @@ export function cleanLead(raw: RawLead, org: OrgIndex, policy: HygienePolicy): O
 
   return {
     lead_id: raw.id,
+    consent: consentFor(raw.email_opt_in, regionFor(org, rec.state, rec.country), policy),
     changes: ctx.changes,
     enrichments: ctx.enrichments,
     unresolved: ctx.unresolved,
@@ -375,6 +377,19 @@ export function cleanLead(raw: RawLead, org: OrgIndex, policy: HygienePolicy): O
     personal_email: personal,
     record: rec,
   };
+}
+
+/** Routing and emailing are separate permissions; consent never blocks routing. */
+export function consentFor(rawOptIn: string, region: ReturnType<typeof regionFor>, policy: HygienePolicy): Consent {
+  const v = (rawOptIn ?? "").trim().toLowerCase();
+  if (["no", "n", "false", "0", "unsubscribed"].includes(v))
+    return { status: "opted_out", emailable: false, reason: "Opted out of email" };
+  if (["yes", "y", "true", "1", "subscribed"].includes(v))
+    return { status: "opted_in", emailable: true, reason: "Opted in to email" };
+  if (!region) return { status: "unknown", emailable: false, reason: "No opt-in recorded and location unknown, so no email" };
+  if (policy.consent.opt_in_required_in.includes(region))
+    return { status: "unknown", emailable: false, reason: `No opt-in recorded; ${REGION_LABEL[region]} requires opt-in, so no email` };
+  return { status: "unknown", emailable: true, reason: `No opt-in recorded; allowed in ${REGION_LABEL[region]}` };
 }
 
 function statusFor(r: Omit<HygieneResult, "status" | "duplicate_of" | "requires_review">, blocking: boolean): HygieneStatus {

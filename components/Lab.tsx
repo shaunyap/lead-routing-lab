@@ -64,7 +64,7 @@ function Stage({ n, label, tone, onClick, isPct, animKey, last }: {
 export default function Lab(props: { org: OrgData; hygieneMd: string; routingMd: string }) {
   const org = useMemo(() => indexOrg(props.org), [props.org]);
   const v1: PolicyVersion = useMemo(
-    () => ({ version: 1, label: "Shipped policy", hygieneMd: props.hygieneMd, routingMd: props.routingMd }),
+    () => ({ version: 1, label: "Current rules", hygieneMd: props.hygieneMd, routingMd: props.routingMd }),
     [props.hygieneMd, props.routingMd],
   );
   const [seed, setSeed] = useState(DEFAULT_SEED);
@@ -100,6 +100,12 @@ export default function Lab(props: { org: OrgData; hygieneMd: string; routingMd:
     () => (run ? { ...run, routing: applyOverrides(run.routing, overrides, org) } : null),
     [run, overrides, org],
   );
+  // Each AE's open leads after this list (auto-routed plus manual assignments).
+  const loads = useMemo(() => {
+    const m = new Map(org.data.reps.map((r) => [r.id, r.open_leads]));
+    for (const r of effRun?.routing ?? []) if (r.decision === "auto_route" && r.owner_id) m.set(r.owner_id, (m.get(r.owner_id) ?? 0) + 1);
+    return m;
+  }, [effRun, org]);
   const prevVersion = versions.filter((v) => v.version < active).at(-1) ?? null;
   const prevOutcome = prevVersion ? outcomes.get(prevVersion.version)! : null;
   const prevRun = prevOutcome?.ok ? prevOutcome.run : null;
@@ -363,7 +369,17 @@ export default function Lab(props: { org: OrgData; hygieneMd: string; routingMd:
           )}
           {run && tab === "hygiene" && <HygieneView dataset={dataset} run={run} focus={focus} setFocus={setFocus} onRoute={(id) => go("routing", id)} />}
           {effRun && tab === "routing" && (
-            <RoutingView dataset={dataset} run={effRun} org={org} overrides={overrides} onAssign={assign} focus={focus} setFocus={setFocus} onSalesforce={setDrawer} onHygiene={(id) => go("hygiene", id)} />
+            <RoutingView dataset={dataset} run={effRun} org={org} overrides={overrides} onAssign={assign} loads={loads} focus={focus} setFocus={setFocus} onSalesforce={setDrawer} onHygiene={(id) => go("hygiene", id)} />
+          )}
+          {run && tab === "evals" && active !== 1 && (
+            <div className="callout row" style={{ marginBottom: 14 }}>
+              <span>
+                You&rsquo;re viewing <b>v{active} — {versions.find((v) => v.version === active)?.label}</b>, after a policy change.
+                The original rules score lower.
+              </span>
+              <span className="spacer" />
+              <button className="btn small" onClick={() => setActive(1)}>See v1 results</button>
+            </div>
           )}
           {run && tab === "evals" && <EvalsView dataset={dataset} run={run} org={org} onOpen={go} />}
           {tab === "policy" && (
@@ -381,8 +397,8 @@ export default function Lab(props: { org: OrgData; hygieneMd: string; routingMd:
               onTryChange={tryPolicyChange}
             />
           )}
-          {run && tab === "attention" && <AttentionView dataset={dataset} run={run} org={org} onOpen={go} overrides={overrides} onAssign={assign} />}
-          {effRun && tab === "salesforce" && <SalesforceView run={effRun} org={org} onOpen={setDrawer} onNav={go} />}
+          {run && tab === "attention" && <AttentionView dataset={dataset} run={run} org={org} onOpen={go} overrides={overrides} onAssign={assign} loads={loads} />}
+          {effRun && tab === "salesforce" && <SalesforceView run={effRun} org={org} dataset={dataset} onOpen={setDrawer} onNav={go} />}
           {!run && tab !== "policy" && (
             <div className="errors">This policy version does not parse: {activeOutcome.ok ? "" : activeOutcome.errors.join(" · ")}</div>
           )}

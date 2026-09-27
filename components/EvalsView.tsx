@@ -52,9 +52,10 @@ export default function EvalsView({ dataset, run, org, onOpen }: { dataset: Data
   return (
     <>
       <p className="intro">
-        Evals are part of the product, not a test folder. Every run is scored against <b>hidden ground truth</b> produced by the
-        generator, and hygiene and routing are scored separately. Hygiene is judged against what a careful system <i>could</i>{" "}
-        know, not against the real answer: filling in a correct value that the evidence didn&rsquo;t support still counts as a failure.
+        A routing change that quietly sends customers to the wrong rep costs pipeline long before anyone notices. So every
+        version of the rules is tested against the same leads, with <b>known right answers</b>, before anything touches the CRM.
+        Hygiene and routing are scored separately. Hygiene is held to what could actually be known: a correct value the data
+        didn&rsquo;t support still counts as a guess.
       </p>
       <div className="tiles">
         <Tile label="Routing accuracy" value={pct(rate(re.accuracy))} detail={`${r(re.accuracy)} routable leads`} tone="accent" />
@@ -74,7 +75,7 @@ export default function EvalsView({ dataset, run, org, onOpen }: { dataset: Data
               <MetricRow name="Field normalization" value={pct(rate(he.corrected_fields))} detail={r(he.corrected_fields)} def="Fields the export got wrong that now match recoverable truth" />
               <MetricRow name="Enrichment accuracy" value={pct(rate(he.enrichment))} detail={r(he.enrichment)} def="Lookups that filled the right value" />
               <MetricRow name="Unresolved handling" value={pct(rev.recall, 0)} detail={`${he.review.tp} caught · ${he.review.fn} missed · ${he.review.fp} extra`} def="Records that can’t be completed are escalated, not guessed" />
-              <MetricRow name="Duplicate detection" value={`${he.duplicates.tp}/${he.duplicates.tp + he.duplicates.fn}`} detail={`${he.duplicates.fp} false`} def="Repeat scans merged into the original" />
+              <MetricRow name="Duplicate detection" value={`${he.duplicates.tp}/${he.duplicates.tp + he.duplicates.fn}`} detail={`${he.duplicates.fp} false`} def="Repeat rows merged into the original" />
               <MetricRow name="Unsupported inference rate" value={pct(he.unsupported.length / Math.max(1, he.filled_fields + he.unsupported.length))} detail={`${he.unsupported.length} of ${he.filled_fields} fills`} def="Asserted values the evidence didn’t support. Target: 0" />
             </tbody>
           </table>
