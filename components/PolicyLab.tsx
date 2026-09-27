@@ -8,6 +8,7 @@ import { PRESET_EDITS, applyEdit, canApply, type PresetEdit } from "@/lib/preset
 import type { Dataset } from "@/lib/types";
 import DecisionTrace from "./DecisionTrace";
 import { Empty, PassChip, Seg, pct } from "./ui";
+import { ArchStrip, THESIS } from "./Story";
 
 type PolicyFile = "routing" | "hygiene";
 
@@ -38,11 +39,11 @@ const KIND_META: Record<ChangeKind, { label: string; tone: string; help: string 
 };
 
 export default function PolicyLab({
-  dataset, org, versions, active, setActive, run, prevRun, prevVersion, onSave, onOpenLead,
+  dataset, org, versions, active, setActive, run, prevRun, prevVersion, onSave, onOpenLead, onTryChange,
 }: {
   dataset: Dataset; org: OrgIndex; versions: PolicyVersion[]; active: number; setActive: (v: number) => void;
   run: RunResult | null; prevRun: RunResult | null; prevVersion: PolicyVersion | null;
-  onSave: (v: Omit<PolicyVersion, "version">) => number; onOpenLead: (id: string) => void;
+  onSave: (v: Omit<PolicyVersion, "version">) => number; onOpenLead: (id: string) => void; onTryChange: () => void;
 }) {
   const current = versions.find((v) => v.version === active)!;
   const [file, setFile] = useState<PolicyFile>("routing");
@@ -123,6 +124,19 @@ export default function PolicyLab({
           version, and every lead that changes owner shows why.
         </div>
       </div>
+      <p className="thesis" style={{ margin: "0 0 12px", textAlign: "left" }}>{THESIS}</p>
+      <div className="card" style={{ marginBottom: 16, padding: "12px 16px" }}><ArchStrip /></div>
+
+      {!comparison && (
+        <div className="try-card">
+          <div>
+            <div className="attn-k">Try a policy change</div>
+            <b>Subsidiaries follow the parent account.</b> Add one line to the routing policy, rerun the same {dataset.leads.length}{" "}
+            leads, and see what changes and why.
+          </div>
+          <button className="btn primary" onClick={onTryChange}>Apply and compare →</button>
+        </div>
+      )}
 
       {comparison && prevVersion && run && (
         <div className="card" style={{ marginBottom: 16 }}>

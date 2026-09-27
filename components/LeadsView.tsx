@@ -100,6 +100,10 @@ export default function LeadsView({ dataset, run, onOpen }: { dataset: Dataset; 
     return true;
   });
 
+  // Pin the showcase lead at the top so the story has an obvious starting point.
+  const showcase = dataset.leads.find((l) => l.id === dataset.showcase_id);
+  const pinned = showcase && rows.some((r) => r.id === showcase.id) ? [showcase, ...rows.filter((r) => r.id !== showcase.id)] : rows;
+
   return (
     <>
       <p className="intro">
@@ -115,6 +119,17 @@ export default function LeadsView({ dataset, run, onOpen }: { dataset: Dataset; 
         ))}
         <Tile label="Duplicate rows" value={counts.dupes} detail="same person, loaded twice" selected={filter === "dupes"} onClick={() => pickFilter(filter === "dupes" ? "all" : "dupes")} />
       </div>
+      {showcase && (
+        <div className="showcase-card">
+          <div>
+            <div className="attn-k">Start here · {showcase.id}</div>
+            <b>{showcase.first_name} {showcase.last_name}</b> signed up with <b>{showcase.email}</b>, no company website,{" "}
+            <b>&ldquo;{showcase.title}&rdquo;</b>, <b>&ldquo;{showcase.state}&rdquo;</b>, no employee count, and says their company is in{" "}
+            <b>{showcase.industry}</b>. It&rsquo;s pinned at the top of the table.
+          </div>
+          <button className="btn small" onClick={() => onOpen(showcase.id)}>See what hygiene does →</button>
+        </div>
+      )}
       <div className="card">
         <div className="filters">
           <Seg<Filter>
@@ -152,13 +167,14 @@ export default function LeadsView({ dataset, run, onOpen }: { dataset: Dataset; 
               </tr>
             </thead>
             <tbody>
-              {rows.map((l) => {
+              {pinned.map((l) => {
                 const t = touched(l.id);
                 return (
-                  <tr key={l.id} className="clickable" onClick={() => onOpen(l.id)}>
+                  <tr key={l.id} className={`clickable ${l.id === dataset.showcase_id ? "showcase" : ""}`} onClick={() => onOpen(l.id)}>
                     {COLS.map((c) => (
                       <td key={c.f} className={(issue ? ISSUES[issue].mark(l, hById.get(l.id)!, c.f) : filter === "dupes" ? c.f === "email" : t.has(c.f)) ? "dirty" : c.f === "id" ? "mono faint" : ""}>
                         {l[c.f] === "" ? <span className="empty-val">empty</span> : l[c.f]}
+                        {c.f === "id" && l.id === dataset.showcase_id && <span className="pin">start here</span>}
                       </td>
                     ))}
                     <td><StatusChip status={hById.get(l.id)!.status} /></td>

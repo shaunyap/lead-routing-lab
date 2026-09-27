@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 const description =
-  "Messy lead lists in, safe CRM actions out: visible hygiene, declarative policy, explainable routing and evals. Prepared for LangChain by Shaun Yap.";
+  "Messy lead lists in, safe CRM actions out: visible hygiene, declarative policy, explainable routing and evals. Built by Shaun Yap.";
 
 export const metadata: Metadata = {
   title: "Lead Routing Lab",

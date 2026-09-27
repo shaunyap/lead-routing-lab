@@ -445,9 +445,38 @@ export function generateDataset(seed: number, org: OrgIndex): Dataset {
     });
   }
 
+  // --- One showcase lead with every kind of mess, so the story has a concrete start.
+  // It uses its own random stream, so the rest of the dataset is unaffected by it.
+  const showcase = people[0];
+  {
+    const srng = mulberry32(seed ^ 0x5eed);
+    const apex = org.companyById.get("c48")!; // Apex Retail, Dallas: a retailer that attendees often call "tech"
+    const [first, last] = [showcase.world.first_name!, showcase.world.last_name!];
+    const email = `${slugName(first)}.${slugName(last)}@${apex.domain}`;
+    showcase.company = apex;
+    showcase.known = true;
+    showcase.world = {
+      ...showcase.world, email, company: apex.name, company_domain: apex.domain, title: "VP, Marketing",
+      city: "Dallas", state: "Texas", country: "United States", industry: apex.industry, employee_count: apex.employees,
+    };
+    showcase.expected = { ...showcase.world };
+    Object.assign(showcase.raw, {
+      email, company: apex.name, company_domain: apex.domain, title: "VP, Marketing", city: "Dallas", state: "Texas",
+      country: "United States", industry: apex.industry, employee_count: String(apex.employees),
+    });
+    CORRUPTIONS.personal_email.apply(showcase, srng, org);
+    CORRUPTIONS.title_abbrev.apply(showcase, srng, org);
+    showcase.raw.title = "VP Mktg";
+    CORRUPTIONS.state_abbrev.apply(showcase, srng, org);
+    CORRUPTIONS.missing_employees.apply(showcase, srng, org);
+    showcase.raw.industry = "Technology"; // self-reported; the company record says Retail
+    showcase.effects.add("change");
+    showcase.corruptions.push("personal_email", "title_abbrev", "state_abbrev", "missing_employees", "self_reported_industry");
+  }
+
   // --- Corrupt a quota of attendees
   const order = shuffle(rng, people);
-  const touched = new Set<Person>();
+  const touched = new Set<Person>([showcase]);
   let cursor = 0;
   for (const [name, count] of PRIMARY_QUOTA) {
     let done = 0;
@@ -519,6 +548,6 @@ export function generateDataset(seed: number, org: OrgIndex): Dataset {
       : referenceRoute(org, id, status, p.expected, p.known ? p.company.id : null);
   }
 
-  return { seed, leads: rows.map((r) => r.raw), truth: { hygiene, routing } };
+  return { seed, showcase_id: idOf.get(showcase)!, leads: rows.map((r) => r.raw), truth: { hygiene, routing } };
 }
 

@@ -27,7 +27,7 @@ export default function OpengraphImage() {
           </div>
           <div style={{ fontSize: 34, fontWeight: 700 }}>Lead Routing Lab</div>
         </div>
-          <div style={{ fontSize: 24, color: "#85847e" }}>Prepared for LangChain by Shaun Yap</div>
+          <div style={{ fontSize: 24, color: "#85847e" }}>Built by Shaun Yap</div>
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
           <div style={{ fontSize: 68, fontWeight: 800, letterSpacing: -2, lineHeight: 1.05 }}>

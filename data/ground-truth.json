@@ -4,38 +4,47 @@
     "L-0001": {
       "lead_id": "L-0001",
       "person_id": "P001",
-      "corruptions": [],
-      "expected_status": "CLEAN",
+      "corruptions": [
+        "personal_email",
+        "title_abbrev",
+        "state_abbrev",
+        "missing_employees",
+        "self_reported_industry"
+      ],
+      "expected_status": "ENRICHED",
       "expected_record": {
         "first_name": "Felix",
         "last_name": "Delgado",
-        "email": "felix.delgado@cedarridgehealth.org",
-        "company": "Cedar Ridge Health",
-        "company_domain": "cedarridgehealth.org",
-        "title": "Senior Data Engineer",
-        "city": "San Jose",
-        "state": "California",
+        "email": "felix.delgado@yahoo.com",
+        "company": "Apex Retail",
+        "company_domain": "apexretail.com",
+        "title": "VP, Marketing",
+        "city": "Dallas",
+        "state": "Texas",
         "country": "United States",
-        "industry": "Healthcare",
-        "employee_count": 9800
+        "industry": "Retail",
+        "employee_count": 4600
       },
       "world_record": {
         "first_name": "Felix",
         "last_name": "Delgado",
-        "email": "felix.delgado@cedarridgehealth.org",
-        "company": "Cedar Ridge Health",
-        "company_domain": "cedarridgehealth.org",
-        "title": "Senior Data Engineer",
-        "city": "San Jose",
-        "state": "California",
+        "email": "felix.delgado@apexretail.com",
+        "company": "Apex Retail",
+        "company_domain": "apexretail.com",
+        "title": "VP, Marketing",
+        "city": "Dallas",
+        "state": "Texas",
         "country": "United States",
-        "industry": "Healthcare",
-        "employee_count": 9800
+        "industry": "Retail",
+        "employee_count": 4600
       },
-      "expected_enrichments": [],
+      "expected_enrichments": [
+        "company_domain",
+        "employee_count"
+      ],
       "unknowable_fields": [],
       "duplicate_of": null,
-      "company_id": "c24"
+      "company_id": "c48"
     },
     "L-0002": {
       "lead_id": "L-0002",
@@ -807,7 +816,8 @@
       "lead_id": "L-0023",
       "person_id": "P023",
       "corruptions": [
-        "title_abbrev"
+        "title_abbrev",
+        "caps"
       ],
       "expected_status": "NORMALIZED",
       "expected_record": {
@@ -1360,8 +1370,7 @@
       "lead_id": "L-0038",
       "person_id": "P038",
       "corruptions": [
-        "company_variant",
-        "malformed_domain"
+        "company_variant"
       ],
       "expected_status": "NORMALIZED",
       "expected_record": {
@@ -2393,44 +2402,6 @@
     },
     "L-0066": {
       "lead_id": "L-0066",
-      "person_id": "P037",
-      "corruptions": [
-        "duplicate"
-      ],
-      "expected_status": "DUPLICATE",
-      "expected_record": {
-        "first_name": "Malik",
-        "last_name": "Jensen",
-        "email": "malik.jensen@tidewatermedia.com",
-        "company": "Tidewater Media",
-        "company_domain": "tidewatermedia.com",
-        "title": "VP, Engineering",
-        "city": "Los Angeles",
-        "state": "California",
-        "country": "United States",
-        "industry": "Media & Entertainment",
-        "employee_count": 1200
-      },
-      "world_record": {
-        "first_name": "Malik",
-        "last_name": "Jensen",
-        "email": "malik.jensen@tidewatermedia.com",
-        "company": "Tidewater Media",
-        "company_domain": "tidewatermedia.com",
-        "title": "VP, Engineering",
-        "city": "Los Angeles",
-        "state": "California",
-        "country": "United States",
-        "industry": "Media & Entertainment",
-        "employee_count": 1200
-      },
-      "expected_enrichments": [],
-      "unknowable_fields": [],
-      "duplicate_of": "L-0037",
-      "company_id": "c08"
-    },
-    "L-0067": {
-      "lead_id": "L-0067",
       "person_id": "P066",
       "corruptions": [
         "company_typo"
@@ -2467,8 +2438,8 @@
       "duplicate_of": null,
       "company_id": "c33"
     },
-    "L-0068": {
-      "lead_id": "L-0068",
+    "L-0067": {
+      "lead_id": "L-0067",
       "person_id": "P067",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -2503,8 +2474,8 @@
       "duplicate_of": null,
       "company_id": "c37"
     },
-    "L-0069": {
-      "lead_id": "L-0069",
+    "L-0068": {
+      "lead_id": "L-0068",
       "person_id": "P068",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -2539,8 +2510,8 @@
       "duplicate_of": null,
       "company_id": "c35"
     },
-    "L-0070": {
-      "lead_id": "L-0070",
+    "L-0069": {
+      "lead_id": "L-0069",
       "person_id": "P069",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -2575,8 +2546,8 @@
       "duplicate_of": null,
       "company_id": "c31"
     },
-    "L-0071": {
-      "lead_id": "L-0071",
+    "L-0070": {
+      "lead_id": "L-0070",
       "person_id": "P070",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -2611,8 +2582,8 @@
       "duplicate_of": null,
       "company_id": "c50"
     },
-    "L-0072": {
-      "lead_id": "L-0072",
+    "L-0071": {
+      "lead_id": "L-0071",
       "person_id": "P071",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -2647,11 +2618,12 @@
       "duplicate_of": null,
       "company_id": "c48"
     },
-    "L-0073": {
-      "lead_id": "L-0073",
+    "L-0072": {
+      "lead_id": "L-0072",
       "person_id": "P072",
       "corruptions": [
-        "personal_email"
+        "personal_email",
+        "caps"
       ],
       "expected_status": "ENRICHED",
       "expected_record": {
@@ -2687,8 +2659,8 @@
       "duplicate_of": null,
       "company_id": "c17"
     },
-    "L-0074": {
-      "lead_id": "L-0074",
+    "L-0073": {
+      "lead_id": "L-0073",
       "person_id": "P073",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -2723,8 +2695,8 @@
       "duplicate_of": null,
       "company_id": "c05"
     },
-    "L-0075": {
-      "lead_id": "L-0075",
+    "L-0074": {
+      "lead_id": "L-0074",
       "person_id": "P074",
       "corruptions": [
         "personal_email_no_company"
@@ -2764,8 +2736,8 @@
       "duplicate_of": null,
       "company_id": "c19"
     },
-    "L-0076": {
-      "lead_id": "L-0076",
+    "L-0075": {
+      "lead_id": "L-0075",
       "person_id": "P075",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -2800,8 +2772,8 @@
       "duplicate_of": null,
       "company_id": "c22"
     },
-    "L-0077": {
-      "lead_id": "L-0077",
+    "L-0076": {
+      "lead_id": "L-0076",
       "person_id": "P076",
       "corruptions": [
         "email_case",
@@ -2839,8 +2811,8 @@
       "duplicate_of": null,
       "company_id": "c35"
     },
-    "L-0078": {
-      "lead_id": "L-0078",
+    "L-0077": {
+      "lead_id": "L-0077",
       "person_id": "P077",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -2875,8 +2847,8 @@
       "duplicate_of": null,
       "company_id": "c49"
     },
-    "L-0079": {
-      "lead_id": "L-0079",
+    "L-0078": {
+      "lead_id": "L-0078",
       "person_id": "P078",
       "corruptions": [
         "missing_location"
@@ -2917,46 +2889,8 @@
       "duplicate_of": null,
       "company_id": null
     },
-    "L-0080": {
-      "lead_id": "L-0080",
-      "person_id": "P040",
-      "corruptions": [
-        "duplicate"
-      ],
-      "expected_status": "DUPLICATE",
-      "expected_record": {
-        "first_name": "Kenji",
-        "last_name": "Haddad",
-        "email": "kenji.haddad@heartlandtransit.gov",
-        "company": "Heartland Transit Authority",
-        "company_domain": "heartlandtransit.gov",
-        "title": "Senior Data Engineer",
-        "city": "Kansas City",
-        "state": "Missouri",
-        "country": "United States",
-        "industry": "Public Sector",
-        "employee_count": 2700
-      },
-      "world_record": {
-        "first_name": "Kenji",
-        "last_name": "Haddad",
-        "email": "kenji.haddad@heartlandtransit.gov",
-        "company": "Heartland Transit Authority",
-        "company_domain": "heartlandtransit.gov",
-        "title": "Senior Data Engineer",
-        "city": "Kansas City",
-        "state": "Missouri",
-        "country": "United States",
-        "industry": "Public Sector",
-        "employee_count": 2700
-      },
-      "expected_enrichments": [],
-      "unknowable_fields": [],
-      "duplicate_of": "L-0040",
-      "company_id": "c21"
-    },
-    "L-0081": {
-      "lead_id": "L-0081",
+    "L-0079": {
+      "lead_id": "L-0079",
       "person_id": "P079",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -2991,8 +2925,8 @@
       "duplicate_of": null,
       "company_id": "c12"
     },
-    "L-0082": {
-      "lead_id": "L-0082",
+    "L-0080": {
+      "lead_id": "L-0080",
       "person_id": "P080",
       "corruptions": [
         "industry_variant"
@@ -3029,8 +2963,8 @@
       "duplicate_of": null,
       "company_id": "c35"
     },
-    "L-0083": {
-      "lead_id": "L-0083",
+    "L-0081": {
+      "lead_id": "L-0081",
       "person_id": "P081",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -3065,8 +2999,8 @@
       "duplicate_of": null,
       "company_id": "c51"
     },
-    "L-0084": {
-      "lead_id": "L-0084",
+    "L-0082": {
+      "lead_id": "L-0082",
       "person_id": "P082",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -3101,13 +3035,11 @@
       "duplicate_of": null,
       "company_id": "c33"
     },
-    "L-0085": {
-      "lead_id": "L-0085",
+    "L-0083": {
+      "lead_id": "L-0083",
       "person_id": "P083",
       "corruptions": [
-        "conflict",
-        "caps",
-        "title_abbrev"
+        "conflict"
       ],
       "expected_status": "NEEDS_REVIEW",
       "expected_record": {
@@ -3141,8 +3073,8 @@
       "duplicate_of": null,
       "company_id": "c28"
     },
-    "L-0086": {
-      "lead_id": "L-0086",
+    "L-0084": {
+      "lead_id": "L-0084",
       "person_id": "P084",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -3177,8 +3109,8 @@
       "duplicate_of": null,
       "company_id": "c23"
     },
-    "L-0087": {
-      "lead_id": "L-0087",
+    "L-0085": {
+      "lead_id": "L-0085",
       "person_id": "P085",
       "corruptions": [
         "missing_company"
@@ -3217,8 +3149,46 @@
       "duplicate_of": null,
       "company_id": "c19"
     },
-    "L-0088": {
-      "lead_id": "L-0088",
+    "L-0086": {
+      "lead_id": "L-0086",
+      "person_id": "P049",
+      "corruptions": [
+        "duplicate"
+      ],
+      "expected_status": "DUPLICATE",
+      "expected_record": {
+        "first_name": "Anne-Marie",
+        "last_name": "Yilmaz",
+        "email": "anne-marie.yilmaz@brazoshealth.org",
+        "company": "Brazos Health",
+        "company_domain": "brazoshealth.org",
+        "title": "Manager, Marketing Operations",
+        "city": "Austin",
+        "state": "Texas",
+        "country": "United States",
+        "industry": "Healthcare",
+        "employee_count": 5200
+      },
+      "world_record": {
+        "first_name": "Anne-Marie",
+        "last_name": "Yilmaz",
+        "email": "anne-marie.yilmaz@brazoshealth.org",
+        "company": "Brazos Health",
+        "company_domain": "brazoshealth.org",
+        "title": "Manager, Marketing Operations",
+        "city": "Austin",
+        "state": "Texas",
+        "country": "United States",
+        "industry": "Healthcare",
+        "employee_count": 5200
+      },
+      "expected_enrichments": [],
+      "unknowable_fields": [],
+      "duplicate_of": "L-0049",
+      "company_id": "c17"
+    },
+    "L-0087": {
+      "lead_id": "L-0087",
       "person_id": "P086",
       "corruptions": [
         "title_abbrev"
@@ -3255,8 +3225,8 @@
       "duplicate_of": null,
       "company_id": "c38"
     },
-    "L-0089": {
-      "lead_id": "L-0089",
+    "L-0088": {
+      "lead_id": "L-0088",
       "person_id": "P087",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -3291,8 +3261,8 @@
       "duplicate_of": null,
       "company_id": "c20"
     },
-    "L-0090": {
-      "lead_id": "L-0090",
+    "L-0089": {
+      "lead_id": "L-0089",
       "person_id": "P088",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -3327,8 +3297,8 @@
       "duplicate_of": null,
       "company_id": "c27"
     },
-    "L-0091": {
-      "lead_id": "L-0091",
+    "L-0090": {
+      "lead_id": "L-0090",
       "person_id": "P089",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -3363,11 +3333,12 @@
       "duplicate_of": null,
       "company_id": "c09"
     },
-    "L-0092": {
-      "lead_id": "L-0092",
+    "L-0091": {
+      "lead_id": "L-0091",
       "person_id": "P090",
       "corruptions": [
-        "title_abbrev"
+        "title_abbrev",
+        "caps"
       ],
       "expected_status": "NORMALIZED",
       "expected_record": {
@@ -3401,8 +3372,8 @@
       "duplicate_of": null,
       "company_id": "c04"
     },
-    "L-0093": {
-      "lead_id": "L-0093",
+    "L-0092": {
+      "lead_id": "L-0092",
       "person_id": "P091",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -3437,12 +3408,11 @@
       "duplicate_of": null,
       "company_id": "c13"
     },
-    "L-0094": {
-      "lead_id": "L-0094",
+    "L-0093": {
+      "lead_id": "L-0093",
       "person_id": "P092",
       "corruptions": [
-        "country_alias",
-        "state_abbrev"
+        "country_alias"
       ],
       "expected_status": "NORMALIZED",
       "expected_record": {
@@ -3476,8 +3446,8 @@
       "duplicate_of": null,
       "company_id": "c03"
     },
-    "L-0095": {
-      "lead_id": "L-0095",
+    "L-0094": {
+      "lead_id": "L-0094",
       "person_id": "P093",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -3512,8 +3482,8 @@
       "duplicate_of": null,
       "company_id": "c43"
     },
-    "L-0096": {
-      "lead_id": "L-0096",
+    "L-0095": {
+      "lead_id": "L-0095",
       "person_id": "P094",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -3548,8 +3518,8 @@
       "duplicate_of": null,
       "company_id": "c01"
     },
-    "L-0097": {
-      "lead_id": "L-0097",
+    "L-0096": {
+      "lead_id": "L-0096",
       "person_id": "P095",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -3584,8 +3554,8 @@
       "duplicate_of": null,
       "company_id": "c48"
     },
-    "L-0098": {
-      "lead_id": "L-0098",
+    "L-0097": {
+      "lead_id": "L-0097",
       "person_id": "P096",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -3620,8 +3590,8 @@
       "duplicate_of": null,
       "company_id": "c11"
     },
-    "L-0099": {
-      "lead_id": "L-0099",
+    "L-0098": {
+      "lead_id": "L-0098",
       "person_id": "P097",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -3656,8 +3626,8 @@
       "duplicate_of": null,
       "company_id": "c32"
     },
-    "L-0100": {
-      "lead_id": "L-0100",
+    "L-0099": {
+      "lead_id": "L-0099",
       "person_id": "P098",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -3692,12 +3662,11 @@
       "duplicate_of": null,
       "company_id": "c35"
     },
-    "L-0101": {
-      "lead_id": "L-0101",
+    "L-0100": {
+      "lead_id": "L-0100",
       "person_id": "P099",
       "corruptions": [
-        "title_abbrev",
-        "caps"
+        "title_abbrev"
       ],
       "expected_status": "NORMALIZED",
       "expected_record": {
@@ -3731,8 +3700,8 @@
       "duplicate_of": null,
       "company_id": "c39"
     },
-    "L-0102": {
-      "lead_id": "L-0102",
+    "L-0101": {
+      "lead_id": "L-0101",
       "person_id": "P100",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -3767,8 +3736,8 @@
       "duplicate_of": null,
       "company_id": "c44"
     },
-    "L-0103": {
-      "lead_id": "L-0103",
+    "L-0102": {
+      "lead_id": "L-0102",
       "person_id": "P101",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -3803,8 +3772,8 @@
       "duplicate_of": null,
       "company_id": "c48"
     },
-    "L-0104": {
-      "lead_id": "L-0104",
+    "L-0103": {
+      "lead_id": "L-0103",
       "person_id": "P102",
       "corruptions": [
         "state_abbrev"
@@ -3841,8 +3810,8 @@
       "duplicate_of": null,
       "company_id": null
     },
-    "L-0105": {
-      "lead_id": "L-0105",
+    "L-0104": {
+      "lead_id": "L-0104",
       "person_id": "P103",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -3877,8 +3846,8 @@
       "duplicate_of": null,
       "company_id": "c42"
     },
-    "L-0106": {
-      "lead_id": "L-0106",
+    "L-0105": {
+      "lead_id": "L-0105",
       "person_id": "P104",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -3913,8 +3882,8 @@
       "duplicate_of": null,
       "company_id": "c01"
     },
-    "L-0107": {
-      "lead_id": "L-0107",
+    "L-0106": {
+      "lead_id": "L-0106",
       "person_id": "P105",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -3949,8 +3918,8 @@
       "duplicate_of": null,
       "company_id": "c29"
     },
-    "L-0108": {
-      "lead_id": "L-0108",
+    "L-0107": {
+      "lead_id": "L-0107",
       "person_id": "P106",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -3985,8 +3954,8 @@
       "duplicate_of": null,
       "company_id": "c28"
     },
-    "L-0109": {
-      "lead_id": "L-0109",
+    "L-0108": {
+      "lead_id": "L-0108",
       "person_id": "P107",
       "corruptions": [
         "missing_location"
@@ -4027,8 +3996,8 @@
       "duplicate_of": null,
       "company_id": "c13"
     },
-    "L-0110": {
-      "lead_id": "L-0110",
+    "L-0109": {
+      "lead_id": "L-0109",
       "person_id": "P108",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -4063,8 +4032,8 @@
       "duplicate_of": null,
       "company_id": "c51"
     },
-    "L-0111": {
-      "lead_id": "L-0111",
+    "L-0110": {
+      "lead_id": "L-0110",
       "person_id": "P109",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -4099,12 +4068,11 @@
       "duplicate_of": null,
       "company_id": "c27"
     },
-    "L-0112": {
-      "lead_id": "L-0112",
+    "L-0111": {
+      "lead_id": "L-0111",
       "person_id": "P110",
       "corruptions": [
-        "self_reported_industry",
-        "malformed_domain"
+        "self_reported_industry"
       ],
       "expected_status": "NORMALIZED",
       "expected_record": {
@@ -4138,8 +4106,8 @@
       "duplicate_of": null,
       "company_id": "c01"
     },
-    "L-0113": {
-      "lead_id": "L-0113",
+    "L-0112": {
+      "lead_id": "L-0112",
       "person_id": "P111",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -4174,8 +4142,8 @@
       "duplicate_of": null,
       "company_id": "c49"
     },
-    "L-0114": {
-      "lead_id": "L-0114",
+    "L-0113": {
+      "lead_id": "L-0113",
       "person_id": "P112",
       "corruptions": [
         "malformed_domain",
@@ -4213,8 +4181,8 @@
       "duplicate_of": null,
       "company_id": "c23"
     },
-    "L-0115": {
-      "lead_id": "L-0115",
+    "L-0114": {
+      "lead_id": "L-0114",
       "person_id": "P113",
       "corruptions": [
         "personal_email_no_company"
@@ -4254,8 +4222,8 @@
       "duplicate_of": null,
       "company_id": "c29"
     },
-    "L-0116": {
-      "lead_id": "L-0116",
+    "L-0115": {
+      "lead_id": "L-0115",
       "person_id": "P114",
       "corruptions": [
         "missing_industry"
@@ -4293,6 +4261,44 @@
       "unknowable_fields": [],
       "duplicate_of": null,
       "company_id": "c39"
+    },
+    "L-0116": {
+      "lead_id": "L-0116",
+      "person_id": "P010",
+      "corruptions": [
+        "duplicate"
+      ],
+      "expected_status": "DUPLICATE",
+      "expected_record": {
+        "first_name": "Farah",
+        "last_name": "Xu",
+        "email": "farah.xu@graniteledger.io",
+        "company": "Granite Ledger",
+        "company_domain": "graniteledger.io",
+        "title": "Data Scientist",
+        "city": "Raleigh",
+        "state": "North Carolina",
+        "country": "United States",
+        "industry": "Technology",
+        "employee_count": 240
+      },
+      "world_record": {
+        "first_name": "Farah",
+        "last_name": "Xu",
+        "email": "farah.xu@graniteledger.io",
+        "company": "Granite Ledger",
+        "company_domain": "graniteledger.io",
+        "title": "Data Scientist",
+        "city": "Raleigh",
+        "state": "North Carolina",
+        "country": "United States",
+        "industry": "Technology",
+        "employee_count": 240
+      },
+      "expected_enrichments": [],
+      "unknowable_fields": [],
+      "duplicate_of": "L-0010",
+      "company_id": "c31"
     },
     "L-0117": {
       "lead_id": "L-0117",
@@ -4548,44 +4554,6 @@
     },
     "L-0124": {
       "lead_id": "L-0124",
-      "person_id": "P110",
-      "corruptions": [
-        "duplicate"
-      ],
-      "expected_status": "DUPLICATE",
-      "expected_record": {
-        "first_name": "Nadia",
-        "last_name": "Costa",
-        "email": "nadia.costa@halcyonretail.com",
-        "company": "Halcyon Retail Group",
-        "company_domain": "halcyonretail.com",
-        "title": "Head of Engineering",
-        "city": "Seattle",
-        "state": "Washington",
-        "country": "United States",
-        "industry": "Retail",
-        "employee_count": 14500
-      },
-      "world_record": {
-        "first_name": "Nadia",
-        "last_name": "Costa",
-        "email": "nadia.costa@halcyonretail.com",
-        "company": "Halcyon Retail Group",
-        "company_domain": "halcyonretail.com",
-        "title": "Head of Engineering",
-        "city": "Seattle",
-        "state": "Washington",
-        "country": "United States",
-        "industry": "Retail",
-        "employee_count": 14500
-      },
-      "expected_enrichments": [],
-      "unknowable_fields": [],
-      "duplicate_of": "L-0112",
-      "company_id": "c01"
-    },
-    "L-0125": {
-      "lead_id": "L-0125",
       "person_id": "P122",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -4620,8 +4588,8 @@
       "duplicate_of": null,
       "company_id": "c22"
     },
-    "L-0126": {
-      "lead_id": "L-0126",
+    "L-0125": {
+      "lead_id": "L-0125",
       "person_id": "P123",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -4656,12 +4624,11 @@
       "duplicate_of": null,
       "company_id": "c21"
     },
-    "L-0127": {
-      "lead_id": "L-0127",
+    "L-0126": {
+      "lead_id": "L-0126",
       "person_id": "P124",
       "corruptions": [
-        "company_variant",
-        "title_abbrev"
+        "company_variant"
       ],
       "expected_status": "NORMALIZED",
       "expected_record": {
@@ -4695,8 +4662,8 @@
       "duplicate_of": null,
       "company_id": "c23"
     },
-    "L-0128": {
-      "lead_id": "L-0128",
+    "L-0127": {
+      "lead_id": "L-0127",
       "person_id": "P125",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -4731,8 +4698,8 @@
       "duplicate_of": null,
       "company_id": "c01"
     },
-    "L-0129": {
-      "lead_id": "L-0129",
+    "L-0128": {
+      "lead_id": "L-0128",
       "person_id": "P126",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -4767,46 +4734,8 @@
       "duplicate_of": null,
       "company_id": null
     },
-    "L-0130": {
-      "lead_id": "L-0130",
-      "person_id": "P124",
-      "corruptions": [
-        "duplicate"
-      ],
-      "expected_status": "DUPLICATE",
-      "expected_record": {
-        "first_name": "Camila",
-        "last_name": "Sokolov",
-        "email": "camila.sokolov@brightwaterins.com",
-        "company": "Brightwater Insurance",
-        "company_domain": "brightwaterins.com",
-        "title": "Head of Data",
-        "city": "Hartford",
-        "state": "Connecticut",
-        "country": "United States",
-        "industry": "Financial Services",
-        "employee_count": 1600
-      },
-      "world_record": {
-        "first_name": "Camila",
-        "last_name": "Sokolov",
-        "email": "camila.sokolov@brightwaterins.com",
-        "company": "Brightwater Insurance",
-        "company_domain": "brightwaterins.com",
-        "title": "Head of Data",
-        "city": "Hartford",
-        "state": "Connecticut",
-        "country": "United States",
-        "industry": "Financial Services",
-        "employee_count": 1600
-      },
-      "expected_enrichments": [],
-      "unknowable_fields": [],
-      "duplicate_of": "L-0127",
-      "company_id": "c23"
-    },
-    "L-0131": {
-      "lead_id": "L-0131",
+    "L-0129": {
+      "lead_id": "L-0129",
       "person_id": "P127",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -4841,46 +4770,8 @@
       "duplicate_of": null,
       "company_id": "c14"
     },
-    "L-0132": {
-      "lead_id": "L-0132",
-      "person_id": "P033",
-      "corruptions": [
-        "duplicate"
-      ],
-      "expected_status": "DUPLICATE",
-      "expected_record": {
-        "first_name": "Grace",
-        "last_name": "Ferreira",
-        "email": "grace.ferreira@mesahealth.org",
-        "company": "Mesa Health Network",
-        "company_domain": "mesahealth.org",
-        "title": "Manager, Revenue Operations",
-        "city": "Phoenix",
-        "state": "Arizona",
-        "country": "United States",
-        "industry": "Healthcare",
-        "employee_count": 3400
-      },
-      "world_record": {
-        "first_name": "Grace",
-        "last_name": "Ferreira",
-        "email": "grace.ferreira@mesahealth.org",
-        "company": "Mesa Health Network",
-        "company_domain": "mesahealth.org",
-        "title": "Manager, Revenue Operations",
-        "city": "Phoenix",
-        "state": "Arizona",
-        "country": "United States",
-        "industry": "Healthcare",
-        "employee_count": 3400
-      },
-      "expected_enrichments": [],
-      "unknowable_fields": [],
-      "duplicate_of": "L-0033",
-      "company_id": "c07"
-    },
-    "L-0133": {
-      "lead_id": "L-0133",
+    "L-0130": {
+      "lead_id": "L-0130",
       "person_id": "P128",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -4915,8 +4806,46 @@
       "duplicate_of": null,
       "company_id": "c47"
     },
-    "L-0134": {
-      "lead_id": "L-0134",
+    "L-0131": {
+      "lead_id": "L-0131",
+      "person_id": "P045",
+      "corruptions": [
+        "duplicate"
+      ],
+      "expected_status": "DUPLICATE",
+      "expected_record": {
+        "first_name": "Aisha",
+        "last_name": "Torres",
+        "email": "aisha.torres@brightwaterins.com",
+        "company": "Brightwater Insurance",
+        "company_domain": "brightwaterins.com",
+        "title": "Senior Manager, IT",
+        "city": "Hartford",
+        "state": "Connecticut",
+        "country": "United States",
+        "industry": "Financial Services",
+        "employee_count": 1600
+      },
+      "world_record": {
+        "first_name": "Aisha",
+        "last_name": "Torres",
+        "email": "aisha.torres@brightwaterins.com",
+        "company": "Brightwater Insurance",
+        "company_domain": "brightwaterins.com",
+        "title": "Senior Manager, IT",
+        "city": "Hartford",
+        "state": "Connecticut",
+        "country": "United States",
+        "industry": "Financial Services",
+        "employee_count": 1600
+      },
+      "expected_enrichments": [],
+      "unknowable_fields": [],
+      "duplicate_of": "L-0045",
+      "company_id": "c23"
+    },
+    "L-0132": {
+      "lead_id": "L-0132",
       "person_id": "P129",
       "corruptions": [
         "state_abbrev"
@@ -4953,11 +4882,12 @@
       "duplicate_of": null,
       "company_id": "c35"
     },
-    "L-0135": {
-      "lead_id": "L-0135",
+    "L-0133": {
+      "lead_id": "L-0133",
       "person_id": "P130",
       "corruptions": [
-        "conflict"
+        "conflict",
+        "malformed_domain"
       ],
       "expected_status": "NEEDS_REVIEW",
       "expected_record": {
@@ -4991,8 +4921,8 @@
       "duplicate_of": null,
       "company_id": "c13"
     },
-    "L-0136": {
-      "lead_id": "L-0136",
+    "L-0134": {
+      "lead_id": "L-0134",
       "person_id": "P131",
       "corruptions": [
         "state_abbrev",
@@ -5030,8 +4960,8 @@
       "duplicate_of": null,
       "company_id": "c48"
     },
-    "L-0137": {
-      "lead_id": "L-0137",
+    "L-0135": {
+      "lead_id": "L-0135",
       "person_id": "P132",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -5066,8 +4996,8 @@
       "duplicate_of": null,
       "company_id": "c43"
     },
-    "L-0138": {
-      "lead_id": "L-0138",
+    "L-0136": {
+      "lead_id": "L-0136",
       "person_id": "P133",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -5102,8 +5032,8 @@
       "duplicate_of": null,
       "company_id": "c42"
     },
-    "L-0139": {
-      "lead_id": "L-0139",
+    "L-0137": {
+      "lead_id": "L-0137",
       "person_id": "P134",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -5138,8 +5068,8 @@
       "duplicate_of": null,
       "company_id": "c11"
     },
-    "L-0140": {
-      "lead_id": "L-0140",
+    "L-0138": {
+      "lead_id": "L-0138",
       "person_id": "P135",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -5174,8 +5104,8 @@
       "duplicate_of": null,
       "company_id": "c31"
     },
-    "L-0141": {
-      "lead_id": "L-0141",
+    "L-0139": {
+      "lead_id": "L-0139",
       "person_id": "P136",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -5210,8 +5140,8 @@
       "duplicate_of": null,
       "company_id": "c17"
     },
-    "L-0142": {
-      "lead_id": "L-0142",
+    "L-0140": {
+      "lead_id": "L-0140",
       "person_id": "P137",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -5246,8 +5176,8 @@
       "duplicate_of": null,
       "company_id": "c35"
     },
-    "L-0143": {
-      "lead_id": "L-0143",
+    "L-0141": {
+      "lead_id": "L-0141",
       "person_id": "P138",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -5282,8 +5212,8 @@
       "duplicate_of": null,
       "company_id": "c38"
     },
-    "L-0144": {
-      "lead_id": "L-0144",
+    "L-0142": {
+      "lead_id": "L-0142",
       "person_id": "P139",
       "corruptions": [
         "personal_email_no_company"
@@ -5323,8 +5253,8 @@
       "duplicate_of": null,
       "company_id": "c40"
     },
-    "L-0145": {
-      "lead_id": "L-0145",
+    "L-0143": {
+      "lead_id": "L-0143",
       "person_id": "P140",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -5359,8 +5289,8 @@
       "duplicate_of": null,
       "company_id": "c28"
     },
-    "L-0146": {
-      "lead_id": "L-0146",
+    "L-0144": {
+      "lead_id": "L-0144",
       "person_id": "P141",
       "corruptions": [
         "missing_employees"
@@ -5399,8 +5329,8 @@
       "duplicate_of": null,
       "company_id": "c33"
     },
-    "L-0147": {
-      "lead_id": "L-0147",
+    "L-0145": {
+      "lead_id": "L-0145",
       "person_id": "P142",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -5435,8 +5365,8 @@
       "duplicate_of": null,
       "company_id": "c52"
     },
-    "L-0148": {
-      "lead_id": "L-0148",
+    "L-0146": {
+      "lead_id": "L-0146",
       "person_id": "P143",
       "corruptions": [
         "missing_employees",
@@ -5476,8 +5406,8 @@
       "duplicate_of": null,
       "company_id": "c49"
     },
-    "L-0149": {
-      "lead_id": "L-0149",
+    "L-0147": {
+      "lead_id": "L-0147",
       "person_id": "P144",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -5512,11 +5442,12 @@
       "duplicate_of": null,
       "company_id": "c45"
     },
-    "L-0150": {
-      "lead_id": "L-0150",
+    "L-0148": {
+      "lead_id": "L-0148",
       "person_id": "P145",
       "corruptions": [
-        "company_variant"
+        "company_variant",
+        "malformed_domain"
       ],
       "expected_status": "NORMALIZED",
       "expected_record": {
@@ -5550,8 +5481,8 @@
       "duplicate_of": null,
       "company_id": "c17"
     },
-    "L-0151": {
-      "lead_id": "L-0151",
+    "L-0149": {
+      "lead_id": "L-0149",
       "person_id": "P146",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -5586,8 +5517,8 @@
       "duplicate_of": null,
       "company_id": "c13"
     },
-    "L-0152": {
-      "lead_id": "L-0152",
+    "L-0150": {
+      "lead_id": "L-0150",
       "person_id": "P147",
       "corruptions": [
         "personal_email"
@@ -5626,8 +5557,8 @@
       "duplicate_of": null,
       "company_id": "c02"
     },
-    "L-0153": {
-      "lead_id": "L-0153",
+    "L-0151": {
+      "lead_id": "L-0151",
       "person_id": "P148",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -5662,8 +5593,8 @@
       "duplicate_of": null,
       "company_id": "c08"
     },
-    "L-0154": {
-      "lead_id": "L-0154",
+    "L-0152": {
+      "lead_id": "L-0152",
       "person_id": "P149",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -5698,8 +5629,8 @@
       "duplicate_of": null,
       "company_id": "c38"
     },
-    "L-0155": {
-      "lead_id": "L-0155",
+    "L-0153": {
+      "lead_id": "L-0153",
       "person_id": "P150",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -5734,8 +5665,8 @@
       "duplicate_of": null,
       "company_id": null
     },
-    "L-0156": {
-      "lead_id": "L-0156",
+    "L-0154": {
+      "lead_id": "L-0154",
       "person_id": "P151",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -5770,8 +5701,8 @@
       "duplicate_of": null,
       "company_id": "c42"
     },
-    "L-0157": {
-      "lead_id": "L-0157",
+    "L-0155": {
+      "lead_id": "L-0155",
       "person_id": "P152",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -5806,8 +5737,8 @@
       "duplicate_of": null,
       "company_id": "c44"
     },
-    "L-0158": {
-      "lead_id": "L-0158",
+    "L-0156": {
+      "lead_id": "L-0156",
       "person_id": "P153",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -5842,50 +5773,8 @@
       "duplicate_of": null,
       "company_id": "c22"
     },
-    "L-0159": {
-      "lead_id": "L-0159",
-      "person_id": "P107",
-      "corruptions": [
-        "duplicate"
-      ],
-      "expected_status": "DUPLICATE",
-      "expected_record": {
-        "first_name": "Aaliyah",
-        "last_name": "Pham",
-        "email": "aaliyah.pham@ironpeak.com",
-        "company": "Ironpeak Manufacturing",
-        "company_domain": "ironpeak.com",
-        "title": "Machine Learning Engineer",
-        "city": null,
-        "state": null,
-        "country": null,
-        "industry": "Manufacturing",
-        "employee_count": 11000
-      },
-      "world_record": {
-        "first_name": "Aaliyah",
-        "last_name": "Pham",
-        "email": "aaliyah.pham@ironpeak.com",
-        "company": "Ironpeak Manufacturing",
-        "company_domain": "ironpeak.com",
-        "title": "Machine Learning Engineer",
-        "city": "Chicago",
-        "state": "Illinois",
-        "country": "United States",
-        "industry": "Manufacturing",
-        "employee_count": 11000
-      },
-      "expected_enrichments": [],
-      "unknowable_fields": [
-        "city",
-        "state",
-        "country"
-      ],
-      "duplicate_of": "L-0109",
-      "company_id": "c13"
-    },
-    "L-0160": {
-      "lead_id": "L-0160",
+    "L-0157": {
+      "lead_id": "L-0157",
       "person_id": "P154",
       "corruptions": [
         "company_variant"
@@ -5922,8 +5811,8 @@
       "duplicate_of": null,
       "company_id": "c35"
     },
-    "L-0161": {
-      "lead_id": "L-0161",
+    "L-0158": {
+      "lead_id": "L-0158",
       "person_id": "P155",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -5958,8 +5847,8 @@
       "duplicate_of": null,
       "company_id": "c27"
     },
-    "L-0162": {
-      "lead_id": "L-0162",
+    "L-0159": {
+      "lead_id": "L-0159",
       "person_id": "P156",
       "corruptions": [
         "missing_industry"
@@ -5998,8 +5887,8 @@
       "duplicate_of": null,
       "company_id": "c50"
     },
-    "L-0163": {
-      "lead_id": "L-0163",
+    "L-0160": {
+      "lead_id": "L-0160",
       "person_id": "P157",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -6034,8 +5923,8 @@
       "duplicate_of": null,
       "company_id": "c15"
     },
-    "L-0164": {
-      "lead_id": "L-0164",
+    "L-0161": {
+      "lead_id": "L-0161",
       "person_id": "P158",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -6070,8 +5959,46 @@
       "duplicate_of": null,
       "company_id": "c46"
     },
-    "L-0165": {
-      "lead_id": "L-0165",
+    "L-0162": {
+      "lead_id": "L-0162",
+      "person_id": "P112",
+      "corruptions": [
+        "duplicate"
+      ],
+      "expected_status": "DUPLICATE",
+      "expected_record": {
+        "first_name": "Yusuf",
+        "last_name": "Bauer",
+        "email": "yusuf.bauer@brightwaterins.com",
+        "company": "Brightwater Insurance",
+        "company_domain": "brightwaterins.com",
+        "title": "Solutions Architect",
+        "city": "Hartford",
+        "state": "Connecticut",
+        "country": "United States",
+        "industry": "Financial Services",
+        "employee_count": 1600
+      },
+      "world_record": {
+        "first_name": "Yusuf",
+        "last_name": "Bauer",
+        "email": "yusuf.bauer@brightwaterins.com",
+        "company": "Brightwater Insurance",
+        "company_domain": "brightwaterins.com",
+        "title": "Solutions Architect",
+        "city": "Hartford",
+        "state": "Connecticut",
+        "country": "United States",
+        "industry": "Financial Services",
+        "employee_count": 1600
+      },
+      "expected_enrichments": [],
+      "unknowable_fields": [],
+      "duplicate_of": "L-0113",
+      "company_id": "c23"
+    },
+    "L-0163": {
+      "lead_id": "L-0163",
       "person_id": "P159",
       "corruptions": [
         "employee_format"
@@ -6108,8 +6035,8 @@
       "duplicate_of": null,
       "company_id": "c32"
     },
-    "L-0166": {
-      "lead_id": "L-0166",
+    "L-0164": {
+      "lead_id": "L-0164",
       "person_id": "P160",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -6144,11 +6071,12 @@
       "duplicate_of": null,
       "company_id": "c25"
     },
-    "L-0167": {
-      "lead_id": "L-0167",
+    "L-0165": {
+      "lead_id": "L-0165",
       "person_id": "P161",
       "corruptions": [
-        "missing_company"
+        "missing_company",
+        "state_abbrev"
       ],
       "expected_status": "ENRICHED",
       "expected_record": {
@@ -6184,8 +6112,8 @@
       "duplicate_of": null,
       "company_id": "c13"
     },
-    "L-0168": {
-      "lead_id": "L-0168",
+    "L-0166": {
+      "lead_id": "L-0166",
       "person_id": "P162",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -6220,8 +6148,8 @@
       "duplicate_of": null,
       "company_id": "c01"
     },
-    "L-0169": {
-      "lead_id": "L-0169",
+    "L-0167": {
+      "lead_id": "L-0167",
       "person_id": "P163",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -6256,8 +6184,8 @@
       "duplicate_of": null,
       "company_id": "c22"
     },
-    "L-0170": {
-      "lead_id": "L-0170",
+    "L-0168": {
+      "lead_id": "L-0168",
       "person_id": "P164",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -6292,8 +6220,8 @@
       "duplicate_of": null,
       "company_id": "c19"
     },
-    "L-0171": {
-      "lead_id": "L-0171",
+    "L-0169": {
+      "lead_id": "L-0169",
       "person_id": "P165",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -6328,8 +6256,8 @@
       "duplicate_of": null,
       "company_id": "c39"
     },
-    "L-0172": {
-      "lead_id": "L-0172",
+    "L-0170": {
+      "lead_id": "L-0170",
       "person_id": "P166",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -6364,8 +6292,8 @@
       "duplicate_of": null,
       "company_id": "c07"
     },
-    "L-0173": {
-      "lead_id": "L-0173",
+    "L-0171": {
+      "lead_id": "L-0171",
       "person_id": "P167",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -6400,8 +6328,8 @@
       "duplicate_of": null,
       "company_id": "c09"
     },
-    "L-0174": {
-      "lead_id": "L-0174",
+    "L-0172": {
+      "lead_id": "L-0172",
       "person_id": "P168",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -6436,8 +6364,8 @@
       "duplicate_of": null,
       "company_id": "c53"
     },
-    "L-0175": {
-      "lead_id": "L-0175",
+    "L-0173": {
+      "lead_id": "L-0173",
       "person_id": "P169",
       "corruptions": [
         "missing_industry"
@@ -6476,12 +6404,11 @@
       "duplicate_of": null,
       "company_id": "c36"
     },
-    "L-0176": {
-      "lead_id": "L-0176",
+    "L-0174": {
+      "lead_id": "L-0174",
       "person_id": "P170",
       "corruptions": [
-        "personal_email",
-        "caps"
+        "personal_email"
       ],
       "expected_status": "ENRICHED",
       "expected_record": {
@@ -6517,8 +6444,8 @@
       "duplicate_of": null,
       "company_id": "c20"
     },
-    "L-0177": {
-      "lead_id": "L-0177",
+    "L-0175": {
+      "lead_id": "L-0175",
       "person_id": "P171",
       "corruptions": [
         "state_abbrev"
@@ -6555,8 +6482,8 @@
       "duplicate_of": null,
       "company_id": "c52"
     },
-    "L-0178": {
-      "lead_id": "L-0178",
+    "L-0176": {
+      "lead_id": "L-0176",
       "person_id": "P172",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -6591,8 +6518,8 @@
       "duplicate_of": null,
       "company_id": "c48"
     },
-    "L-0179": {
-      "lead_id": "L-0179",
+    "L-0177": {
+      "lead_id": "L-0177",
       "person_id": "P173",
       "corruptions": [
         "state_abbrev"
@@ -6629,8 +6556,46 @@
       "duplicate_of": null,
       "company_id": "c23"
     },
-    "L-0180": {
-      "lead_id": "L-0180",
+    "L-0178": {
+      "lead_id": "L-0178",
+      "person_id": "P167",
+      "corruptions": [
+        "duplicate"
+      ],
+      "expected_status": "DUPLICATE",
+      "expected_record": {
+        "first_name": "Theo",
+        "last_name": "Singh",
+        "email": "theo.singh@juniperrobotics.ai",
+        "company": "Juniper Robotics",
+        "company_domain": "juniperrobotics.ai",
+        "title": "VP, Marketing",
+        "city": "Los Angeles",
+        "state": "California",
+        "country": "United States",
+        "industry": "Manufacturing",
+        "employee_count": 150
+      },
+      "world_record": {
+        "first_name": "Theo",
+        "last_name": "Singh",
+        "email": "theo.singh@juniperrobotics.ai",
+        "company": "Juniper Robotics",
+        "company_domain": "juniperrobotics.ai",
+        "title": "VP, Marketing",
+        "city": "Los Angeles",
+        "state": "California",
+        "country": "United States",
+        "industry": "Manufacturing",
+        "employee_count": 150
+      },
+      "expected_enrichments": [],
+      "unknowable_fields": [],
+      "duplicate_of": "L-0171",
+      "company_id": "c09"
+    },
+    "L-0179": {
+      "lead_id": "L-0179",
       "person_id": "P174",
       "corruptions": [
         "email_case"
@@ -6667,11 +6632,12 @@
       "duplicate_of": null,
       "company_id": null
     },
-    "L-0181": {
-      "lead_id": "L-0181",
+    "L-0180": {
+      "lead_id": "L-0180",
       "person_id": "P175",
       "corruptions": [
-        "company_typo"
+        "company_typo",
+        "malformed_domain"
       ],
       "expected_status": "NORMALIZED",
       "expected_record": {
@@ -6705,8 +6671,8 @@
       "duplicate_of": null,
       "company_id": "c02"
     },
-    "L-0182": {
-      "lead_id": "L-0182",
+    "L-0181": {
+      "lead_id": "L-0181",
       "person_id": "P176",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -6741,8 +6707,8 @@
       "duplicate_of": null,
       "company_id": "c17"
     },
-    "L-0183": {
-      "lead_id": "L-0183",
+    "L-0182": {
+      "lead_id": "L-0182",
       "person_id": "P177",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -6777,8 +6743,8 @@
       "duplicate_of": null,
       "company_id": "c34"
     },
-    "L-0184": {
-      "lead_id": "L-0184",
+    "L-0183": {
+      "lead_id": "L-0183",
       "person_id": "P178",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -6813,8 +6779,8 @@
       "duplicate_of": null,
       "company_id": "c33"
     },
-    "L-0185": {
-      "lead_id": "L-0185",
+    "L-0184": {
+      "lead_id": "L-0184",
       "person_id": "P179",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -6849,8 +6815,8 @@
       "duplicate_of": null,
       "company_id": "c08"
     },
-    "L-0186": {
-      "lead_id": "L-0186",
+    "L-0185": {
+      "lead_id": "L-0185",
       "person_id": "P180",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -6885,8 +6851,8 @@
       "duplicate_of": null,
       "company_id": "c27"
     },
-    "L-0187": {
-      "lead_id": "L-0187",
+    "L-0186": {
+      "lead_id": "L-0186",
       "person_id": "P181",
       "corruptions": [
         "title_abbrev"
@@ -6923,8 +6889,8 @@
       "duplicate_of": null,
       "company_id": "c45"
     },
-    "L-0188": {
-      "lead_id": "L-0188",
+    "L-0187": {
+      "lead_id": "L-0187",
       "person_id": "P182",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -6959,8 +6925,8 @@
       "duplicate_of": null,
       "company_id": "c53"
     },
-    "L-0189": {
-      "lead_id": "L-0189",
+    "L-0188": {
+      "lead_id": "L-0188",
       "person_id": "P183",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -6994,6 +6960,44 @@
       "unknowable_fields": [],
       "duplicate_of": null,
       "company_id": "c22"
+    },
+    "L-0189": {
+      "lead_id": "L-0189",
+      "person_id": "P067",
+      "corruptions": [
+        "duplicate"
+      ],
+      "expected_status": "DUPLICATE",
+      "expected_record": {
+        "first_name": "Aaliyah",
+        "last_name": "Zhang",
+        "email": "aaliyah.zhang@thamesanalytics.co.uk",
+        "company": "Thames Analytics",
+        "company_domain": "thamesanalytics.co.uk",
+        "title": "Director, IT",
+        "city": "London",
+        "state": null,
+        "country": "United Kingdom",
+        "industry": "Technology",
+        "employee_count": 1100
+      },
+      "world_record": {
+        "first_name": "Aaliyah",
+        "last_name": "Zhang",
+        "email": "aaliyah.zhang@thamesanalytics.co.uk",
+        "company": "Thames Analytics",
+        "company_domain": "thamesanalytics.co.uk",
+        "title": "Director, IT",
+        "city": "London",
+        "state": null,
+        "country": "United Kingdom",
+        "industry": "Technology",
+        "employee_count": 1100
+      },
+      "expected_enrichments": [],
+      "unknowable_fields": [],
+      "duplicate_of": "L-0067",
+      "company_id": "c37"
     },
     "L-0190": {
       "lead_id": "L-0190",
@@ -7035,7 +7039,9 @@
       "lead_id": "L-0191",
       "person_id": "P185",
       "corruptions": [
-        "conflict"
+        "conflict",
+        "caps",
+        "title_abbrev"
       ],
       "expected_status": "NEEDS_REVIEW",
       "expected_record": {
@@ -7143,6 +7149,44 @@
     },
     "L-0194": {
       "lead_id": "L-0194",
+      "person_id": "P180",
+      "corruptions": [
+        "duplicate"
+      ],
+      "expected_status": "DUPLICATE",
+      "expected_record": {
+        "first_name": "Oskar",
+        "last_name": "Brennan",
+        "email": "oskar.brennan@peachtreeoutfitters.com",
+        "company": "Peachtree Outfitters",
+        "company_domain": "peachtreeoutfitters.com",
+        "title": "Manager, Marketing Operations",
+        "city": "Atlanta",
+        "state": "Georgia",
+        "country": "United States",
+        "industry": "Retail",
+        "employee_count": 2200
+      },
+      "world_record": {
+        "first_name": "Oskar",
+        "last_name": "Brennan",
+        "email": "oskar.brennan@peachtreeoutfitters.com",
+        "company": "Peachtree Outfitters",
+        "company_domain": "peachtreeoutfitters.com",
+        "title": "Manager, Marketing Operations",
+        "city": "Atlanta",
+        "state": "Georgia",
+        "country": "United States",
+        "industry": "Retail",
+        "employee_count": 2200
+      },
+      "expected_enrichments": [],
+      "unknowable_fields": [],
+      "duplicate_of": "L-0185",
+      "company_id": "c27"
+    },
+    "L-0195": {
+      "lead_id": "L-0195",
       "person_id": "P188",
       "corruptions": [
         "caps"
@@ -7179,8 +7223,8 @@
       "duplicate_of": null,
       "company_id": "c19"
     },
-    "L-0195": {
-      "lead_id": "L-0195",
+    "L-0196": {
+      "lead_id": "L-0196",
       "person_id": "P189",
       "corruptions": [
         "country_alias"
@@ -7217,8 +7261,8 @@
       "duplicate_of": null,
       "company_id": "c42"
     },
-    "L-0196": {
-      "lead_id": "L-0196",
+    "L-0197": {
+      "lead_id": "L-0197",
       "person_id": "P190",
       "corruptions": [
         "title_abbrev"
@@ -7255,88 +7299,8 @@
       "duplicate_of": null,
       "company_id": "c09"
     },
-    "L-0197": {
-      "lead_id": "L-0197",
-      "person_id": "P046",
-      "corruptions": [
-        "duplicate"
-      ],
-      "expected_status": "DUPLICATE",
-      "expected_record": {
-        "first_name": "Isaac",
-        "last_name": "Costa",
-        "email": "isaac.costa@keystonefab.com",
-        "company": "Keystone Fabrication",
-        "company_domain": "keystonefab.com",
-        "title": "Director, IT",
-        "city": "Pittsburgh",
-        "state": "Pennsylvania",
-        "country": "United States",
-        "industry": "Manufacturing",
-        "employee_count": 4100
-      },
-      "world_record": {
-        "first_name": "Isaac",
-        "last_name": "Costa",
-        "email": "isaac.costa@keystonefab.com",
-        "company": "Keystone Fabrication",
-        "company_domain": "keystonefab.com",
-        "title": "Director, IT",
-        "city": "Pittsburgh",
-        "state": "Pennsylvania",
-        "country": "United States",
-        "industry": "Manufacturing",
-        "employee_count": 4100
-      },
-      "expected_enrichments": [
-        "employee_count"
-      ],
-      "unknowable_fields": [],
-      "duplicate_of": "L-0046",
-      "company_id": "c28"
-    },
     "L-0198": {
       "lead_id": "L-0198",
-      "person_id": "P143",
-      "corruptions": [
-        "duplicate"
-      ],
-      "expected_status": "DUPLICATE",
-      "expected_record": {
-        "first_name": "Freya",
-        "last_name": "Brennan",
-        "email": "freya.brennan@ggcu.org",
-        "company": "Golden Gate Credit Union",
-        "company_domain": "ggcu.org",
-        "title": "Manager, Revenue Operations",
-        "city": "San Francisco",
-        "state": "California",
-        "country": "United States",
-        "industry": "Financial Services",
-        "employee_count": 1300
-      },
-      "world_record": {
-        "first_name": "Freya",
-        "last_name": "Brennan",
-        "email": "freya.brennan@ggcu.org",
-        "company": "Golden Gate Credit Union",
-        "company_domain": "ggcu.org",
-        "title": "Manager, Revenue Operations",
-        "city": "San Francisco",
-        "state": "California",
-        "country": "United States",
-        "industry": "Financial Services",
-        "employee_count": 1300
-      },
-      "expected_enrichments": [
-        "employee_count"
-      ],
-      "unknowable_fields": [],
-      "duplicate_of": "L-0148",
-      "company_id": "c49"
-    },
-    "L-0199": {
-      "lead_id": "L-0199",
       "person_id": "P191",
       "corruptions": [
         "company_typo"
@@ -7373,8 +7337,8 @@
       "duplicate_of": null,
       "company_id": "c02"
     },
-    "L-0200": {
-      "lead_id": "L-0200",
+    "L-0199": {
+      "lead_id": "L-0199",
       "person_id": "P192",
       "corruptions": [
         "country_alias"
@@ -7411,8 +7375,8 @@
       "duplicate_of": null,
       "company_id": "c01"
     },
-    "L-0201": {
-      "lead_id": "L-0201",
+    "L-0200": {
+      "lead_id": "L-0200",
       "person_id": "P193",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -7447,8 +7411,8 @@
       "duplicate_of": null,
       "company_id": "c50"
     },
-    "L-0202": {
-      "lead_id": "L-0202",
+    "L-0201": {
+      "lead_id": "L-0201",
       "person_id": "P194",
       "corruptions": [
         "state_abbrev"
@@ -7485,46 +7449,8 @@
       "duplicate_of": null,
       "company_id": "c16"
     },
-    "L-0203": {
-      "lead_id": "L-0203",
-      "person_id": "P168",
-      "corruptions": [
-        "duplicate"
-      ],
-      "expected_status": "DUPLICATE",
-      "expected_record": {
-        "first_name": "Lina",
-        "last_name": "Yilmaz",
-        "email": "lina.yilmaz@cascadiametro.gov",
-        "company": "Cascadia Metro Transit",
-        "company_domain": "cascadiametro.gov",
-        "title": "Solutions Architect",
-        "city": "Seattle",
-        "state": "Washington",
-        "country": "United States",
-        "industry": "Public Sector",
-        "employee_count": 4800
-      },
-      "world_record": {
-        "first_name": "Lina",
-        "last_name": "Yilmaz",
-        "email": "lina.yilmaz@cascadiametro.gov",
-        "company": "Cascadia Metro Transit",
-        "company_domain": "cascadiametro.gov",
-        "title": "Solutions Architect",
-        "city": "Seattle",
-        "state": "Washington",
-        "country": "United States",
-        "industry": "Public Sector",
-        "employee_count": 4800
-      },
-      "expected_enrichments": [],
-      "unknowable_fields": [],
-      "duplicate_of": "L-0174",
-      "company_id": "c53"
-    },
-    "L-0204": {
-      "lead_id": "L-0204",
+    "L-0202": {
+      "lead_id": "L-0202",
       "person_id": "P195",
       "corruptions": [
         "title_abbrev"
@@ -7561,8 +7487,8 @@
       "duplicate_of": null,
       "company_id": "c07"
     },
-    "L-0205": {
-      "lead_id": "L-0205",
+    "L-0203": {
+      "lead_id": "L-0203",
       "person_id": "P196",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -7597,8 +7523,8 @@
       "duplicate_of": null,
       "company_id": "c22"
     },
-    "L-0206": {
-      "lead_id": "L-0206",
+    "L-0204": {
+      "lead_id": "L-0204",
       "person_id": "P197",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -7633,8 +7559,8 @@
       "duplicate_of": null,
       "company_id": "c28"
     },
-    "L-0207": {
-      "lead_id": "L-0207",
+    "L-0205": {
+      "lead_id": "L-0205",
       "person_id": "P198",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -7669,8 +7595,8 @@
       "duplicate_of": null,
       "company_id": null
     },
-    "L-0208": {
-      "lead_id": "L-0208",
+    "L-0206": {
+      "lead_id": "L-0206",
       "person_id": "P199",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -7705,46 +7631,8 @@
       "duplicate_of": null,
       "company_id": "c38"
     },
-    "L-0209": {
-      "lead_id": "L-0209",
-      "person_id": "P197",
-      "corruptions": [
-        "duplicate"
-      ],
-      "expected_status": "DUPLICATE",
-      "expected_record": {
-        "first_name": "Omar",
-        "last_name": "Walsh",
-        "email": "omar.walsh@keystonefab.com",
-        "company": "Keystone Fabrication",
-        "company_domain": "keystonefab.com",
-        "title": "Director, IT",
-        "city": "Pittsburgh",
-        "state": "Pennsylvania",
-        "country": "United States",
-        "industry": "Manufacturing",
-        "employee_count": 4100
-      },
-      "world_record": {
-        "first_name": "Omar",
-        "last_name": "Walsh",
-        "email": "omar.walsh@keystonefab.com",
-        "company": "Keystone Fabrication",
-        "company_domain": "keystonefab.com",
-        "title": "Director, IT",
-        "city": "Pittsburgh",
-        "state": "Pennsylvania",
-        "country": "United States",
-        "industry": "Manufacturing",
-        "employee_count": 4100
-      },
-      "expected_enrichments": [],
-      "unknowable_fields": [],
-      "duplicate_of": "L-0206",
-      "company_id": "c28"
-    },
-    "L-0210": {
-      "lead_id": "L-0210",
+    "L-0207": {
+      "lead_id": "L-0207",
       "person_id": "P200",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -7779,8 +7667,8 @@
       "duplicate_of": null,
       "company_id": "c16"
     },
-    "L-0211": {
-      "lead_id": "L-0211",
+    "L-0208": {
+      "lead_id": "L-0208",
       "person_id": "P201",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -7815,8 +7703,8 @@
       "duplicate_of": null,
       "company_id": "c24"
     },
-    "L-0212": {
-      "lead_id": "L-0212",
+    "L-0209": {
+      "lead_id": "L-0209",
       "person_id": "P202",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -7851,8 +7739,8 @@
       "duplicate_of": null,
       "company_id": "c27"
     },
-    "L-0213": {
-      "lead_id": "L-0213",
+    "L-0210": {
+      "lead_id": "L-0210",
       "person_id": "P203",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -7887,8 +7775,8 @@
       "duplicate_of": null,
       "company_id": "c02"
     },
-    "L-0214": {
-      "lead_id": "L-0214",
+    "L-0211": {
+      "lead_id": "L-0211",
       "person_id": "P204",
       "corruptions": [
         "missing_company"
@@ -7927,8 +7815,8 @@
       "duplicate_of": null,
       "company_id": "c05"
     },
-    "L-0215": {
-      "lead_id": "L-0215",
+    "L-0212": {
+      "lead_id": "L-0212",
       "person_id": "P205",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -7963,8 +7851,8 @@
       "duplicate_of": null,
       "company_id": "c19"
     },
-    "L-0216": {
-      "lead_id": "L-0216",
+    "L-0213": {
+      "lead_id": "L-0213",
       "person_id": "P206",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -7999,8 +7887,8 @@
       "duplicate_of": null,
       "company_id": "c41"
     },
-    "L-0217": {
-      "lead_id": "L-0217",
+    "L-0214": {
+      "lead_id": "L-0214",
       "person_id": "P207",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -8035,8 +7923,84 @@
       "duplicate_of": null,
       "company_id": "c53"
     },
-    "L-0218": {
-      "lead_id": "L-0218",
+    "L-0215": {
+      "lead_id": "L-0215",
+      "person_id": "P116",
+      "corruptions": [
+        "duplicate"
+      ],
+      "expected_status": "DUPLICATE",
+      "expected_record": {
+        "first_name": "Anika",
+        "last_name": "Reyes",
+        "email": "anika.reyes@stratuscloud.io",
+        "company": "Stratus Cloudworks",
+        "company_domain": "stratuscloud.io",
+        "title": "Solutions Architect",
+        "city": "Philadelphia",
+        "state": "Pennsylvania",
+        "country": "United States",
+        "industry": "Technology",
+        "employee_count": 19000
+      },
+      "world_record": {
+        "first_name": "Anika",
+        "last_name": "Reyes",
+        "email": "anika.reyes@stratuscloud.io",
+        "company": "Stratus Cloudworks",
+        "company_domain": "stratuscloud.io",
+        "title": "Solutions Architect",
+        "city": "Philadelphia",
+        "state": "Pennsylvania",
+        "country": "United States",
+        "industry": "Technology",
+        "employee_count": 19000
+      },
+      "expected_enrichments": [],
+      "unknowable_fields": [],
+      "duplicate_of": "L-0118",
+      "company_id": "c11"
+    },
+    "L-0216": {
+      "lead_id": "L-0216",
+      "person_id": "P176",
+      "corruptions": [
+        "duplicate"
+      ],
+      "expected_status": "DUPLICATE",
+      "expected_record": {
+        "first_name": "Mateo",
+        "last_name": "Ferreira",
+        "email": "mateo.ferreira@brazoshealth.org",
+        "company": "Brazos Health",
+        "company_domain": "brazoshealth.org",
+        "title": "Manager, Revenue Operations",
+        "city": "Austin",
+        "state": "Texas",
+        "country": "United States",
+        "industry": "Healthcare",
+        "employee_count": 5200
+      },
+      "world_record": {
+        "first_name": "Mateo",
+        "last_name": "Ferreira",
+        "email": "mateo.ferreira@brazoshealth.org",
+        "company": "Brazos Health",
+        "company_domain": "brazoshealth.org",
+        "title": "Manager, Revenue Operations",
+        "city": "Austin",
+        "state": "Texas",
+        "country": "United States",
+        "industry": "Healthcare",
+        "employee_count": 5200
+      },
+      "expected_enrichments": [],
+      "unknowable_fields": [],
+      "duplicate_of": "L-0181",
+      "company_id": "c17"
+    },
+    "L-0217": {
+      "lead_id": "L-0217",
       "person_id": "P208",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -8069,6 +8033,44 @@
       "expected_enrichments": [],
       "unknowable_fields": [],
       "duplicate_of": null,
+      "company_id": "c15"
+    },
+    "L-0218": {
+      "lead_id": "L-0218",
+      "person_id": "P208",
+      "corruptions": [
+        "duplicate"
+      ],
+      "expected_status": "DUPLICATE",
+      "expected_record": {
+        "first_name": "Emeka",
+        "last_name": "Ueda",
+        "email": "emeka.ueda@prairiestatebank.com",
+        "company": "Prairie State Bank",
+        "company_domain": "prairiestatebank.com",
+        "title": "Chief Information Officer",
+        "city": "Minneapolis",
+        "state": "Minnesota",
+        "country": "United States",
+        "industry": "Financial Services",
+        "employee_count": 2300
+      },
+      "world_record": {
+        "first_name": "Emeka",
+        "last_name": "Ueda",
+        "email": "emeka.ueda@prairiestatebank.com",
+        "company": "Prairie State Bank",
+        "company_domain": "prairiestatebank.com",
+        "title": "Chief Information Officer",
+        "city": "Minneapolis",
+        "state": "Minnesota",
+        "country": "United States",
+        "industry": "Financial Services",
+        "employee_count": 2300
+      },
+      "expected_enrichments": [],
+      "unknowable_fields": [],
+      "duplicate_of": "L-0217",
       "company_id": "c15"
     },
     "L-0219": {
@@ -8371,8 +8373,7 @@
       "lead_id": "L-0227",
       "person_id": "P217",
       "corruptions": [
-        "missing_company",
-        "state_abbrev"
+        "missing_company"
       ],
       "expected_status": "ENRICHED",
       "expected_record": {
@@ -8410,6 +8411,44 @@
     },
     "L-0228": {
       "lead_id": "L-0228",
+      "person_id": "P206",
+      "corruptions": [
+        "duplicate"
+      ],
+      "expected_status": "DUPLICATE",
+      "expected_record": {
+        "first_name": "Zoe",
+        "last_name": "Fontaine",
+        "email": "zoe.fontaine@canalhealth.nl",
+        "company": "Canal Health",
+        "company_domain": "canalhealth.nl",
+        "title": "Director, IT",
+        "city": "Amsterdam",
+        "state": null,
+        "country": "Netherlands",
+        "industry": "Healthcare",
+        "employee_count": 900
+      },
+      "world_record": {
+        "first_name": "Zoe",
+        "last_name": "Fontaine",
+        "email": "zoe.fontaine@canalhealth.nl",
+        "company": "Canal Health",
+        "company_domain": "canalhealth.nl",
+        "title": "Director, IT",
+        "city": "Amsterdam",
+        "state": null,
+        "country": "Netherlands",
+        "industry": "Healthcare",
+        "employee_count": 900
+      },
+      "expected_enrichments": [],
+      "unknowable_fields": [],
+      "duplicate_of": "L-0213",
+      "company_id": "c41"
+    },
+    "L-0229": {
+      "lead_id": "L-0229",
       "person_id": "P218",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -8444,8 +8483,8 @@
       "duplicate_of": null,
       "company_id": "c30"
     },
-    "L-0229": {
-      "lead_id": "L-0229",
+    "L-0230": {
+      "lead_id": "L-0230",
       "person_id": "P219",
       "corruptions": [
         "missing_location"
@@ -8486,12 +8525,11 @@
       "duplicate_of": null,
       "company_id": "c03"
     },
-    "L-0230": {
-      "lead_id": "L-0230",
+    "L-0231": {
+      "lead_id": "L-0231",
       "person_id": "P220",
       "corruptions": [
-        "state_abbrev",
-        "caps"
+        "state_abbrev"
       ],
       "expected_status": "NORMALIZED",
       "expected_record": {
@@ -8525,8 +8563,8 @@
       "duplicate_of": null,
       "company_id": "c36"
     },
-    "L-0231": {
-      "lead_id": "L-0231",
+    "L-0232": {
+      "lead_id": "L-0232",
       "person_id": "P221",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -8561,8 +8599,8 @@
       "duplicate_of": null,
       "company_id": "c08"
     },
-    "L-0232": {
-      "lead_id": "L-0232",
+    "L-0233": {
+      "lead_id": "L-0233",
       "person_id": "P222",
       "corruptions": [
         "missing_location"
@@ -8603,8 +8641,8 @@
       "duplicate_of": null,
       "company_id": null
     },
-    "L-0233": {
-      "lead_id": "L-0233",
+    "L-0234": {
+      "lead_id": "L-0234",
       "person_id": "P223",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -8639,8 +8677,8 @@
       "duplicate_of": null,
       "company_id": "c29"
     },
-    "L-0234": {
-      "lead_id": "L-0234",
+    "L-0235": {
+      "lead_id": "L-0235",
       "person_id": "P224",
       "corruptions": [
         "missing_industry"
@@ -8679,8 +8717,8 @@
       "duplicate_of": null,
       "company_id": "c44"
     },
-    "L-0235": {
-      "lead_id": "L-0235",
+    "L-0236": {
+      "lead_id": "L-0236",
       "person_id": "P225",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -8714,44 +8752,6 @@
       "unknowable_fields": [],
       "duplicate_of": null,
       "company_id": "c39"
-    },
-    "L-0236": {
-      "lead_id": "L-0236",
-      "person_id": "P199",
-      "corruptions": [
-        "duplicate"
-      ],
-      "expected_status": "DUPLICATE",
-      "expected_record": {
-        "first_name": "Rafael",
-        "last_name": "Kaur",
-        "email": "rafael.kaur@rheinwerk.de",
-        "company": "Rheinwerk Industrie",
-        "company_domain": "rheinwerk.de",
-        "title": "Director, Security",
-        "city": "Berlin",
-        "state": null,
-        "country": "Germany",
-        "industry": "Manufacturing",
-        "employee_count": 16000
-      },
-      "world_record": {
-        "first_name": "Rafael",
-        "last_name": "Kaur",
-        "email": "rafael.kaur@rheinwerk.de",
-        "company": "Rheinwerk Industrie",
-        "company_domain": "rheinwerk.de",
-        "title": "Director, Security",
-        "city": "Berlin",
-        "state": null,
-        "country": "Germany",
-        "industry": "Manufacturing",
-        "employee_count": 16000
-      },
-      "expected_enrichments": [],
-      "unknowable_fields": [],
-      "duplicate_of": "L-0208",
-      "company_id": "c38"
     },
     "L-0237": {
       "lead_id": "L-0237",
@@ -8793,44 +8793,6 @@
     },
     "L-0238": {
       "lead_id": "L-0238",
-      "person_id": "P218",
-      "corruptions": [
-        "duplicate"
-      ],
-      "expected_status": "DUPLICATE",
-      "expected_record": {
-        "first_name": "Chen",
-        "last_name": "Zhang",
-        "email": "chen.zhang@seaboardhealth.org",
-        "company": "Seaboard Health Alliance",
-        "company_domain": "seaboardhealth.org",
-        "title": "VP, Engineering",
-        "city": "Philadelphia",
-        "state": "Pennsylvania",
-        "country": "United States",
-        "industry": "Healthcare",
-        "employee_count": 1500
-      },
-      "world_record": {
-        "first_name": "Chen",
-        "last_name": "Zhang",
-        "email": "chen.zhang@seaboardhealth.org",
-        "company": "Seaboard Health Alliance",
-        "company_domain": "seaboardhealth.org",
-        "title": "VP, Engineering",
-        "city": "Philadelphia",
-        "state": "Pennsylvania",
-        "country": "United States",
-        "industry": "Healthcare",
-        "employee_count": 1500
-      },
-      "expected_enrichments": [],
-      "unknowable_fields": [],
-      "duplicate_of": "L-0228",
-      "company_id": "c30"
-    },
-    "L-0239": {
-      "lead_id": "L-0239",
       "person_id": "P227",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -8865,11 +8827,12 @@
       "duplicate_of": null,
       "company_id": "c48"
     },
-    "L-0240": {
-      "lead_id": "L-0240",
+    "L-0239": {
+      "lead_id": "L-0239",
       "person_id": "P228",
       "corruptions": [
-        "company_variant"
+        "company_variant",
+        "title_abbrev"
       ],
       "expected_status": "NORMALIZED",
       "expected_record": {
@@ -8903,8 +8866,8 @@
       "duplicate_of": null,
       "company_id": "c48"
     },
-    "L-0241": {
-      "lead_id": "L-0241",
+    "L-0240": {
+      "lead_id": "L-0240",
       "person_id": "P229",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -8939,8 +8902,8 @@
       "duplicate_of": null,
       "company_id": "c01"
     },
-    "L-0242": {
-      "lead_id": "L-0242",
+    "L-0241": {
+      "lead_id": "L-0241",
       "person_id": "P230",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -8975,8 +8938,8 @@
       "duplicate_of": null,
       "company_id": "c21"
     },
-    "L-0243": {
-      "lead_id": "L-0243",
+    "L-0242": {
+      "lead_id": "L-0242",
       "person_id": "P231",
       "corruptions": [],
       "expected_status": "CLEAN",
@@ -9010,6 +8973,44 @@
       "unknowable_fields": [],
       "duplicate_of": null,
       "company_id": "c53"
+    },
+    "L-0243": {
+      "lead_id": "L-0243",
+      "person_id": "P199",
+      "corruptions": [
+        "duplicate"
+      ],
+      "expected_status": "DUPLICATE",
+      "expected_record": {
+        "first_name": "Rafael",
+        "last_name": "Kaur",
+        "email": "rafael.kaur@rheinwerk.de",
+        "company": "Rheinwerk Industrie",
+        "company_domain": "rheinwerk.de",
+        "title": "Director, Security",
+        "city": "Berlin",
+        "state": null,
+        "country": "Germany",
+        "industry": "Manufacturing",
+        "employee_count": 16000
+      },
+      "world_record": {
+        "first_name": "Rafael",
+        "last_name": "Kaur",
+        "email": "rafael.kaur@rheinwerk.de",
+        "company": "Rheinwerk Industrie",
+        "company_domain": "rheinwerk.de",
+        "title": "Director, Security",
+        "city": "Berlin",
+        "state": null,
+        "country": "Germany",
+        "industry": "Manufacturing",
+        "employee_count": 16000
+      },
+      "expected_enrichments": [],
+      "unknowable_fields": [],
+      "duplicate_of": "L-0206",
+      "company_id": "c38"
     },
     "L-0244": {
       "lead_id": "L-0244",
@@ -9275,9 +9276,9 @@
       "lead_id": "L-0001",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
-        "005Dn000001HoKa"
+        "005Dn000001BcAr"
       ],
-      "basis": "Existing account owner Hannah Okafor"
+      "basis": "us-central / enterprise / Retail specialist: Ben Carter"
     },
     "L-0002": {
       "lead_id": "L-0002",
@@ -9796,25 +9797,27 @@
     },
     "L-0066": {
       "lead_id": "L-0066",
-      "expected_decision": "held",
-      "acceptable_owner_ids": [],
-      "basis": "Duplicate"
-    },
-    "L-0067": {
-      "lead_id": "L-0067",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001HoKa"
       ],
       "basis": "us-east / enterprise / Healthcare specialist: Hannah Okafor"
     },
-    "L-0068": {
-      "lead_id": "L-0068",
+    "L-0067": {
+      "lead_id": "L-0067",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001SrOs"
       ],
       "basis": "Existing account owner Sofia Rossi"
+    },
+    "L-0068": {
+      "lead_id": "L-0068",
+      "expected_decision": "auto_route",
+      "acceptable_owner_ids": [
+        "005Dn000001TbEc"
+      ],
+      "basis": "Existing account owner Tom Becker"
     },
     "L-0069": {
       "lead_id": "L-0069",
@@ -9822,18 +9825,10 @@
       "acceptable_owner_ids": [
         "005Dn000001TbEc"
       ],
-      "basis": "Existing account owner Tom Becker"
+      "basis": "us-east / mid-market: Tom Becker"
     },
     "L-0070": {
       "lead_id": "L-0070",
-      "expected_decision": "auto_route",
-      "acceptable_owner_ids": [
-        "005Dn000001TbEc"
-      ],
-      "basis": "us-east / mid-market: Tom Becker"
-    },
-    "L-0071": {
-      "lead_id": "L-0071",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001AcHn",
@@ -9841,52 +9836,52 @@
       ],
       "basis": "us-west / enterprise: Alice Chen or Marcus Lee"
     },
-    "L-0072": {
-      "lead_id": "L-0072",
+    "L-0071": {
+      "lead_id": "L-0071",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001BcAr"
       ],
       "basis": "us-central / enterprise / Retail specialist: Ben Carter"
     },
-    "L-0073": {
-      "lead_id": "L-0073",
+    "L-0072": {
+      "lead_id": "L-0072",
       "expected_decision": "requires_review",
       "acceptable_owner_ids": [],
       "basis": "Owner Derek Lin has left — a manager picks the new owner"
     },
-    "L-0074": {
-      "lead_id": "L-0074",
+    "L-0073": {
+      "lead_id": "L-0073",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001MlEe"
       ],
       "basis": "Existing account owner Marcus Lee"
     },
-    "L-0075": {
-      "lead_id": "L-0075",
+    "L-0074": {
+      "lead_id": "L-0074",
       "expected_decision": "held",
       "acceptable_owner_ids": [],
       "basis": "Hygiene outcome INSUFFICIENT_DATA"
     },
-    "L-0076": {
-      "lead_id": "L-0076",
+    "L-0075": {
+      "lead_id": "L-0075",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001HoKa"
       ],
       "basis": "Existing account owner Hannah Okafor"
     },
-    "L-0077": {
-      "lead_id": "L-0077",
+    "L-0076": {
+      "lead_id": "L-0076",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001TbEc"
       ],
       "basis": "Existing account owner Tom Becker"
     },
-    "L-0078": {
-      "lead_id": "L-0078",
+    "L-0077": {
+      "lead_id": "L-0077",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001MlEe",
@@ -9894,36 +9889,30 @@
       ],
       "basis": "us-west / mid-market: Marcus Lee or Rachel Kim"
     },
-    "L-0079": {
-      "lead_id": "L-0079",
+    "L-0078": {
+      "lead_id": "L-0078",
       "expected_decision": "held",
       "acceptable_owner_ids": [],
       "basis": "Hygiene outcome NEEDS_REVIEW"
     },
-    "L-0080": {
-      "lead_id": "L-0080",
-      "expected_decision": "held",
-      "acceptable_owner_ids": [],
-      "basis": "Duplicate"
-    },
-    "L-0081": {
-      "lead_id": "L-0081",
+    "L-0079": {
+      "lead_id": "L-0079",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001RkIm"
       ],
       "basis": "us-west / mid-market / Healthcare specialist: Rachel Kim"
     },
-    "L-0082": {
-      "lead_id": "L-0082",
+    "L-0080": {
+      "lead_id": "L-0080",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001TbEc"
       ],
       "basis": "Existing account owner Tom Becker"
     },
-    "L-0083": {
-      "lead_id": "L-0083",
+    "L-0081": {
+      "lead_id": "L-0081",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001DaLv",
@@ -9931,6 +9920,20 @@
         "005Dn000001RkIm"
       ],
       "basis": "us-central / mid-market: Diego Alvarez or Tom Becker or Rachel Kim"
+    },
+    "L-0082": {
+      "lead_id": "L-0082",
+      "expected_decision": "auto_route",
+      "acceptable_owner_ids": [
+        "005Dn000001HoKa"
+      ],
+      "basis": "us-east / enterprise / Healthcare specialist: Hannah Okafor"
+    },
+    "L-0083": {
+      "lead_id": "L-0083",
+      "expected_decision": "held",
+      "acceptable_owner_ids": [],
+      "basis": "Hygiene outcome NEEDS_REVIEW"
     },
     "L-0084": {
       "lead_id": "L-0084",
@@ -9938,64 +9941,56 @@
       "acceptable_owner_ids": [
         "005Dn000001HoKa"
       ],
-      "basis": "us-east / enterprise / Healthcare specialist: Hannah Okafor"
+      "basis": "Subsidiary — parent account owner Hannah Okafor"
     },
     "L-0085": {
       "lead_id": "L-0085",
-      "expected_decision": "held",
-      "acceptable_owner_ids": [],
-      "basis": "Hygiene outcome NEEDS_REVIEW"
-    },
-    "L-0086": {
-      "lead_id": "L-0086",
-      "expected_decision": "auto_route",
-      "acceptable_owner_ids": [
-        "005Dn000001HoKa"
-      ],
-      "basis": "Subsidiary — parent account owner Hannah Okafor"
-    },
-    "L-0087": {
-      "lead_id": "L-0087",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001BcAr"
       ],
       "basis": "Existing account owner Ben Carter"
     },
-    "L-0088": {
-      "lead_id": "L-0088",
+    "L-0086": {
+      "lead_id": "L-0086",
+      "expected_decision": "held",
+      "acceptable_owner_ids": [],
+      "basis": "Duplicate"
+    },
+    "L-0087": {
+      "lead_id": "L-0087",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001SrOs"
       ],
       "basis": "Existing account owner Sofia Rossi"
     },
-    "L-0089": {
-      "lead_id": "L-0089",
+    "L-0088": {
+      "lead_id": "L-0088",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001TbEc"
       ],
       "basis": "Existing account owner Tom Becker"
     },
-    "L-0090": {
-      "lead_id": "L-0090",
+    "L-0089": {
+      "lead_id": "L-0089",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001BcAr"
       ],
       "basis": "us-east / enterprise / Retail specialist: Ben Carter"
     },
-    "L-0091": {
-      "lead_id": "L-0091",
+    "L-0090": {
+      "lead_id": "L-0090",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001JbLa"
       ],
       "basis": "us-west / smb: Jordan Blake"
     },
-    "L-0092": {
-      "lead_id": "L-0092",
+    "L-0091": {
+      "lead_id": "L-0091",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001MlEe",
@@ -10003,142 +9998,142 @@
       ],
       "basis": "us-west / mid-market: Marcus Lee or Rachel Kim"
     },
-    "L-0093": {
-      "lead_id": "L-0093",
+    "L-0092": {
+      "lead_id": "L-0092",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001DaLv"
       ],
       "basis": "Existing account owner Diego Alvarez"
     },
-    "L-0094": {
-      "lead_id": "L-0094",
+    "L-0093": {
+      "lead_id": "L-0093",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001AcHn"
       ],
       "basis": "us-west / enterprise / Technology specialist: Alice Chen"
     },
-    "L-0095": {
-      "lead_id": "L-0095",
+    "L-0094": {
+      "lead_id": "L-0094",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001AtAn"
       ],
       "basis": "apac / enterprise: Aiko Tanaka"
     },
-    "L-0096": {
-      "lead_id": "L-0096",
+    "L-0095": {
+      "lead_id": "L-0095",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001AcHn"
       ],
       "basis": "Existing account owner Alice Chen"
     },
-    "L-0097": {
-      "lead_id": "L-0097",
+    "L-0096": {
+      "lead_id": "L-0096",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001BcAr"
       ],
       "basis": "us-central / enterprise / Retail specialist: Ben Carter"
     },
-    "L-0098": {
-      "lead_id": "L-0098",
+    "L-0097": {
+      "lead_id": "L-0097",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001PsHa"
       ],
       "basis": "Named account of Priya Shah"
     },
-    "L-0099": {
-      "lead_id": "L-0099",
+    "L-0098": {
+      "lead_id": "L-0098",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001HoKa"
       ],
       "basis": "us-east / enterprise / Financial Services specialist: Hannah Okafor"
     },
-    "L-0100": {
-      "lead_id": "L-0100",
+    "L-0099": {
+      "lead_id": "L-0099",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001TbEc"
       ],
       "basis": "Existing account owner Tom Becker"
     },
-    "L-0101": {
-      "lead_id": "L-0101",
+    "L-0100": {
+      "lead_id": "L-0100",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001SrOs"
       ],
       "basis": "Named account of Sofia Rossi"
     },
-    "L-0102": {
-      "lead_id": "L-0102",
+    "L-0101": {
+      "lead_id": "L-0101",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001AtAn"
       ],
       "basis": "Existing account owner Aiko Tanaka"
     },
-    "L-0103": {
-      "lead_id": "L-0103",
+    "L-0102": {
+      "lead_id": "L-0102",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001BcAr"
       ],
       "basis": "us-east / enterprise / Retail specialist: Ben Carter"
     },
-    "L-0104": {
-      "lead_id": "L-0104",
+    "L-0103": {
+      "lead_id": "L-0103",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001JbLa"
       ],
       "basis": "us-east / smb: Jordan Blake"
     },
-    "L-0105": {
-      "lead_id": "L-0105",
+    "L-0104": {
+      "lead_id": "L-0104",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001SrOs"
       ],
       "basis": "emea / enterprise: Sofia Rossi"
     },
-    "L-0106": {
-      "lead_id": "L-0106",
+    "L-0105": {
+      "lead_id": "L-0105",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001AcHn"
       ],
       "basis": "Existing account owner Alice Chen"
     },
-    "L-0107": {
-      "lead_id": "L-0107",
+    "L-0106": {
+      "lead_id": "L-0106",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001PsHa"
       ],
       "basis": "Named account of Priya Shah"
     },
-    "L-0108": {
-      "lead_id": "L-0108",
+    "L-0107": {
+      "lead_id": "L-0107",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001BcAr"
       ],
       "basis": "Existing account owner Ben Carter"
     },
-    "L-0109": {
-      "lead_id": "L-0109",
+    "L-0108": {
+      "lead_id": "L-0108",
       "expected_decision": "held",
       "acceptable_owner_ids": [],
       "basis": "Hygiene outcome NEEDS_REVIEW"
     },
-    "L-0110": {
-      "lead_id": "L-0110",
+    "L-0109": {
+      "lead_id": "L-0109",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001DaLv",
@@ -10147,24 +10142,24 @@
       ],
       "basis": "us-central / mid-market: Diego Alvarez or Tom Becker or Rachel Kim"
     },
-    "L-0111": {
-      "lead_id": "L-0111",
+    "L-0110": {
+      "lead_id": "L-0110",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001BcAr"
       ],
       "basis": "us-east / enterprise / Retail specialist: Ben Carter"
     },
-    "L-0112": {
-      "lead_id": "L-0112",
+    "L-0111": {
+      "lead_id": "L-0111",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001AcHn"
       ],
       "basis": "Existing account owner Alice Chen"
     },
-    "L-0113": {
-      "lead_id": "L-0113",
+    "L-0112": {
+      "lead_id": "L-0112",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001MlEe",
@@ -10172,27 +10167,33 @@
       ],
       "basis": "us-west / mid-market: Marcus Lee or Rachel Kim"
     },
-    "L-0114": {
-      "lead_id": "L-0114",
+    "L-0113": {
+      "lead_id": "L-0113",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001HoKa"
       ],
       "basis": "Subsidiary — parent account owner Hannah Okafor"
     },
-    "L-0115": {
-      "lead_id": "L-0115",
+    "L-0114": {
+      "lead_id": "L-0114",
       "expected_decision": "held",
       "acceptable_owner_ids": [],
       "basis": "Hygiene outcome INSUFFICIENT_DATA"
     },
-    "L-0116": {
-      "lead_id": "L-0116",
+    "L-0115": {
+      "lead_id": "L-0115",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001SrOs"
       ],
       "basis": "Named account of Sofia Rossi"
+    },
+    "L-0116": {
+      "lead_id": "L-0116",
+      "expected_decision": "held",
+      "acceptable_owner_ids": [],
+      "basis": "Duplicate"
     },
     "L-0117": {
       "lead_id": "L-0117",
@@ -10253,20 +10254,14 @@
     },
     "L-0124": {
       "lead_id": "L-0124",
-      "expected_decision": "held",
-      "acceptable_owner_ids": [],
-      "basis": "Duplicate"
-    },
-    "L-0125": {
-      "lead_id": "L-0125",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001HoKa"
       ],
       "basis": "Existing account owner Hannah Okafor"
     },
-    "L-0126": {
-      "lead_id": "L-0126",
+    "L-0125": {
+      "lead_id": "L-0125",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001DaLv",
@@ -10274,24 +10269,24 @@
       ],
       "basis": "us-central / enterprise: Diego Alvarez or Ben Carter"
     },
-    "L-0127": {
-      "lead_id": "L-0127",
+    "L-0126": {
+      "lead_id": "L-0126",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001HoKa"
       ],
       "basis": "Subsidiary — parent account owner Hannah Okafor"
     },
-    "L-0128": {
-      "lead_id": "L-0128",
+    "L-0127": {
+      "lead_id": "L-0127",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001AcHn"
       ],
       "basis": "Existing account owner Alice Chen"
     },
-    "L-0129": {
-      "lead_id": "L-0129",
+    "L-0128": {
+      "lead_id": "L-0128",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001SrOs",
@@ -10299,79 +10294,87 @@
       ],
       "basis": "emea / mid-market: Sofia Rossi or Lukas Weber"
     },
-    "L-0130": {
-      "lead_id": "L-0130",
-      "expected_decision": "held",
-      "acceptable_owner_ids": [],
-      "basis": "Duplicate"
-    },
-    "L-0131": {
-      "lead_id": "L-0131",
+    "L-0129": {
+      "lead_id": "L-0129",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001DaLv"
       ],
       "basis": "Subsidiary — parent account owner Diego Alvarez"
     },
-    "L-0132": {
-      "lead_id": "L-0132",
-      "expected_decision": "held",
-      "acceptable_owner_ids": [],
-      "basis": "Duplicate"
-    },
-    "L-0133": {
-      "lead_id": "L-0133",
+    "L-0130": {
+      "lead_id": "L-0130",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001JbLa"
       ],
       "basis": "us-west / smb: Jordan Blake"
     },
-    "L-0134": {
-      "lead_id": "L-0134",
+    "L-0131": {
+      "lead_id": "L-0131",
+      "expected_decision": "held",
+      "acceptable_owner_ids": [],
+      "basis": "Duplicate"
+    },
+    "L-0132": {
+      "lead_id": "L-0132",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001TbEc"
       ],
       "basis": "Existing account owner Tom Becker"
     },
-    "L-0135": {
-      "lead_id": "L-0135",
+    "L-0133": {
+      "lead_id": "L-0133",
       "expected_decision": "held",
       "acceptable_owner_ids": [],
       "basis": "Hygiene outcome NEEDS_REVIEW"
     },
-    "L-0136": {
-      "lead_id": "L-0136",
+    "L-0134": {
+      "lead_id": "L-0134",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001AcHn"
       ],
       "basis": "us-west / enterprise / Retail specialist: Alice Chen"
     },
-    "L-0137": {
-      "lead_id": "L-0137",
+    "L-0135": {
+      "lead_id": "L-0135",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001AtAn"
       ],
       "basis": "apac / enterprise: Aiko Tanaka"
     },
-    "L-0138": {
-      "lead_id": "L-0138",
+    "L-0136": {
+      "lead_id": "L-0136",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001SrOs"
       ],
       "basis": "emea / enterprise: Sofia Rossi"
     },
-    "L-0139": {
-      "lead_id": "L-0139",
+    "L-0137": {
+      "lead_id": "L-0137",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001PsHa"
       ],
       "basis": "Named account of Priya Shah"
+    },
+    "L-0138": {
+      "lead_id": "L-0138",
+      "expected_decision": "auto_route",
+      "acceptable_owner_ids": [
+        "005Dn000001TbEc"
+      ],
+      "basis": "us-east / mid-market: Tom Becker"
+    },
+    "L-0139": {
+      "lead_id": "L-0139",
+      "expected_decision": "requires_review",
+      "acceptable_owner_ids": [],
+      "basis": "Owner Derek Lin has left — a manager picks the new owner"
     },
     "L-0140": {
       "lead_id": "L-0140",
@@ -10379,46 +10382,32 @@
       "acceptable_owner_ids": [
         "005Dn000001TbEc"
       ],
-      "basis": "us-east / mid-market: Tom Becker"
+      "basis": "Existing account owner Tom Becker"
     },
     "L-0141": {
       "lead_id": "L-0141",
-      "expected_decision": "requires_review",
-      "acceptable_owner_ids": [],
-      "basis": "Owner Derek Lin has left — a manager picks the new owner"
-    },
-    "L-0142": {
-      "lead_id": "L-0142",
-      "expected_decision": "auto_route",
-      "acceptable_owner_ids": [
-        "005Dn000001TbEc"
-      ],
-      "basis": "Existing account owner Tom Becker"
-    },
-    "L-0143": {
-      "lead_id": "L-0143",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001SrOs"
       ],
       "basis": "Existing account owner Sofia Rossi"
     },
-    "L-0144": {
-      "lead_id": "L-0144",
+    "L-0142": {
+      "lead_id": "L-0142",
       "expected_decision": "held",
       "acceptable_owner_ids": [],
       "basis": "Hygiene outcome INSUFFICIENT_DATA"
     },
-    "L-0145": {
-      "lead_id": "L-0145",
+    "L-0143": {
+      "lead_id": "L-0143",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001BcAr"
       ],
       "basis": "Existing account owner Ben Carter"
     },
-    "L-0146": {
-      "lead_id": "L-0146",
+    "L-0144": {
+      "lead_id": "L-0144",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001AcHn",
@@ -10426,16 +10415,16 @@
       ],
       "basis": "us-west / enterprise: Alice Chen or Marcus Lee"
     },
-    "L-0147": {
-      "lead_id": "L-0147",
+    "L-0145": {
+      "lead_id": "L-0145",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001TbEc"
       ],
       "basis": "us-east / mid-market: Tom Becker"
     },
-    "L-0148": {
-      "lead_id": "L-0148",
+    "L-0146": {
+      "lead_id": "L-0146",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001MlEe",
@@ -10443,44 +10432,60 @@
       ],
       "basis": "us-west / mid-market: Marcus Lee or Rachel Kim"
     },
-    "L-0149": {
-      "lead_id": "L-0149",
+    "L-0147": {
+      "lead_id": "L-0147",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001AtAn"
       ],
       "basis": "apac / enterprise: Aiko Tanaka"
     },
-    "L-0150": {
-      "lead_id": "L-0150",
+    "L-0148": {
+      "lead_id": "L-0148",
       "expected_decision": "requires_review",
       "acceptable_owner_ids": [],
       "basis": "Owner Derek Lin has left — a manager picks the new owner"
     },
-    "L-0151": {
-      "lead_id": "L-0151",
+    "L-0149": {
+      "lead_id": "L-0149",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001DaLv"
       ],
       "basis": "Existing account owner Diego Alvarez"
     },
-    "L-0152": {
-      "lead_id": "L-0152",
+    "L-0150": {
+      "lead_id": "L-0150",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001AcHn"
       ],
       "basis": "Subsidiary — parent account owner Alice Chen"
     },
-    "L-0153": {
-      "lead_id": "L-0153",
+    "L-0151": {
+      "lead_id": "L-0151",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001MlEe",
         "005Dn000001RkIm"
       ],
       "basis": "us-west / mid-market: Marcus Lee or Rachel Kim"
+    },
+    "L-0152": {
+      "lead_id": "L-0152",
+      "expected_decision": "auto_route",
+      "acceptable_owner_ids": [
+        "005Dn000001SrOs"
+      ],
+      "basis": "Existing account owner Sofia Rossi"
+    },
+    "L-0153": {
+      "lead_id": "L-0153",
+      "expected_decision": "auto_route",
+      "acceptable_owner_ids": [
+        "005Dn000001AtAn"
+      ],
+      "basis": "apac / smb: Aiko Tanaka"
     },
     "L-0154": {
       "lead_id": "L-0154",
@@ -10488,7 +10493,7 @@
       "acceptable_owner_ids": [
         "005Dn000001SrOs"
       ],
-      "basis": "Existing account owner Sofia Rossi"
+      "basis": "emea / enterprise: Sofia Rossi"
     },
     "L-0155": {
       "lead_id": "L-0155",
@@ -10496,56 +10501,34 @@
       "acceptable_owner_ids": [
         "005Dn000001AtAn"
       ],
-      "basis": "apac / smb: Aiko Tanaka"
+      "basis": "Existing account owner Aiko Tanaka"
     },
     "L-0156": {
       "lead_id": "L-0156",
-      "expected_decision": "auto_route",
-      "acceptable_owner_ids": [
-        "005Dn000001SrOs"
-      ],
-      "basis": "emea / enterprise: Sofia Rossi"
-    },
-    "L-0157": {
-      "lead_id": "L-0157",
-      "expected_decision": "auto_route",
-      "acceptable_owner_ids": [
-        "005Dn000001AtAn"
-      ],
-      "basis": "Existing account owner Aiko Tanaka"
-    },
-    "L-0158": {
-      "lead_id": "L-0158",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001HoKa"
       ],
       "basis": "Existing account owner Hannah Okafor"
     },
-    "L-0159": {
-      "lead_id": "L-0159",
-      "expected_decision": "held",
-      "acceptable_owner_ids": [],
-      "basis": "Duplicate"
-    },
-    "L-0160": {
-      "lead_id": "L-0160",
+    "L-0157": {
+      "lead_id": "L-0157",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001TbEc"
       ],
       "basis": "Existing account owner Tom Becker"
     },
-    "L-0161": {
-      "lead_id": "L-0161",
+    "L-0158": {
+      "lead_id": "L-0158",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001BcAr"
       ],
       "basis": "us-east / enterprise / Retail specialist: Ben Carter"
     },
-    "L-0162": {
-      "lead_id": "L-0162",
+    "L-0159": {
+      "lead_id": "L-0159",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001AcHn",
@@ -10553,8 +10536,8 @@
       ],
       "basis": "us-west / enterprise: Alice Chen or Marcus Lee"
     },
-    "L-0163": {
-      "lead_id": "L-0163",
+    "L-0160": {
+      "lead_id": "L-0160",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001DaLv",
@@ -10562,88 +10545,94 @@
       ],
       "basis": "us-central / enterprise: Diego Alvarez or Ben Carter"
     },
-    "L-0164": {
-      "lead_id": "L-0164",
+    "L-0161": {
+      "lead_id": "L-0161",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001AtAn"
       ],
       "basis": "apac / mid-market: Aiko Tanaka"
     },
-    "L-0165": {
-      "lead_id": "L-0165",
+    "L-0162": {
+      "lead_id": "L-0162",
+      "expected_decision": "held",
+      "acceptable_owner_ids": [],
+      "basis": "Duplicate"
+    },
+    "L-0163": {
+      "lead_id": "L-0163",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001HoKa"
       ],
       "basis": "us-east / enterprise / Financial Services specialist: Hannah Okafor"
     },
-    "L-0166": {
-      "lead_id": "L-0166",
+    "L-0164": {
+      "lead_id": "L-0164",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001HoKa"
       ],
       "basis": "Subsidiary — parent account owner Hannah Okafor"
     },
-    "L-0167": {
-      "lead_id": "L-0167",
+    "L-0165": {
+      "lead_id": "L-0165",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001DaLv"
       ],
       "basis": "Existing account owner Diego Alvarez"
     },
-    "L-0168": {
-      "lead_id": "L-0168",
+    "L-0166": {
+      "lead_id": "L-0166",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001AcHn"
       ],
       "basis": "Existing account owner Alice Chen"
     },
-    "L-0169": {
-      "lead_id": "L-0169",
+    "L-0167": {
+      "lead_id": "L-0167",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001HoKa"
       ],
       "basis": "Existing account owner Hannah Okafor"
     },
-    "L-0170": {
-      "lead_id": "L-0170",
+    "L-0168": {
+      "lead_id": "L-0168",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001BcAr"
       ],
       "basis": "Existing account owner Ben Carter"
     },
-    "L-0171": {
-      "lead_id": "L-0171",
+    "L-0169": {
+      "lead_id": "L-0169",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001SrOs"
       ],
       "basis": "Named account of Sofia Rossi"
     },
-    "L-0172": {
-      "lead_id": "L-0172",
+    "L-0170": {
+      "lead_id": "L-0170",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001RkIm"
       ],
       "basis": "Existing account owner Rachel Kim"
     },
-    "L-0173": {
-      "lead_id": "L-0173",
+    "L-0171": {
+      "lead_id": "L-0171",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001JbLa"
       ],
       "basis": "us-west / smb: Jordan Blake"
     },
-    "L-0174": {
-      "lead_id": "L-0174",
+    "L-0172": {
+      "lead_id": "L-0172",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001AcHn",
@@ -10651,8 +10640,8 @@
       ],
       "basis": "us-west / enterprise: Alice Chen or Marcus Lee"
     },
-    "L-0175": {
-      "lead_id": "L-0175",
+    "L-0173": {
+      "lead_id": "L-0173",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001MlEe",
@@ -10660,40 +10649,46 @@
       ],
       "basis": "us-west / mid-market: Marcus Lee or Rachel Kim"
     },
-    "L-0176": {
-      "lead_id": "L-0176",
+    "L-0174": {
+      "lead_id": "L-0174",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001TbEc"
       ],
       "basis": "Existing account owner Tom Becker"
     },
-    "L-0177": {
-      "lead_id": "L-0177",
+    "L-0175": {
+      "lead_id": "L-0175",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001TbEc"
       ],
       "basis": "us-east / mid-market: Tom Becker"
     },
-    "L-0178": {
-      "lead_id": "L-0178",
+    "L-0176": {
+      "lead_id": "L-0176",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001BcAr"
       ],
       "basis": "us-central / enterprise / Retail specialist: Ben Carter"
     },
-    "L-0179": {
-      "lead_id": "L-0179",
+    "L-0177": {
+      "lead_id": "L-0177",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001HoKa"
       ],
       "basis": "Subsidiary — parent account owner Hannah Okafor"
     },
-    "L-0180": {
-      "lead_id": "L-0180",
+    "L-0178": {
+      "lead_id": "L-0178",
+      "expected_decision": "held",
+      "acceptable_owner_ids": [],
+      "basis": "Duplicate"
+    },
+    "L-0179": {
+      "lead_id": "L-0179",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001DaLv",
@@ -10702,38 +10697,38 @@
       ],
       "basis": "us-central / mid-market: Diego Alvarez or Tom Becker or Rachel Kim"
     },
-    "L-0181": {
-      "lead_id": "L-0181",
+    "L-0180": {
+      "lead_id": "L-0180",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001AcHn"
       ],
       "basis": "Subsidiary — parent account owner Alice Chen"
     },
-    "L-0182": {
-      "lead_id": "L-0182",
+    "L-0181": {
+      "lead_id": "L-0181",
       "expected_decision": "requires_review",
       "acceptable_owner_ids": [],
       "basis": "Owner Derek Lin has left — a manager picks the new owner"
     },
-    "L-0183": {
-      "lead_id": "L-0183",
+    "L-0182": {
+      "lead_id": "L-0182",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001JbLa"
       ],
       "basis": "us-east / smb: Jordan Blake"
     },
-    "L-0184": {
-      "lead_id": "L-0184",
+    "L-0183": {
+      "lead_id": "L-0183",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001HoKa"
       ],
       "basis": "us-east / enterprise / Healthcare specialist: Hannah Okafor"
     },
-    "L-0185": {
-      "lead_id": "L-0185",
+    "L-0184": {
+      "lead_id": "L-0184",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001MlEe",
@@ -10741,24 +10736,24 @@
       ],
       "basis": "us-west / mid-market: Marcus Lee or Rachel Kim"
     },
-    "L-0186": {
-      "lead_id": "L-0186",
+    "L-0185": {
+      "lead_id": "L-0185",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001BcAr"
       ],
       "basis": "us-east / enterprise / Retail specialist: Ben Carter"
     },
-    "L-0187": {
-      "lead_id": "L-0187",
+    "L-0186": {
+      "lead_id": "L-0186",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001AtAn"
       ],
       "basis": "apac / enterprise: Aiko Tanaka"
     },
-    "L-0188": {
-      "lead_id": "L-0188",
+    "L-0187": {
+      "lead_id": "L-0187",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001AcHn",
@@ -10766,13 +10761,19 @@
       ],
       "basis": "us-west / enterprise: Alice Chen or Marcus Lee"
     },
-    "L-0189": {
-      "lead_id": "L-0189",
+    "L-0188": {
+      "lead_id": "L-0188",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001HoKa"
       ],
       "basis": "Existing account owner Hannah Okafor"
+    },
+    "L-0189": {
+      "lead_id": "L-0189",
+      "expected_decision": "held",
+      "acceptable_owner_ids": [],
+      "basis": "Duplicate"
     },
     "L-0190": {
       "lead_id": "L-0190",
@@ -10807,39 +10808,41 @@
     },
     "L-0194": {
       "lead_id": "L-0194",
+      "expected_decision": "held",
+      "acceptable_owner_ids": [],
+      "basis": "Duplicate"
+    },
+    "L-0195": {
+      "lead_id": "L-0195",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001BcAr"
       ],
       "basis": "Existing account owner Ben Carter"
     },
-    "L-0195": {
-      "lead_id": "L-0195",
+    "L-0196": {
+      "lead_id": "L-0196",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001SrOs"
       ],
       "basis": "emea / enterprise: Sofia Rossi"
     },
-    "L-0196": {
-      "lead_id": "L-0196",
+    "L-0197": {
+      "lead_id": "L-0197",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001JbLa"
       ],
       "basis": "us-west / smb: Jordan Blake"
     },
-    "L-0197": {
-      "lead_id": "L-0197",
-      "expected_decision": "held",
-      "acceptable_owner_ids": [],
-      "basis": "Duplicate"
-    },
     "L-0198": {
       "lead_id": "L-0198",
-      "expected_decision": "held",
-      "acceptable_owner_ids": [],
-      "basis": "Duplicate"
+      "expected_decision": "auto_route",
+      "acceptable_owner_ids": [
+        "005Dn000001AcHn"
+      ],
+      "basis": "Subsidiary — parent account owner Alice Chen"
     },
     "L-0199": {
       "lead_id": "L-0199",
@@ -10847,18 +10850,10 @@
       "acceptable_owner_ids": [
         "005Dn000001AcHn"
       ],
-      "basis": "Subsidiary — parent account owner Alice Chen"
+      "basis": "Existing account owner Alice Chen"
     },
     "L-0200": {
       "lead_id": "L-0200",
-      "expected_decision": "auto_route",
-      "acceptable_owner_ids": [
-        "005Dn000001AcHn"
-      ],
-      "basis": "Existing account owner Alice Chen"
-    },
-    "L-0201": {
-      "lead_id": "L-0201",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001AcHn",
@@ -10866,8 +10861,8 @@
       ],
       "basis": "us-west / enterprise: Alice Chen or Marcus Lee"
     },
-    "L-0202": {
-      "lead_id": "L-0202",
+    "L-0201": {
+      "lead_id": "L-0201",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001MlEe",
@@ -10875,73 +10870,85 @@
       ],
       "basis": "us-west / mid-market: Marcus Lee or Rachel Kim"
     },
-    "L-0203": {
-      "lead_id": "L-0203",
-      "expected_decision": "held",
-      "acceptable_owner_ids": [],
-      "basis": "Duplicate"
-    },
-    "L-0204": {
-      "lead_id": "L-0204",
+    "L-0202": {
+      "lead_id": "L-0202",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001RkIm"
       ],
       "basis": "Existing account owner Rachel Kim"
     },
-    "L-0205": {
-      "lead_id": "L-0205",
+    "L-0203": {
+      "lead_id": "L-0203",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001HoKa"
       ],
       "basis": "Existing account owner Hannah Okafor"
     },
-    "L-0206": {
-      "lead_id": "L-0206",
+    "L-0204": {
+      "lead_id": "L-0204",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001BcAr"
       ],
       "basis": "Existing account owner Ben Carter"
     },
-    "L-0207": {
-      "lead_id": "L-0207",
+    "L-0205": {
+      "lead_id": "L-0205",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001JbLa"
       ],
       "basis": "us-central / smb: Jordan Blake"
     },
-    "L-0208": {
-      "lead_id": "L-0208",
+    "L-0206": {
+      "lead_id": "L-0206",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001SrOs"
       ],
       "basis": "Existing account owner Sofia Rossi"
     },
-    "L-0209": {
-      "lead_id": "L-0209",
-      "expected_decision": "held",
-      "acceptable_owner_ids": [],
-      "basis": "Duplicate"
-    },
-    "L-0210": {
-      "lead_id": "L-0210",
+    "L-0207": {
+      "lead_id": "L-0207",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001DaLv"
       ],
       "basis": "us-central / mid-market / Manufacturing specialist: Diego Alvarez"
     },
-    "L-0211": {
-      "lead_id": "L-0211",
+    "L-0208": {
+      "lead_id": "L-0208",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001HoKa"
       ],
       "basis": "Existing account owner Hannah Okafor"
+    },
+    "L-0209": {
+      "lead_id": "L-0209",
+      "expected_decision": "auto_route",
+      "acceptable_owner_ids": [
+        "005Dn000001BcAr"
+      ],
+      "basis": "us-east / enterprise / Retail specialist: Ben Carter"
+    },
+    "L-0210": {
+      "lead_id": "L-0210",
+      "expected_decision": "auto_route",
+      "acceptable_owner_ids": [
+        "005Dn000001AcHn"
+      ],
+      "basis": "Subsidiary — parent account owner Alice Chen"
+    },
+    "L-0211": {
+      "lead_id": "L-0211",
+      "expected_decision": "auto_route",
+      "acceptable_owner_ids": [
+        "005Dn000001MlEe"
+      ],
+      "basis": "Existing account owner Marcus Lee"
     },
     "L-0212": {
       "lead_id": "L-0212",
@@ -10949,34 +10956,10 @@
       "acceptable_owner_ids": [
         "005Dn000001BcAr"
       ],
-      "basis": "us-east / enterprise / Retail specialist: Ben Carter"
+      "basis": "Existing account owner Ben Carter"
     },
     "L-0213": {
       "lead_id": "L-0213",
-      "expected_decision": "auto_route",
-      "acceptable_owner_ids": [
-        "005Dn000001AcHn"
-      ],
-      "basis": "Subsidiary — parent account owner Alice Chen"
-    },
-    "L-0214": {
-      "lead_id": "L-0214",
-      "expected_decision": "auto_route",
-      "acceptable_owner_ids": [
-        "005Dn000001MlEe"
-      ],
-      "basis": "Existing account owner Marcus Lee"
-    },
-    "L-0215": {
-      "lead_id": "L-0215",
-      "expected_decision": "auto_route",
-      "acceptable_owner_ids": [
-        "005Dn000001BcAr"
-      ],
-      "basis": "Existing account owner Ben Carter"
-    },
-    "L-0216": {
-      "lead_id": "L-0216",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001SrOs",
@@ -10984,8 +10967,8 @@
       ],
       "basis": "emea / mid-market: Sofia Rossi or Lukas Weber"
     },
-    "L-0217": {
-      "lead_id": "L-0217",
+    "L-0214": {
+      "lead_id": "L-0214",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001AcHn",
@@ -10993,14 +10976,32 @@
       ],
       "basis": "us-west / enterprise: Alice Chen or Marcus Lee"
     },
-    "L-0218": {
-      "lead_id": "L-0218",
+    "L-0215": {
+      "lead_id": "L-0215",
+      "expected_decision": "held",
+      "acceptable_owner_ids": [],
+      "basis": "Duplicate"
+    },
+    "L-0216": {
+      "lead_id": "L-0216",
+      "expected_decision": "held",
+      "acceptable_owner_ids": [],
+      "basis": "Duplicate"
+    },
+    "L-0217": {
+      "lead_id": "L-0217",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001DaLv",
         "005Dn000001BcAr"
       ],
       "basis": "us-central / enterprise: Diego Alvarez or Ben Carter"
+    },
+    "L-0218": {
+      "lead_id": "L-0218",
+      "expected_decision": "held",
+      "acceptable_owner_ids": [],
+      "basis": "Duplicate"
     },
     "L-0219": {
       "lead_id": "L-0219",
@@ -11076,26 +11077,23 @@
     },
     "L-0228": {
       "lead_id": "L-0228",
+      "expected_decision": "held",
+      "acceptable_owner_ids": [],
+      "basis": "Duplicate"
+    },
+    "L-0229": {
+      "lead_id": "L-0229",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001TbEc"
       ],
       "basis": "us-east / mid-market: Tom Becker"
     },
-    "L-0229": {
-      "lead_id": "L-0229",
+    "L-0230": {
+      "lead_id": "L-0230",
       "expected_decision": "held",
       "acceptable_owner_ids": [],
       "basis": "Hygiene outcome NEEDS_REVIEW"
-    },
-    "L-0230": {
-      "lead_id": "L-0230",
-      "expected_decision": "auto_route",
-      "acceptable_owner_ids": [
-        "005Dn000001MlEe",
-        "005Dn000001RkIm"
-      ],
-      "basis": "us-west / mid-market: Marcus Lee or Rachel Kim"
     },
     "L-0231": {
       "lead_id": "L-0231",
@@ -11108,39 +11106,42 @@
     },
     "L-0232": {
       "lead_id": "L-0232",
+      "expected_decision": "auto_route",
+      "acceptable_owner_ids": [
+        "005Dn000001MlEe",
+        "005Dn000001RkIm"
+      ],
+      "basis": "us-west / mid-market: Marcus Lee or Rachel Kim"
+    },
+    "L-0233": {
+      "lead_id": "L-0233",
       "expected_decision": "held",
       "acceptable_owner_ids": [],
       "basis": "Hygiene outcome NEEDS_REVIEW"
     },
-    "L-0233": {
-      "lead_id": "L-0233",
+    "L-0234": {
+      "lead_id": "L-0234",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001PsHa"
       ],
       "basis": "Named account of Priya Shah"
     },
-    "L-0234": {
-      "lead_id": "L-0234",
+    "L-0235": {
+      "lead_id": "L-0235",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001AtAn"
       ],
       "basis": "Existing account owner Aiko Tanaka"
     },
-    "L-0235": {
-      "lead_id": "L-0235",
+    "L-0236": {
+      "lead_id": "L-0236",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001SrOs"
       ],
       "basis": "Named account of Sofia Rossi"
-    },
-    "L-0236": {
-      "lead_id": "L-0236",
-      "expected_decision": "held",
-      "acceptable_owner_ids": [],
-      "basis": "Duplicate"
     },
     "L-0237": {
       "lead_id": "L-0237",
@@ -11152,9 +11153,11 @@
     },
     "L-0238": {
       "lead_id": "L-0238",
-      "expected_decision": "held",
-      "acceptable_owner_ids": [],
-      "basis": "Duplicate"
+      "expected_decision": "auto_route",
+      "acceptable_owner_ids": [
+        "005Dn000001BcAr"
+      ],
+      "basis": "us-central / enterprise / Retail specialist: Ben Carter"
     },
     "L-0239": {
       "lead_id": "L-0239",
@@ -11168,20 +11171,12 @@
       "lead_id": "L-0240",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
-        "005Dn000001BcAr"
-      ],
-      "basis": "us-central / enterprise / Retail specialist: Ben Carter"
-    },
-    "L-0241": {
-      "lead_id": "L-0241",
-      "expected_decision": "auto_route",
-      "acceptable_owner_ids": [
         "005Dn000001AcHn"
       ],
       "basis": "Existing account owner Alice Chen"
     },
-    "L-0242": {
-      "lead_id": "L-0242",
+    "L-0241": {
+      "lead_id": "L-0241",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001DaLv",
@@ -11189,14 +11184,20 @@
       ],
       "basis": "us-central / enterprise: Diego Alvarez or Ben Carter"
     },
-    "L-0243": {
-      "lead_id": "L-0243",
+    "L-0242": {
+      "lead_id": "L-0242",
       "expected_decision": "auto_route",
       "acceptable_owner_ids": [
         "005Dn000001AcHn",
         "005Dn000001MlEe"
       ],
       "basis": "us-west / enterprise: Alice Chen or Marcus Lee"
+    },
+    "L-0243": {
+      "lead_id": "L-0243",
+      "expected_decision": "held",
+      "acceptable_owner_ids": [],
+      "basis": "Duplicate"
     },
     "L-0244": {
       "lead_id": "L-0244",

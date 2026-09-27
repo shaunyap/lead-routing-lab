@@ -15,7 +15,9 @@ import RoutingView from "./RoutingView";
 import SalesforceDrawer from "./SalesforceDrawer";
 import SalesforceView from "./SalesforceView";
 import { pct } from "./ui";
-import Walkthrough, { walkthroughSteps } from "./Walkthrough";
+import { ArchStrip, DemoBoundaries, GuideCard, THESIS, type GuideStep } from "./Story";
+import { parseRoutingPolicy } from "@/lib/policy";
+import { PRESET_EDITS, applyEdit } from "@/lib/presets";
 
 export type Tab = "leads" | "hygiene" | "routing" | "attention" | "salesforce" | "evals" | "policy";
 const FLOW: { id: Tab; label: string }[] = [
@@ -72,8 +74,7 @@ export default function Lab(props: { org: OrgData; hygieneMd: string; routingMd:
   const [versions, setVersions] = useState<PolicyVersion[]>([v1]);
   const [active, setActive] = useState(1);
   const [tab, setTab] = useState<Tab>("leads");
-  const [seenTabs, setSeenTabs] = useState<Set<Tab>>(new Set());
-  const [walkOpen, setWalkOpen] = useState(true);
+  const [guide, setGuide] = useState<number | null>(null);
   const [focus, setFocus] = useState<string | null>(null);
   const [drawer, setDrawer] = useState<string | null>(null);
   const [overrides, setOverrides] = useState<Overrides>({});
@@ -111,7 +112,6 @@ export default function Lab(props: { org: OrgData; hygieneMd: string; routingMd:
     setFocus(null);
     setOverrides({});
     setTab("leads");
-    setSeenTabs(new Set<Tab>(["leads"]));
   };
   const reset = () => {
     setSeed(DEFAULT_SEED);
@@ -123,13 +123,11 @@ export default function Lab(props: { org: OrgData; hygieneMd: string; routingMd:
     setDrawer(null);
     setOverrides({});
     setTab("leads");
-    setSeenTabs(new Set());
-    setWalkOpen(true);
+    setGuide(null);
   };
   const go = (t: Tab, lead?: string) => {
     if (lead) setFocus(lead);
     setTab(t);
-    setSeenTabs((s) => new Set(s).add(t));
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
   const savePolicy = (next: Omit<PolicyVersion, "version">) => {
@@ -150,8 +148,72 @@ export default function Lab(props: { org: OrgData; hygieneMd: string; routingMd:
     });
     return hit?.lead_id ?? null;
   }, [run, outcomes, dataset]);
-  const steps = walkthroughSteps(exampleLead);
-  const visitedSteps = new Set(steps.map((s, i) => (seenTabs.has(s.tab) ? i : -1)).filter((i) => i >= 0));
+
+  // ---- Pre-baked policy change: subsidiaries follow the parent account.
+  const rollupPreset = PRESET_EDITS.find((p) => p.id === "parent-rollup")!;
+  const rollupVersion = versions.find((v) => parseRoutingPolicy(v.routingMd).policy?.precedence.includes("parent_account_owner"));
+  const tryPolicyChange = () => {
+    if (rollupVersion) setActive(rollupVersion.version);
+    else savePolicy({ label: rollupPreset.label, routingMd: applyEdit(rollupPreset, v1.routingMd), hygieneMd: v1.hygieneMd });
+    go("policy");
+  };
+
+  // ---- Guided demo: five steps, each of which drives the app to the right place.
+  const v1Out = outcomes.get(1);
+  const v1Run = v1Out?.ok ? v1Out.run : null;
+  const rollOut = rollupVersion ? outcomes.get(rollupVersion.version) : undefined;
+  const rollRun = rollOut?.ok ? rollOut.run : null;
+  const showRaw = dataset.leads.find((l) => l.id === dataset.showcase_id);
+  const showH = v1Run?.hygiene.find((h) => h.lead_id === dataset.showcase_id);
+  const showR = v1Run?.routing.find((r) => r.lead_id === dataset.showcase_id);
+  const exR = exampleLead ? v1Run?.routing.find((r) => r.lead_id === exampleLead) : undefined;
+  const exH = exampleLead ? v1Run?.hygiene.find((h) => h.lead_id === exampleLead) : undefined;
+  const pctS = (x: number) => `${(x * 100).toFixed(1)}%`;
+  const guideSteps: GuideStep[] = [
+    {
+      title: "Meet one messy lead",
+      body: showRaw
+        ? `${showRaw.first_name} ${showRaw.last_name} signed up with ${showRaw.email}, no company website, “${showRaw.title}”, “${showRaw.state}”, no employee count, and says their company is in ${showRaw.industry}. It's pinned at the top of the list.`
+        : "A deliberately messy lead is pinned at the top of the list.",
+    },
+    {
+      title: "Hygiene cleans it, without guessing",
+      body: `Formats are normalized, the website and headcount come from the company record, and the record's industry (${showH?.record.industry ?? "Retail"}) beats the self-reported one. Each change says why.`,
+    },
+    {
+      title: "Routing explains every decision",
+      body: exR && exH
+        ? `Most picks are right: that lead went to ${showR?.owner ?? "a Retail specialist"}. But here the router confidently chose ${exR.owner} for ${exH.record.company}, and ground truth says ✕: it's a subsidiary of another rep's customer.`
+        : "Each step of the decision is shown, along with the reps who were ruled out and why.",
+    },
+    {
+      title: "Change one rule, measure the effect",
+      body: rollRun && v1Run
+        ? `One line added to the routing policy: subsidiaries follow the parent account. Same leads, rerun: accuracy ${pctS(v1Run.funnel.eval_accuracy)} → ${pctS(rollRun.funnel.eval_accuracy)}, policy violations ${v1Run.routingEval.violations.length} → ${rollRun.routingEval.violations.length}. Every changed assignment is explained below.`
+        : "One line is added to the routing policy and the same leads run again.",
+    },
+    {
+      title: "Only safe actions reach Salesforce",
+      body: `Each AE's new load against capacity, and the API calls that would be sent. ${rollRun ? rollRun.funnel.review + rollRun.funnel.exceptions : "Some"} leads still wait in Address Exceptions, because the policy won't guess.`,
+    },
+  ];
+  const enterStep = (i: number) => {
+    setGuide(i);
+    if (i <= 2) setActive(1);
+    if (i === 0) go("leads");
+    if (i === 1) go("hygiene", dataset.showcase_id);
+    if (i === 2) go("routing", exampleLead ?? dataset.showcase_id);
+    if (i === 3) tryPolicyChange();
+    if (i === 4) {
+      if (rollupVersion) setActive(rollupVersion.version);
+      go("salesforce");
+    }
+  };
+  const startGuided = () => {
+    generate();
+    setActive(1);
+    setGuide(0);
+  };
 
   const animKey = `${genCount}-${seed}-${active}`;
   const f = run?.funnel;
@@ -166,10 +228,12 @@ export default function Lab(props: { org: OrgData; hygieneMd: string; routingMd:
           <div>
             <h1>Lead Routing Lab</h1>
             <div className="sub">
-              Prepared for LangChain by{" "}
+              Built by{" "}
               <a href="https://www.linkedin.com/in/shaunyap" target="_blank" rel="noopener noreferrer">Shaun Yap</a>
               {" · "}
               <a href="https://github.com/shaunyap/lead-routing-lab" target="_blank" rel="noopener noreferrer">View source</a>
+              {" · "}
+              <DemoBoundaries />
             </div>
           </div>
         </div>
@@ -197,6 +261,7 @@ export default function Lab(props: { org: OrgData; hygieneMd: string; routingMd:
                 Seed
                 <input value={seedInput} onChange={(e) => setSeedInput(e.target.value.replace(/\D/g, ""))} aria-label="Dataset seed" />
               </label>
+              {guide === null && <button className="btn" onClick={() => enterStep(0)}>▶ Guided demo</button>}
               <button className="btn primary" onClick={generate}>Regenerate</button>
               <button className="btn" onClick={reset}>Reset demo</button>
             </>
@@ -208,10 +273,12 @@ export default function Lab(props: { org: OrgData; hygieneMd: string; routingMd:
         <div className="hero">
           <div className="eyebrow">Lead list load</div>
           <h2>Messy lead data in, safe CRM actions out</h2>
-          <p>
-            About 250 leads, loaded the way lists always arrive: mismatched column headers, Gmail addresses, &ldquo;VP Mktg&rdquo;, &ldquo;WA&rdquo;,
-            duplicates and missing firmographics. Watch the leads get cleaned, routed with written-out reasons,
-            checked against ground truth and turned into Salesforce updates, all driven by two policy files you can edit.
+          <p className="hero-lede">
+            A realistic lead list goes through hygiene, routing, exceptions and evals, and comes out as Salesforce-ready actions.
+          </p>
+          <p className="hero-detail">
+            About 250 leads with the usual mess: mismatched headers, Gmail addresses, &ldquo;VP Mktg&rdquo;, &ldquo;WA&rdquo;, duplicates and
+            missing firmographics. Every rule lives in two policy files you can edit.
           </p>
           <div className="hero-seed">
             <label htmlFor="hero-seed">Seed</label>
@@ -223,13 +290,19 @@ export default function Lab(props: { org: OrgData; hygieneMd: string; routingMd:
             />
             <span className="faint">Same seed, same dataset. Change it for a different set of leads.</span>
           </div>
-          <button className="btn primary big" onClick={generate}>Load leads</button>
+          <div className="hero-actions">
+            <button className="btn primary big" onClick={startGuided}>▶ Start the guided demo</button>
+            <button className="btn big" onClick={generate}>Explore on my own</button>
+          </div>
+          <div className="faint" style={{ marginTop: 8, fontSize: 12.5 }}>The guided demo takes about 3 minutes: 5 steps with a Next button.</div>
           <div className="flow-label">From list to CRM</div>
           <div className="flow">
             <span>Leads</span><i>→</i><span>Hygiene</span><i>→</i><span>Routing</span><i>→</i>
             <span>Address Exceptions</span><i>→</i><span>Export to Salesforce</span>
           </div>
-          <div className="faint" style={{ marginTop: 14, fontSize: 12.5 }}>A suggested 3-minute walkthrough appears once the leads are loaded.</div>
+          <div className="flow-label">How it&rsquo;s built</div>
+          <ArchStrip />
+          <p className="thesis">{THESIS}</p>
           {!activeOutcome.ok && <div className="errors" style={{ marginTop: 20 }}>{activeOutcome.errors.join(" · ")}</div>}
         </div>
       ) : (
@@ -245,14 +318,6 @@ export default function Lab(props: { org: OrgData; hygieneMd: string; routingMd:
             <Stage animKey={animKey} n={f.exceptions} label="Exceptions" tone="warn" onClick={() => go("attention")} />
             <Stage animKey={animKey} n={f.eval_accuracy} isPct label="Routing eval" tone="accent" onClick={() => go("evals")} last />
           </nav>
-
-          <Walkthrough
-            steps={steps}
-            visited={visitedSteps}
-            open={walkOpen}
-            setOpen={setWalkOpen}
-            onGo={(i) => go(steps[i].tab, steps[i].lead)}
-          />
 
           <nav className="tabs">
             {FLOW.map((t, i) => (
@@ -288,6 +353,7 @@ export default function Lab(props: { org: OrgData; hygieneMd: string; routingMd:
               prevVersion={prevVersion}
               onSave={savePolicy}
               onOpenLead={(id) => go("routing", id)}
+              onTryChange={tryPolicyChange}
             />
           )}
           {run && tab === "attention" && <AttentionView dataset={dataset} run={run} org={org} onOpen={go} overrides={overrides} onAssign={assign} />}
@@ -296,6 +362,16 @@ export default function Lab(props: { org: OrgData; hygieneMd: string; routingMd:
             <div className="errors">This policy version does not parse: {activeOutcome.ok ? "" : activeOutcome.errors.join(" · ")}</div>
           )}
         </>
+      )}
+
+      {guide !== null && generated && (
+        <GuideCard
+          steps={guideSteps}
+          index={guide}
+          onBack={() => enterStep(Math.max(0, guide - 1))}
+          onNext={() => enterStep(guide + 1)}
+          onExit={() => setGuide(null)}
+        />
       )}
 
       {drawer && effRun && (
